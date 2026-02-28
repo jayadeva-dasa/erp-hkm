@@ -1,0 +1,98 @@
+<div class="approval-matrix-setup-page">
+	<!-- Header Section -->
+	<div class="page-header">
+		<div class="page-title">
+			<h3>Approval Matrix Setup</h3>
+			<p class="text-muted">Configure approval workflows based on dimensions and conditions</p>
+		</div>
+		<div class="page-actions">
+			<button class="btn btn-primary btn-sm" data-action="create-new">
+				<svg class="icon icon-sm"><use href="#icon-add"></use></svg>
+				Create New Matrix
+			</button>
+		</div>
+	</div>
+
+	<!-- Matrices List Section -->
+	<div class="matrices-list-section">
+		<div class="section-header">
+			<h4>Existing Approval Matrices</h4>
+		</div>
+		<div class="matrices-grid" data-section="matrices-list">
+			<!-- Matrix cards will be rendered here -->
+		</div>
+		<div class="empty-state" data-section="empty-state" style="display: none;">
+			<div class="empty-state-content">
+				<svg class="icon icon-xl text-muted"><use href="#icon-file"></use></svg>
+				<p class="text-muted">No approval matrices configured yet</p>
+				<button class="btn btn-sm btn-default" data-action="create-new">Create Your First Matrix</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Matrix Editor Section -->
+	<div class="matrix-editor-section" data-section="matrix-editor" style="display: none;">
+		<div class="editor-header">
+			<div class="editor-title">
+				<h4 data-editor="title">New Approval Matrix</h4>
+			</div>
+			<div class="editor-actions">
+				<button class="btn btn-sm btn-default" data-action="cancel-edit">Cancel</button>
+				<button class="btn btn-sm btn-primary" data-action="save-matrix">Save Matrix</button>
+			</div>
+		</div>
+
+		<div class="editor-content">
+			<!-- Basic Configuration -->
+			<div class="config-section">
+				<h5>Basic Configuration</h5>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label">Target DocType <span class="text-danger">*</span></label>
+							<select class="form-control" data-field="target_doctype" required>
+								<option value="">Select DocType...</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label">Dimension <span class="text-danger">*</span></label>
+							<select class="form-control" data-field="dimension" required>
+								<option value="">Select Dimension...</option>
+							</select>
+							<p class="help-text">The primary dimension for routing approvals</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="form-group">
+							<label class="control-label">Fields Applicable</label>
+							<input type="text" class="form-control" data-field="fields_applicable" 
+								placeholder="e.g., type, grand_total">
+							<p class="help-text">Comma-separated fields for additional conditions (optional)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Transitions Section -->
+			<div class="transitions-section">
+				<div class="section-header-with-action">
+					<h5>Approval Rules</h5>
+					<button class="btn btn-sm btn-default" data-action="add-transition">
+						<svg class="icon icon-xs"><use href="#icon-add"></use></svg>
+						Add Rule
+					</button>
+				</div>
+
+				<div class="transitions-container" data-container="transitions">
+					<!-- Transition rows will be rendered here -->
+				</div>
+
+				<div class="empty-transitions" data-section="empty-transitions">
+					<p class="text-muted text-center">No approval rules added yet. Click "Add Rule" to create one.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

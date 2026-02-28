@@ -1,0 +1,86 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-10-18 17:38:14.670840",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "razorpay_settings_section",
+  "razorpay_id",
+  "razorpay_secret",
+  "webhook_secret",
+  "section_break_al9rz",
+  "firebase_app"
+ ],
+ "fields": [
+  {
+   "fieldname": "razorpay_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Razorpay Settings"
+  },
+  {
+   "fieldname": "razorpay_id",
+   "fieldtype": "Data",
+   "label": "RAZORPAY ID"
+  },
+  {
+   "fieldname": "razorpay_secret",
+   "fieldtype": "Password",
+   "label": "RAZORPAY SECRET"
+  },
+  {
+   "fieldname": "webhook_secret",
+   "fieldtype": "Password",
+   "label": "WEBHOOK SECRET"
+  },
+  {
+   "fieldname": "section_break_al9rz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "firebase_app",
+   "fieldtype": "Link",
+   "label": "Firebase App",
+   "options": "Firebase Admin App"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-10-22 19:04:08.863199",
+ "modified_by": "Administrator",
+ "module": "Divine Dishes",
+ "name": "Divine Dishes Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Customer",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Customer",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

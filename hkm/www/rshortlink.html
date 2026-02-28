@@ -1,0 +1,21 @@
+<p> Certification price is 20,000 INR / 300 USD.</p>
+
+<section>
+	<input type="radio" name="gender" value="USD" checked> USD <br>
+	<input type="radio" name="gender" value="INR" style="margin-top: 15px;"> INR <br>
+</section>
+
+<div class="section" style="margin-top:10px;"><a class="btn btn-primary next"> Next </a></div>
+
+<script>
+	frappe.ready(function() {
+		$('.next').on('click', function() {
+			if($("input[type=radio]:checked").val() == 'INR'){
+				window.location = '/certification-application?new=1'
+			}
+			else{
+				window.location = '/certification-application-usd?new=1'
+			}
+		})
+	})
+</script>

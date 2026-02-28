@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "autoname": "format:{trip_to} | {date_from}",
+ "creation": "2021-07-07 14:16:27.101802",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "details_section",
+  "trip_to",
+  "date_from",
+  "date_to",
+  "overall_coordinator",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "details_section",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "trip_to",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Trip To"
+  },
+  {
+   "fieldname": "date_from",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date From",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_to",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Date To"
+  },
+  {
+   "fieldname": "overall_coordinator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Coordinator",
+   "options": "FOLK Guide"
+  },
+  {
+   "default": "FTR-.YY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "FTR-.YY.-.MM.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:20:00.259691",
+ "modified_by": "Administrator",
+ "module": "FOLK Trip",
+ "name": "FOLK Trip",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "trip_to",
+ "track_changes": 1
+}

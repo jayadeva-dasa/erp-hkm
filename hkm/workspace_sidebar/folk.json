@@ -1,0 +1,72 @@
+{
+ "app": "hkm",
+ "creation": "2026-01-29 08:42:13.181535",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "share",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "FOLK",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "FOLK Student",
+   "link_to": "FOLK Student",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Residency Rent",
+   "link_to": "FOLK Residency Rent",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Rent Report",
+   "link_to": "Student Rent Report",
+   "link_type": "Report",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Donation",
+   "link_to": "FOLK Donation",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-30 09:35:08.621317",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "FOLK"
+}

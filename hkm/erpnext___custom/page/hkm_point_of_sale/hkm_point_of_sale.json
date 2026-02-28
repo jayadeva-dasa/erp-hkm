@@ -1,0 +1,30 @@
+{
+ "content": null,
+ "creation": "2025-01-15 06:30:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2025-01-15 06:30:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERPNext___Custom",
+ "name": "hkm-point-of-sale",
+ "owner": "Administrator",
+ "page_name": "HKM Point of Sale",
+ "roles": [
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Sales Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Accounts Manager"
+  }
+ ],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "HKM Point of Sale"
+}

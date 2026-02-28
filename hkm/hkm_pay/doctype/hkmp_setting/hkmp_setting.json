@@ -1,0 +1,75 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-08-08 17:34:21.446497",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "firebase_admin_app",
+  "enable_period_restriction_for_bill_submission",
+  "bank_settings",
+  "primary_bank"
+ ],
+ "fields": [
+  {
+   "fieldname": "firebase_admin_app",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Firebase Admin App",
+   "options": "Firebase Admin App",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_settings",
+   "fieldtype": "Table",
+   "label": "Bank Settings",
+   "options": "HKMP Bank Settings"
+  },
+  {
+   "fieldname": "primary_bank",
+   "fieldtype": "Link",
+   "label": "Primary Bank",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_period_restriction_for_bill_submission",
+   "fieldtype": "Check",
+   "label": "Enable Period Restriction for Bill Submission"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-22 15:30:14.776214",
+ "modified_by": "Administrator",
+ "module": "HKM Pay",
+ "name": "HKMP Setting",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HKMP User",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

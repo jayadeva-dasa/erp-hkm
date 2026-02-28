@@ -1,0 +1,189 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "color": "green",
+ "creation": "2021-06-15 15:02:59.566507",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rent_of_section",
+  "folk_student",
+  "folk_guide",
+  "donation_towards",
+  "column_break_4",
+  "folk_plus",
+  "student_name",
+  "student_mobile_number",
+  "receipt_details_section",
+  "receipt_no",
+  "receipt_date",
+  "mode_of_payment",
+  "payment_reference_details",
+  "amount",
+  "naming_series",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "rent_of_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "folk_student",
+   "fieldtype": "Link",
+   "label": "FOLK Student",
+   "options": "FOLK Student",
+   "reqd": 1
+  },
+  {
+   "fieldname": "donation_towards",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Donation Towards"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "folk_student.folk_plus",
+   "fieldname": "folk_plus",
+   "fieldtype": "Check",
+   "label": "FOLK Plus",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "folk_student.full_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Student Name",
+   "read_only": 1,
+   "width": "2"
+  },
+  {
+   "fetch_from": "folk_student.student_mobile_number",
+   "fieldname": "student_mobile_number",
+   "fieldtype": "Data",
+   "label": "Student Mobile Number",
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_details_section",
+   "fieldtype": "Section Break",
+   "label": "Receipt Details"
+  },
+  {
+   "fieldname": "receipt_no",
+   "fieldtype": "Data",
+   "label": "Receipt No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_date",
+   "fieldtype": "Date",
+   "label": "Receipt Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "label": "Mode of Payment",
+   "options": "Cash\nUPI\nNEFT\nIMPS\nAccount Transfer\nBank Deposit\nRazorPay\nPayU\nOthers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_reference_details",
+   "fieldtype": "Data",
+   "label": "Payment Reference Details"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1,
+   "width": "2"
+  },
+  {
+   "default": "FDN-.YY.-.MM.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "FDN-.YY.-.MM.-",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FOLK Donation",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "folk_guide",
+   "fieldtype": "Link",
+   "label": "FOLK Guide",
+   "options": "FOLK Guide"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-11-06 12:43:45.887345",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Donation",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "select": 1,
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "student_name",
+ "track_changes": 1
+}

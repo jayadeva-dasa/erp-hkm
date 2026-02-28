@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "last_updated": "2025-11-12",
+  "description": "Centralized role-based access control for HKM Dashboard modules, pages, and reports",
+  "modules": {
+    "donation-insights": {
+      "label": "Donation Insights",
+      "type": "analytics",
+      "description": "Full Dhananjaya donation analytics, trends, breakdowns and geo insights",
+      "route": "/donation-insights",
+      "allowed_roles": [
+        "System Manager"
+      ],
+      "icon": "FiTrendingUp",
+      "badge": "Analytics",
+      "enabled": true
+    },
+    "donor-search": {
+      "label": "Donor Search",
+      "type": "operations",
+      "description": "Search aggregate identities, drill into profiles, and jump to ERPNext records",
+      "route": "/donor-search",
+      "allowed_roles": [
+        "System Manager"
+      ],
+      "icon": "FiSearch",
+      "badge": "Operations",
+      "enabled": true
+    },
+    "hkm-pay-user-management": {
+      "label": "HKM Pay User Management",
+      "type": "operations",
+      "description": "Manage HKMP Users - view, create, edit, delete, and view analytics",
+      "route": "/hkm-pay-user-management",
+      "allowed_roles": [
+        "System Manager"
+      ],
+      "icon": "FiUsers",
+      "badge": "HKM Pay",
+      "enabled": true
+    }
+  },
+  "role_descriptions": {
+    "System Manager": "Full administrative access to dashboard modules"
+  },
+  "settings": {
+    "allow_guest_access": false,
+    "default_redirect": "/",
+    "login_required": true,
+    "session_timeout_minutes": 480
+  }
+}

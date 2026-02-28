@@ -1,0 +1,200 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-17 13:19:12.004358",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vpeq",
+  "posting_date",
+  "user",
+  "user_supplier_link",
+  "company",
+  "department",
+  "expense_head",
+  "column_break_nhep",
+  "status",
+  "section_break_kaiv",
+  "items",
+  "grand_total",
+  "amended_from",
+  "approvals_section",
+  "recommender",
+  "column_break_dsqq",
+  "first_approver",
+  "column_break_ikdn",
+  "final_approver",
+  "next_approver"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vpeq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "HKM Voucher",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "user_supplier_link",
+   "fieldtype": "Link",
+   "label": "User Supplier Link",
+   "options": "Supplier",
+   "reqd": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "HKM Voucher Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "expense_head",
+   "fieldtype": "Link",
+   "label": "Expense Head",
+   "options": "Account"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "grand_total",
+   "fieldtype": "Currency",
+   "label": "Grand Total",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "approvals_section",
+   "fieldtype": "Section Break",
+   "label": "Approvals"
+  },
+  {
+   "fieldname": "recommender",
+   "fieldtype": "Link",
+   "label": "Recommender",
+   "options": "User",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_dsqq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "first_approver",
+   "fieldtype": "Link",
+   "label": "First Approver",
+   "options": "User",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_ikdn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "final_approver",
+   "fieldtype": "Link",
+   "label": "Final Approver",
+   "options": "User",
+   "permlevel": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nhep",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "Pending Approval",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Pending Approval\nRecommended\nFirst Approved\nFinal Approved",
+   "permlevel": 1
+  },
+  {
+   "fieldname": "section_break_kaiv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "next_approver",
+   "fieldtype": "Link",
+   "label": "Next Approver",
+   "no_copy": 1,
+   "options": "User",
+   "permlevel": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-08-17 18:28:06.980705",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM Voucher",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,21 @@
+{
+ "creation": "2025-10-12 10:13:41.000000",
+ "doctype": "Page",
+ "icon": "octicon octicon-checklist",
+ "idx": 0,
+ "modified": "2025-10-12 10:13:41.000000",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "approval_matrix_setup",
+ "owner": "Administrator",
+ "page_name": "Approval Matrix Setup",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Approval Matrix Setup",
+ "type": "Page"
+}

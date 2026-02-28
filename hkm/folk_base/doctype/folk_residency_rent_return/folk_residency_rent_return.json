@@ -1,0 +1,147 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-05-11 10:27:17.428089",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "folk_student",
+  "residency",
+  "rent_type",
+  "column_break_4",
+  "amended_from",
+  "receipt_details_section",
+  "payment_date",
+  "mode_of_payment",
+  "payment_reference_details",
+  "amount",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "folk_student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "FOLK Student",
+   "options": "FOLK Student",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "folk_student.residency",
+   "fieldname": "residency",
+   "fieldtype": "Data",
+   "label": "Residency",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "rent_type",
+   "fieldtype": "Select",
+   "label": "Return Rent Type",
+   "options": "Hostel Rent\nSecurity"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FOLK Residency Rent",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_details_section",
+   "fieldtype": "Section Break",
+   "label": "Return Details"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Return Payment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "label": "Mode of Payment",
+   "options": "Cash\nUPI\nNEFT\nIMPS\nAccount Transfer\nBank Deposit\nOthers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_reference_details",
+   "fieldtype": "Data",
+   "label": "Return Payment Reference Details"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "FRR-.YY.-.MM.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-02-18 17:46:03.141660",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Residency Rent Return",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

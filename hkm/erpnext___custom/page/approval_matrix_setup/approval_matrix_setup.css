@@ -1,0 +1,676 @@
+/* Approval Matrix Setup - Modern Styling */
+
+.approval-matrix-setup-page {
+	padding: 20px;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+/* Page Header */
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.page-title h3 {
+	margin: 0 0 5px 0;
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.page-title p {
+	margin: 0;
+	font-size: 14px;
+}
+
+/* Matrices List Section */
+.matrices-list-section {
+	margin-bottom: 30px;
+}
+
+.section-header {
+	margin-bottom: 20px;
+}
+
+.section-header h4 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.matrices-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 20px;
+}
+
+/* Matrix Card */
+.matrix-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	padding: 16px;
+	transition: all 0.2s ease;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.matrix-card:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+
+.matrix-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 12px;
+}
+
+.matrix-info h5 {
+	margin: 0 0 8px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.matrix-meta {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.matrix-meta .badge {
+	font-size: 11px;
+	padding: 3px 8px;
+}
+
+.matrix-actions {
+	display: flex;
+	gap: 5px;
+}
+
+.matrix-card-body {
+	padding-top: 12px;
+	border-top: 1px solid var(--border-color);
+}
+
+/* Empty State */
+.empty-state {
+	text-align: center;
+	padding: 60px 20px;
+}
+
+.empty-state-content {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.empty-state .icon {
+	margin-bottom: 20px;
+	opacity: 0.3;
+}
+
+.empty-state p {
+	margin-bottom: 20px;
+	font-size: 15px;
+}
+
+/* Matrix Editor Section */
+.matrix-editor-section {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 8px;
+	padding: 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.editor-header-compact {
+	background: white;
+	border-bottom: 1px solid var(--border-color);
+	margin-bottom: 20px;
+}
+
+.header-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 20px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.header-left {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.auto-save-indicator {
+	font-size: 11px;
+	color: var(--green-600);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	padding: 2px 8px;
+	background: var(--green-50);
+	border-radius: 4px;
+}
+
+.config-compact {
+	display: flex;
+	gap: 16px;
+	padding: 12px 20px;
+	background: var(--bg-light-gray);
+}
+
+.config-item {
+	flex: 1;
+}
+
+.config-item label {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--text-muted);
+	margin-bottom: 4px;
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.editor-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 24px;
+	border-bottom: 1px solid var(--border-color);
+	background: var(--bg-color);
+	border-radius: 8px 8px 0 0;
+}
+
+.editor-title h4 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.editor-actions {
+	display: flex;
+	gap: 10px;
+}
+
+.editor-content {
+	padding: 24px;
+}
+
+/* Config Section */
+.config-section {
+	margin-bottom: 30px;
+	padding-bottom: 24px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.config-section h5 {
+	margin: 0 0 20px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.help-text {
+	margin: 5px 0 0 0;
+	font-size: 12px;
+	color: var(--text-muted);
+}
+
+/* Rules Section */
+.rules-section {
+	margin-top: 24px;
+}
+
+.section-header-with-action {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.section-header-with-action h5 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--text-color);
+}
+
+.rules-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.empty-rules {
+	padding: 40px 20px;
+	text-align: center;
+	background: var(--bg-color);
+	border: 2px dashed var(--border-color);
+	border-radius: 6px;
+}
+
+/* Rule Card */
+.rule-card {
+	background: var(--card-bg);
+	border: 2px solid var(--border-color);
+	border-radius: 8px;
+	overflow: visible;
+	transition: all 0.2s ease;
+}
+
+.rule-card:hover {
+	border-color: var(--primary);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.rule-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 16px;
+	background: var(--bg-color);
+	border-bottom: 1px solid var(--border-color);
+}
+
+.rule-info {
+	flex: 1;
+}
+
+.condition-count-badge {
+	background: var(--purple-100);
+	color: var(--purple-700);
+	padding: 4px 12px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.rule-actions {
+	display: flex;
+	gap: 8px;
+}
+
+.rule-card-body {
+	padding: 20px;
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+}
+
+.conditions-container {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+}
+
+/* Condition Row */
+.condition-row {
+	margin-bottom: 10px;
+	padding: 14px 16px;
+	background: var(--bg-light-gray);
+	border-left: 3px solid var(--primary);
+	border-radius: 4px;
+	transition: all 0.2s;
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+}
+
+.condition-row:hover {
+	background: white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.condition-row.dragging {
+	opacity: 0.5;
+	cursor: move;
+}
+
+.condition-row.drag-over {
+	border-top: 3px solid var(--primary);
+	padding-top: 17px;
+}
+
+.condition-drag-handle {
+	display: flex;
+	align-items: center;
+	padding: 8px 4px;
+	color: var(--text-muted);
+	cursor: move;
+	opacity: 0.5;
+	transition: opacity 0.2s;
+}
+
+.condition-row:hover .condition-drag-handle {
+	opacity: 1;
+}
+
+.condition-content {
+	flex: 1;
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+}
+
+.condition-row:last-child {
+	margin-bottom: 0;
+}
+
+.condition-content .row {
+	align-items: flex-start;
+}
+
+.condition-content .form-group {
+	margin-bottom: 0;
+}
+
+.condition-content label {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--text-muted);
+	margin-bottom: 6px;
+	text-transform: uppercase;
+	letter-spacing: 0.3px;
+}
+
+.condition-label {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+	margin-bottom: 6px;
+}
+
+.condition-content .form-group {
+	margin-bottom: 0;
+}
+
+.condition-content label {
+	font-size: 12px;
+	font-weight: 500;
+	color: var(--text-muted);
+	margin-bottom: 6px;
+}
+
+.condition-content .form-control-sm {
+	font-size: 13px;
+}
+
+.condition-content input[data-field="condition"] {
+	padding-right: 35px; /* Make room for save button */
+}
+
+.condition-save-btn {
+	opacity: 0.9;
+	z-index: 10;
+	padding: 2px 8px !important;
+	font-size: 12px;
+	height: 24px;
+}
+
+.condition-save-btn:hover {
+	opacity: 1;
+}
+
+.condition-delete-btn {
+	background: transparent;
+	border: 1px solid var(--gray-300);
+	color: var(--gray-600);
+	padding: 4px 8px;
+	opacity: 0.7;
+	transition: all 0.2s;
+}
+
+.condition-delete-btn:hover {
+	opacity: 1;
+	background: var(--red-50);
+	border-color: var(--red-300);
+	color: var(--red-600);
+}
+
+/* Authorities Container */
+.authorities-container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	position: relative;
+	z-index: 1;
+}
+
+.authorities-list {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	min-height: 32px;
+	padding: 4px 0;
+	gap: 6px;
+}
+
+.authority-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 12px;
+	background: var(--blue-100);
+	color: var(--blue-700);
+	border: 1px solid var(--blue-300);
+	border-radius: 16px;
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.authority-name {
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.remove-authority {
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: bold;
+	opacity: 0.6;
+	transition: opacity 0.2s;
+	color: var(--red-500);
+	line-height: 1;
+}
+
+.remove-authority:hover {
+	opacity: 1;
+}
+
+.authority-search {
+	width: 100%;
+}
+
+.authority-search-field {
+	position: relative;
+	z-index: 100;
+}
+
+/* Ensure Frappe Link field dropdown appears above other elements */
+.authority-search-field .awesomplete {
+	z-index: 1000 !important;
+}
+
+.authority-search-field .awesomplete > ul {
+	z-index: 1000 !important;
+	position: absolute !important;
+}
+
+/* Custom User Dropdown */
+.user-dropdown {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	max-height: 300px;
+	overflow-y: auto;
+	background: white;
+	border: 1px solid var(--border-color);
+	border-radius: 4px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	margin-top: 2px;
+	padding: 4px 0;
+	list-style: none;
+	z-index: 1050;
+	display: none;
+}
+
+.user-dropdown.show {
+	display: block;
+}
+
+.user-dropdown-item {
+	padding: 8px 12px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+
+.user-dropdown-item:hover,
+.user-dropdown-item.selected {
+	background: var(--bg-light-gray);
+}
+
+.user-email {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--text-color);
+}
+
+.user-name {
+	font-size: 12px;
+	color: var(--text-muted);
+	margin-top: 2px;
+}
+
+/* Rules Filter and Pagination */
+.rules-filter-section {
+	background: var(--bg-light-gray);
+	padding: 12px;
+	border-radius: 4px;
+	margin-bottom: 15px;
+}
+
+.rules-search {
+	max-width: 400px;
+}
+
+.rules-pagination {
+	padding: 15px;
+	border-top: 1px solid var(--border-color);
+}
+
+.rules-pagination button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.matrices-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.page-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.editor-header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+
+	.transition-row {
+		flex-direction: column;
+	}
+
+	.transition-number {
+		align-self: flex-start;
+	}
+}
+
+/* Dark mode support */
+[data-theme="dark"] .matrix-card,
+[data-theme="dark"] .matrix-editor-section {
+	background: var(--card-bg);
+	border-color: var(--border-color);
+}
+
+[data-theme="dark"] .transition-row {
+	background: var(--bg-color);
+	border-color: var(--border-color);
+}
+
+/* Utilities */
+.text-danger {
+	color: var(--red-500);
+}
+
+.badge-info {
+	background-color: var(--blue-500);
+	color: white;
+}
+
+/* Form controls */
+.form-control:focus,
+.form-control-sm:focus {
+	border-color: var(--primary);
+	box-shadow: 0 0 0 2px rgba(var(--primary-rgb), 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+	background-color: var(--primary);
+	border-color: var(--primary);
+}
+
+.btn-primary:hover {
+	background-color: var(--primary-dark);
+	border-color: var(--primary-dark);
+}
+
+.btn-danger {
+	background-color: var(--red-500);
+	border-color: var(--red-500);
+}
+
+.btn-danger:hover {
+	background-color: var(--red-600);
+	border-color: var(--red-600);
+}
+
+.btn-info {
+	background-color: var(--blue-500);
+	border-color: var(--blue-500);
+}
+
+.btn-info:hover {
+	background-color: var(--blue-600);
+	border-color: var(--blue-600);
+}
+

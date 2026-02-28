@@ -1,0 +1,162 @@
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet"> -->
+<style>
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		line-height: 150%;
+		vertical-align: middle;
+		font-family: 'Roboto', sans-serif;
+		color: black;
+	}
+	.print-format table,tr,th,td {
+  		border: 1px solid !important;
+	}
+	@media screen {
+		.print-format {
+			width: 4in;
+			padding: 0.25in;
+			min-height: 8in;
+		}
+	}
+	.print-format th {
+		background-color: #c6bdbd24 !important;
+		color: black;
+		font-weight: 500;
+	}
+</style>
+
+{% if letter_head %}
+    {{ letter_head }}
+{% endif %}
+
+{% set gst_details = doc.get_gst_breakup() %}
+<p class="text-center" style="margin-bottom: 1rem;">
+	<span style="font-size:17px ;text-transform:uppercase;"><b>{{ doc.company }}</b><br></span>
+	<span style="font-size:11px ; text-transform:uppercase;">
+	{% set address_company = doc.get_company_address() %}
+	{{ address_company }}
+	<b>{{ _("GSTIN") }}:</b>{{ doc.company_gstin }}
+	</span>
+	
+	<br>
+	<b>{{ doc.select_print_heading or _("Tax Invoice") }}</b><br>
+</p>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<p style="font-size:12px">
+	<b>{{ _("BL No") }}:</b> {{ doc.name }} <b><br>
+	<i class="fa-solid fa-user"></i>{{ _("Customer") }}:</b> {{ doc.customer_name }}
+	<b>{{ _("Date") }}:</b> {{ doc.get_formatted("posting_date") }}
+	<b>{{ _("Time") }}:</b> {{  doc.get_formatted("posting_time") }}
+	<b>{{ _("Cashier") }}:</b> {{ gst_details[2] }}<br>
+	
+	
+</p>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<table class="table table-condensed table-bordered">
+	<thead>
+		<tr style="color: black;">
+		    <th width="10%">{{ _("HSN") }}</th>
+			<th width="30%">{{ _("Item") }}</th>
+			<th width="20%">{{ _("Qty") }}</th>
+			<th width="15%">{{ _("Rate") }}</th>
+			<th width="30%">{{ _("Amount") }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for item in doc.items -%}
+		<tr>
+		    {%- set item_record = frappe.get_doc("Item", item.item_code) -%}
+			<td class="text-right">{{item_record.gst_hsn_code}}</td>
+			<td>
+				<!--<span style="font-size:7px">{{ item.item_code }}</span>-->
+				
+				{%- if item.item_name != item.item_code -%}
+					<b>{{ item.item_name }}</b>
+				{%- endif -%}
+				{%- if item.serial_no -%}
+					<b>{{ _("SR.No") }}:</b><br>
+					{{ item.serial_no | replace("\n", ", ") }}
+				{%- endif -%}
+			</td>
+			<td class="text-right">{{ item.qty }} {{item.uom}}</td>
+			<td class="text-right">{{ item.rate }}</td>
+			{% set temp_taxable = (item.qty*item.rate) %}
+			<td class="text-right">{{ "%.2f"|format(temp_taxable) }}</td>
+			
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+
+<p style="text-align:left;">
+    Subtotal
+    <span style="float:right;">
+       {{ doc.get_formatted("total") }}
+    </span>
+</p>
+<p style="text-align:left;">
+    GST on {{ doc.get_formatted("total") }}
+    <span style="float:right;">
+       ₹ {{ gst_details[1]}}
+    </span>
+</p>
+{%- if doc.discount_amount -%}
+<p style="text-align:left;">
+    Discount
+    <span style="float:right;">
+     - {{ doc.get_formatted("discount_amount") }}
+    </span>
+</p>
+{%- endif -%}
+<p style="text-align:left;">
+    Bill Total
+    <span style="float:right;">
+		{{ doc.get_formatted("grand_total")}}
+    </span>
+</p>
+<p style="text-align:left;">
+    Round Off(+-)
+    <span style="float:right;">
+		{{ doc.get_formatted("rounding_adjustment") }}
+    </span>
+</p>
+
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<p style="text-align:left; font-weight:700;font-size:18px">
+    TOTAL PAYABLE
+    <span style="float:right;">
+      {{ doc.get_formatted("rounded_total") }}
+    </span>
+</p>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+
+<p>GST BREAKUP DETAILS</p>
+
+<table class="table table-condensed table-bordered">
+	<thead>
+		<tr>
+		    <th width="20%" class="text-right">{{ _("HSN") }}</th>
+			<th width="10%" class="text-right">{{ _("GST%age") }}</th>
+			<th width="20%" class="text-right">{{ _("Taxable") }}</th>
+			<th width="10%" class="text-right">{{ _("CGST") }}</th>
+			<th width="10%" class="text-right">{{ _("SGST") }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for tax_row in gst_details[0] -%}
+		<tr>
+			<td class="text-right">{{tax_row.HSN}}</td>
+			<td class="text-right">{{tax_row.GSTp}}%</td>
+			<td class="text-right">{{tax_row.Taxable}}</td>
+			<td class="text-right">{{tax_row.CGSTI}}</td>
+			<td class="text-right">{{tax_row.SGSTI}}</td>
+			
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<p>{{ doc.terms or "" }}</p>
+<p class="text-center">{{ _("No Return, No Exchange.") }}</p>
+<p class="text-center">{{ _("Thank you, please visit again.") }}</p>

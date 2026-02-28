@@ -1,0 +1,112 @@
+{
+ "actions": [],
+ "autoname": "YTR-.#####",
+ "creation": "2021-12-19 22:20:17.075880",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "type",
+  "full_name",
+  "folk_guide",
+  "mobile_no",
+  "trip",
+  "proof_ids_section",
+  "identity_type",
+  "identity_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Participant Type",
+   "options": "FOLK Student\nFOLK Guide",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.type=='FOLK Student'",
+   "fieldname": "folk_guide",
+   "fieldtype": "Link",
+   "label": "FOLK Guide",
+   "options": "FOLK Guide"
+  },
+  {
+   "fieldname": "mobile_no",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Mobile No",
+   "unique": 1
+  },
+  {
+   "fieldname": "trip",
+   "fieldtype": "Link",
+   "label": "Trip",
+   "options": "FOLK Trip",
+   "reqd": 1
+  },
+  {
+   "fieldname": "proof_ids_section",
+   "fieldtype": "Section Break",
+   "label": "Proof IDs"
+  },
+  {
+   "fieldname": "identity_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Identity Type",
+   "options": "\nAadhar Card\nVehicle License ID\nVoter ID"
+  },
+  {
+   "fieldname": "identity_no",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Identity No."
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:20:54.317451",
+ "modified_by": "Administrator",
+ "module": "FOLK Trip",
+ "name": "FOLK Trip Yatri",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "full_name",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,24 @@
+{
+ "content": null,
+ "creation": "2025-10-13 00:00:00",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "octicon octicon-project",
+ "idx": 0,
+ "modified": "2025-10-13 13:05:12.882239",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "rtl_project_dashboard",
+ "owner": "Administrator",
+ "page_name": "rtl_project_dashboard",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "RTL Project Dashboard"
+}

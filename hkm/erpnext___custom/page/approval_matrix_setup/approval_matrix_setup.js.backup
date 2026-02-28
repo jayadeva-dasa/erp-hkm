@@ -1,0 +1,609 @@
+frappe.pages['approval_matrix_setup'].on_page_load = function(wrapper) {
+	new ApprovalMatrixSetup(wrapper);
+}
+
+class ApprovalMatrixSetup {
+	constructor(wrapper) {
+		this.wrapper = wrapper;
+		this.page = frappe.ui.make_app_page({
+			parent: wrapper,
+			title: 'Approval Matrix Setup',
+			single_column: true
+		});
+		
+		this.current_matrix = null;
+		this.current_condition_idx = null;
+		this.available_fields = [];
+		this.selected_fields = [];
+		this.conditions = [];
+		this.current_page = 1;
+		this.items_per_page = 20;
+		
+		this.make();
+	}
+
+	make() {
+		this.page.main.html(frappe.render_template('approval_matrix_setup'));
+		this.setup_events();
+		this.load_matrices();
+	}
+
+	setup_events() {
+		// Navigation
+		this.page.main.find('#new-matrix-btn').on('click', () => this.show_editor());
+		this.page.main.find('#back-btn').on('click', () => this.show_matrix_list());
+		
+		// Matrix operations
+		this.page.main.find('#save-matrix-btn').on('click', () => this.save_matrix());
+		this.page.main.find('#delete-matrix-btn').on('click', () => this.delete_matrix());
+		
+		// Field management
+		this.page.main.find('#add-field-btn').on('click', () => this.show_field_selector());
+		this.page.main.find('#confirm-field-btn').on('click', () => this.add_field());
+		
+		// Condition management
+		this.page.main.find('#add-condition-btn').on('click', () => this.show_condition_builder());
+		this.page.main.find('#add-rule-btn').on('click', () => this.add_rule());
+		this.page.main.find('#add-authority-btn').on('click', () => this.add_authority());
+		this.page.main.find('#save-condition-btn').on('click', () => this.save_condition());
+		
+		// Pagination
+		this.page.main.find('#prev-page-btn').on('click', () => this.prev_page());
+		this.page.main.find('#next-page-btn').on('click', () => this.next_page());
+		
+		// DocType change
+		this.page.main.find('#target-doctype').on('change', (e) => this.on_doctype_change(e.target.value));
+	}
+
+	async load_matrices() {
+		const matrices = await frappe.call({
+			method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.get_approval_matrices'
+		});
+		
+		this.render_matrix_list(matrices.message || []);
+	}
+
+	render_matrix_list(matrices) {
+		const container = this.page.main.find('#matrix-list');
+		container.empty();
+		
+		if (matrices.length === 0) {
+			container.html(`
+				<div class="empty-state text-center p-5">
+					<p class="text-muted">No approval matrices found. Create your first one!</p>
+				</div>
+			`);
+			return;
+		}
+		
+		matrices.forEach(matrix => {
+			const card = $(`
+				<div class="matrix-card" data-name="${matrix.name}">
+					<div class="matrix-card-header">
+						<h6>${matrix.target_doctype}</h6>
+						<span class="badge badge-secondary">${matrix.dimension}</span>
+					</div>
+					<div class="matrix-card-body">
+						<small class="text-muted">Fields: ${matrix.fields_applicable}</small>
+					</div>
+					<div class="matrix-card-footer">
+						<button class="btn btn-sm btn-default edit-matrix-btn">Edit</button>
+					</div>
+				</div>
+			`);
+			
+			card.find('.edit-matrix-btn').on('click', () => this.edit_matrix(matrix.name));
+			container.append(card);
+		});
+	}
+
+	async show_editor(matrix_name = null) {
+		this.page.main.find('#matrix-selection').addClass('hidden');
+		this.page.main.find('#matrix-editor').removeClass('hidden');
+		
+		// Load doctypes and dimensions
+		const [doctypes, dimensions] = await Promise.all([
+			frappe.call({
+				method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.get_doctypes'
+			}),
+			frappe.call({
+				method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.get_dimensions'
+			})
+		]);
+		
+		this.populate_select('#target-doctype', doctypes.message || []);
+		this.populate_select('#dimension', dimensions.message || []);
+		
+		if (matrix_name) {
+			await this.load_matrix(matrix_name);
+			this.page.main.find('#delete-matrix-btn').removeClass('hidden');
+		} else {
+			this.reset_editor();
+			this.page.main.find('#delete-matrix-btn').addClass('hidden');
+		}
+	}
+
+	async load_matrix(name) {
+		const result = await frappe.call({
+			method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.get_approval_matrix',
+			args: { name }
+		});
+		
+		const matrix = result.message;
+		this.current_matrix = matrix;
+		
+		this.page.main.find('#target-doctype').val(matrix.target_doctype).trigger('change');
+		this.page.main.find('#dimension').val(matrix.dimension);
+		
+		this.selected_fields = (matrix.fields_applicable || '').split(',').map(f => f.trim()).filter(f => f);
+		this.render_selected_fields();
+		
+		this.conditions = matrix.transitions || [];
+		this.render_conditions();
+	}
+
+	reset_editor() {
+		this.current_matrix = null;
+		this.selected_fields = [];
+		this.conditions = [];
+		this.page.main.find('#target-doctype').val('');
+		this.page.main.find('#dimension').val('');
+		this.render_selected_fields();
+		this.render_conditions();
+	}
+
+	async on_doctype_change(doctype) {
+		if (!doctype) return;
+		
+		const result = await frappe.call({
+			method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.get_doctype_fields',
+			args: { doctype }
+		});
+		
+		this.available_fields = result.message || [];
+	}
+
+	show_field_selector() {
+		const doctype = this.page.main.find('#target-doctype').val();
+		if (!doctype) {
+			frappe.msgprint('Please select a target doctype first');
+			return;
+		}
+		
+		const select = this.page.main.find('#available-fields-select');
+		select.empty().append('<option value="">Select a field</option>');
+		
+		this.available_fields.forEach(field => {
+			if (!this.selected_fields.includes(field.fieldname)) {
+				select.append(`<option value="${field.fieldname}">${field.label} (${field.fieldname})</option>`);
+			}
+		});
+		
+		$('#field-selection-modal').modal('show');
+	}
+
+	add_field() {
+		const fieldname = this.page.main.find('#available-fields-select').val();
+		if (fieldname && !this.selected_fields.includes(fieldname)) {
+			this.selected_fields.push(fieldname);
+			this.render_selected_fields();
+			$('#field-selection-modal').modal('hide');
+		}
+	}
+
+	render_selected_fields() {
+		const container = this.page.main.find('#selected-fields');
+		container.empty();
+		
+		this.selected_fields.forEach(fieldname => {
+			const field = this.available_fields.find(f => f.fieldname === fieldname);
+			const label = field ? field.label : fieldname;
+			
+			const tag = $(`
+				<span class="field-tag">
+					${label}
+					<span class="remove-field" data-field="${fieldname}">&times;</span>
+				</span>
+			`);
+			
+			tag.find('.remove-field').on('click', (e) => {
+				this.selected_fields = this.selected_fields.filter(f => f !== fieldname);
+				this.render_selected_fields();
+			});
+			
+			container.append(tag);
+		});
+	}
+
+	show_condition_builder(idx = null) {
+		if (this.selected_fields.length === 0) {
+			frappe.msgprint('Please add at least one field first');
+			return;
+		}
+		
+		this.current_condition_idx = idx;
+		const condition = idx !== null ? this.conditions[idx] : null;
+		
+		this.page.main.find('#condition-rules').empty();
+		this.page.main.find('#authorities-container').empty();
+		this.page.main.find('#condition-disabled').prop('checked', false);
+		
+		if (condition) {
+			this.parse_and_render_condition(condition);
+		} else {
+			this.add_rule();
+		}
+		
+		$('#condition-builder-modal').modal('show');
+	}
+
+	parse_and_render_condition(condition) {
+		// Parse condition string and render rules
+		const parts = condition.condition.split(' and ');
+		
+		parts.forEach(part => {
+			const match = part.match(/(\w+)\s*(==|!=|<=|>=|<|>)\s*['"]?([^'"]+)['"]?/);
+			if (match) {
+				this.add_rule(match[1], match[2], match[3]);
+			}
+		});
+		
+		// Add authorities
+		const authorities = condition.approving_authority.split('\n').filter(a => a.trim());
+		authorities.forEach(auth => this.add_authority(auth.trim()));
+		
+		this.page.main.find('#condition-disabled').prop('checked', condition.disabled);
+		this.update_condition_preview();
+	}
+
+	add_rule(field = '', operator = '==', value = '') {
+		const ruleDiv = $(`
+			<div class="condition-rule">
+				<select class="form-control rule-field">
+					<option value="">Select Field</option>
+				</select>
+				<select class="form-control rule-operator">
+					<option value="==">Equals (==)</option>
+					<option value="!=">Not Equals (!=)</option>
+					<option value=">">Greater Than (>)</option>
+					<option value="<">Less Than (<)</option>
+					<option value=">=">Greater or Equal (>=)</option>
+					<option value="<=">Less or Equal (<=)</option>
+				</select>
+				<input type="text" class="form-control rule-value" placeholder="Value">
+				<button class="btn btn-sm btn-danger remove-rule-btn">&times;</button>
+			</div>
+		`);
+		
+		this.selected_fields.forEach(fieldname => {
+			const fieldObj = this.available_fields.find(f => f.fieldname === fieldname);
+			const label = fieldObj ? fieldObj.label : fieldname;
+			ruleDiv.find('.rule-field').append(`<option value="${fieldname}">${label}</option>`);
+		});
+		
+		if (field) ruleDiv.find('.rule-field').val(field);
+		if (operator) ruleDiv.find('.rule-operator').val(operator);
+		if (value) ruleDiv.find('.rule-value').val(value);
+		
+		ruleDiv.find('.remove-rule-btn').on('click', () => {
+			ruleDiv.remove();
+			this.update_condition_preview();
+		});
+		
+		ruleDiv.find('select, input').on('change', () => this.update_condition_preview());
+		
+		this.page.main.find('#condition-rules').append(ruleDiv);
+		this.update_condition_preview();
+	}
+
+	add_authority(email = '') {
+		const authDiv = $(`
+			<div class="authority-row">
+				<input type="text" class="form-control authority-input" 
+					   placeholder="Type to search user..." 
+					   value="${email || ''}" 
+					   data-value="${email || ''}">
+				<button class="btn btn-sm btn-danger remove-authority-btn">&times;</button>
+			</div>
+		`);
+		
+		const input = authDiv.find('.authority-input');
+		
+		// Setup simple autocomplete with debounce
+		let timeout;
+		input.on('input', function() {
+			clearTimeout(timeout);
+			const query = $(this).val();
+			
+			if (query.length < 2) return;
+			
+			timeout = setTimeout(() => {
+				frappe.call({
+					method: 'frappe.desk.search.search_link',
+					args: {
+						doctype: 'User',
+						txt: query,
+						filters: {
+							enabled: 1,
+							user_type: 'System User'
+						}
+					},
+					callback: function(r) {
+						if (r.results && r.results.length > 0) {
+							const datalist = $(`<datalist id="user-list-${Date.now()}"></datalist>`);
+							r.results.forEach(user => {
+								datalist.append(`<option value="${user.value}">${user.description || user.value}</option>`);
+							});
+							$('body').append(datalist);
+							input.attr('list', datalist.attr('id'));
+						}
+					}
+				});
+			}, 300);
+		});
+		
+		// Store selected value
+		input.on('change', function() {
+			$(this).attr('data-value', $(this).val());
+		});
+		
+		authDiv.find('.remove-authority-btn').on('click', () => authDiv.remove());
+		
+		this.page.main.find('#authorities-container').append(authDiv);
+	}
+
+	update_condition_preview() {
+		const rules = [];
+		this.page.main.find('.condition-rule').each((i, el) => {
+			const field = $(el).find('.rule-field').val();
+			const operator = $(el).find('.rule-operator').val();
+			const value = $(el).find('.rule-value').val();
+			
+			if (field && operator && value) {
+				const fieldObj = this.available_fields.find(f => f.fieldname === field);
+				const isNumeric = fieldObj && ['Int', 'Float', 'Currency'].includes(fieldObj.fieldtype);
+				const formattedValue = isNumeric ? value : `'${value}'`;
+				rules.push(`${field} ${operator} ${formattedValue}`);
+			}
+		});
+		
+		const preview = rules.join(' and ') || 'No rules defined';
+		this.page.main.find('#condition-preview').text(preview);
+	}
+
+	save_condition() {
+		const rules = [];
+		let valid = true;
+		
+		this.page.main.find('.condition-rule').each((i, el) => {
+			const field = $(el).find('.rule-field').val();
+			const operator = $(el).find('.rule-operator').val();
+			const value = $(el).find('.rule-value').val();
+			
+			if (!field || !operator || !value) {
+				valid = false;
+				return false;
+			}
+			
+			const fieldObj = this.available_fields.find(f => f.fieldname === field);
+			const isNumeric = fieldObj && ['Int', 'Float', 'Currency'].includes(fieldObj.fieldtype);
+			const formattedValue = isNumeric ? value : `'${value}'`;
+			rules.push(`${field} ${operator} ${formattedValue}`);
+		});
+		
+		if (!valid) {
+			frappe.msgprint('Please fill all rule fields');
+			return;
+		}
+		
+		const authorities = [];
+		this.page.main.find('.authority-row').each((i, el) => {
+			const $row = $(el);
+			const input = $row.find('.authority-input');
+			const value = input.attr('data-value') || input.val();
+			if (value && value.trim()) {
+				authorities.push(value.trim());
+			}
+		});
+		
+		if (authorities.length === 0) {
+			frappe.msgprint('Please add at least one approving authority');
+			return;
+		}
+		
+		const condition = {
+			condition: rules.join(' and '),
+			approving_authority: authorities.join('\n'),
+			disabled: this.page.main.find('#condition-disabled').is(':checked') ? 1 : 0
+		};
+		
+		// Check for duplicate conditions
+		const isDuplicate = this.conditions.some((existingCondition, idx) => {
+			// Skip if we're editing the same condition
+			if (this.current_condition_idx !== null && idx === this.current_condition_idx) {
+				return false;
+			}
+			return existingCondition.condition === condition.condition;
+		});
+		
+		if (isDuplicate) {
+			frappe.msgprint({
+				title: 'Duplicate Condition',
+				message: 'A condition with the same rules already exists. Please modify the condition or edit the existing one.',
+				indicator: 'orange'
+			});
+			return;
+		}
+		
+		if (this.current_condition_idx !== null) {
+			this.conditions[this.current_condition_idx] = condition;
+		} else {
+			this.conditions.push(condition);
+		}
+		
+		this.render_conditions();
+		$('#condition-builder-modal').modal('hide');
+	}
+
+	render_conditions() {
+		const container = this.page.main.find('#conditions-list');
+		const emptyState = this.page.main.find('#empty-conditions');
+		const paginationContainer = this.page.main.find('#pagination-container');
+		
+		container.empty();
+		
+		if (this.conditions.length === 0) {
+			emptyState.removeClass('hidden');
+			paginationContainer.addClass('hidden');
+			return;
+		}
+		
+		emptyState.addClass('hidden');
+		
+		// Calculate pagination
+		const total_pages = Math.ceil(this.conditions.length / this.items_per_page);
+		const start_idx = (this.current_page - 1) * this.items_per_page;
+		const end_idx = Math.min(start_idx + this.items_per_page, this.conditions.length);
+		const paginated_conditions = this.conditions.slice(start_idx, end_idx);
+		
+		// Render paginated conditions
+		paginated_conditions.forEach((condition, page_idx) => {
+			const actual_idx = start_idx + page_idx;
+			const card = $(`
+				<div class="condition-card ${condition.disabled ? 'disabled' : ''}">
+					<div class="condition-card-header">
+						<span class="condition-number">#${actual_idx + 1}</span>
+						${condition.disabled ? '<span class="badge badge-secondary">Disabled</span>' : ''}
+						<div class="condition-actions">
+							<button class="btn btn-sm btn-default edit-condition-btn">Edit</button>
+							<button class="btn btn-sm btn-danger delete-condition-btn">Delete</button>
+						</div>
+					</div>
+					<div class="condition-card-body">
+						<div class="condition-text"><code>${condition.condition}</code></div>
+						<div class="authorities-text">
+							<strong>Authorities:</strong> ${condition.approving_authority.split('\n').join(', ')}
+						</div>
+					</div>
+				</div>
+			`);
+			
+			card.find('.edit-condition-btn').on('click', () => this.show_condition_builder(actual_idx));
+			card.find('.delete-condition-btn').on('click', () => {
+				this.conditions.splice(actual_idx, 1);
+				// Adjust current page if needed
+				if (this.conditions.length > 0 && start_idx >= this.conditions.length) {
+					this.current_page = Math.max(1, this.current_page - 1);
+				}
+				this.render_conditions();
+			});
+			
+			container.append(card);
+		});
+		
+		// Update pagination controls
+		if (total_pages > 1) {
+			paginationContainer.removeClass('hidden');
+			this.page.main.find('#pagination-info').text(`Page ${this.current_page} of ${total_pages} (${this.conditions.length} total)`);
+			this.page.main.find('#prev-page-btn').prop('disabled', this.current_page === 1);
+			this.page.main.find('#next-page-btn').prop('disabled', this.current_page === total_pages);
+		} else {
+			paginationContainer.addClass('hidden');
+		}
+	}
+	
+	prev_page() {
+		if (this.current_page > 1) {
+			this.current_page--;
+			this.render_conditions();
+		}
+	}
+	
+	next_page() {
+		const total_pages = Math.ceil(this.conditions.length / this.items_per_page);
+		if (this.current_page < total_pages) {
+			this.current_page++;
+			this.render_conditions();
+		}
+	}
+
+	async save_matrix() {
+		const target_doctype = this.page.main.find('#target-doctype').val();
+		const dimension = this.page.main.find('#dimension').val();
+		
+		if (!target_doctype || !dimension) {
+			frappe.msgprint('Please fill all required fields');
+			return;
+		}
+		
+		if (this.selected_fields.length === 0) {
+			frappe.msgprint('Please add at least one field');
+			return;
+		}
+		
+		if (this.conditions.length === 0) {
+			frappe.msgprint('Please add at least one condition');
+			return;
+		}
+		
+		const data = {
+			name: this.current_matrix ? this.current_matrix.name : null,
+			target_doctype,
+			dimension,
+			fields_applicable: this.selected_fields.join(', '),
+			transitions: this.conditions
+		};
+		
+		const result = await frappe.call({
+			method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.save_approval_matrix',
+			args: { data }
+		});
+		
+		if (result.message.success) {
+			frappe.show_alert({ message: result.message.message, indicator: 'green' });
+			this.show_matrix_list();
+			this.load_matrices();
+		}
+	}
+
+	async delete_matrix() {
+		if (!this.current_matrix) return;
+		
+		frappe.confirm(
+			'Are you sure you want to delete this approval matrix?',
+			async () => {
+				const result = await frappe.call({
+					method: 'hkm.erpnext___custom.page.approval_matrix_setup.approval_matrix_setup.delete_approval_matrix',
+					args: { name: this.current_matrix.name }
+				});
+				
+				if (result.message.success) {
+					frappe.show_alert({ message: result.message.message, indicator: 'green' });
+					this.show_matrix_list();
+					this.load_matrices();
+				}
+			}
+		);
+	}
+
+	show_matrix_list() {
+		this.page.main.find('#matrix-editor').addClass('hidden');
+		this.page.main.find('#matrix-selection').removeClass('hidden');
+	}
+
+	edit_matrix(name) {
+		this.show_editor(name);
+	}
+
+	populate_select(selector, options) {
+		const select = this.page.main.find(selector);
+		const currentVal = select.val();
+		select.find('option:not(:first)').remove();
+		
+		options.forEach(opt => {
+			select.append(`<option value="${opt}">${opt}</option>`);
+		});
+		
+		if (currentVal) select.val(currentVal);
+	}
+}

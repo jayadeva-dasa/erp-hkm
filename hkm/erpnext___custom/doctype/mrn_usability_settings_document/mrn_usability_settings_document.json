@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2022-12-04 15:54:58.992837",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "duration_days",
+  "allowed_user"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "duration_days",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Allowed Days",
+   "reqd": 1
+  },
+  {
+   "fieldname": "allowed_user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Allowed User",
+   "options": "User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-12-04 18:36:21.810968",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "MRN Usability Settings Document",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

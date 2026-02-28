@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-30 17:53:18.666712",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "refrence_doctype",
+  "order_number",
+  "refrence_docname",
+  "integration_doctype",
+  "api_response",
+  "document_payload"
+ ],
+ "fields": [
+  {
+   "fieldname": "refrence_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Refrence Doctype",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "refrence_docname",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Refrence Docname",
+   "options": "refrence_doctype"
+  },
+  {
+   "fieldname": "integration_doctype",
+   "fieldtype": "Link",
+   "label": "Integration Doctype",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "api_response",
+   "fieldtype": "JSON",
+   "label": "Api Response"
+  },
+  {
+   "fieldname": "order_number",
+   "fieldtype": "Data",
+   "label": "Order Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "document_payload",
+   "fieldtype": "JSON",
+   "label": "Document Payload"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-12-30 18:57:13.551796",
+ "modified_by": "Administrator",
+ "module": "ERPNext___Custom",
+ "name": "HKM API Callback",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

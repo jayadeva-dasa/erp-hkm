@@ -1,0 +1,94 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "Session.####",
+ "creation": "2022-03-27 14:42:57.351639",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "session_type",
+  "semester",
+  "session_title",
+  "session_description",
+  "session_faculty"
+ ],
+ "fields": [
+  {
+   "fieldname": "session_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Session Type",
+   "options": "Bhakta Training Session Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "session_title",
+   "fieldtype": "Data",
+   "label": "Session Title"
+  },
+  {
+   "fieldname": "session_description",
+   "fieldtype": "Data",
+   "label": "Session Description"
+  },
+  {
+   "fieldname": "session_faculty",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Session Faculty",
+   "options": "Bhakta Training Faculty",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "session_type.semester",
+   "fieldname": "semester",
+   "fieldtype": "Link",
+   "label": "Semester",
+   "options": "Bhakta Training Semester",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-03-28 12:58:29.425328",
+ "modified_by": "Administrator",
+ "module": "Bhakta Training",
+ "name": "Bhakta Training Session",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Bhakta Training Coordinator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

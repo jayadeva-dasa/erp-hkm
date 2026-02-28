@@ -1,0 +1,13 @@
+{
+ "creation": "2023-10-14 10:27:52.337172",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2023-10-14 10:27:52.337172",
+ "modified_by": "Administrator",
+ "module": "Security",
+ "name": "Visitors Hourly",
+ "owner": "Administrator",
+ "source_name": "Visitors Hourly",
+ "timeseries": 0
+}

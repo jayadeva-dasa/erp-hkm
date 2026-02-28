@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2021-12-19 16:30:49.051076",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ticket_name",
+  "coach_number",
+  "seat_number",
+  "allocated_to",
+  "allocated_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "ticket_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Ticket Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "coach_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Coach Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "seat_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Seat Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "allocated_to",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Allocated to",
+   "options": "FOLK Trip Yatri"
+  },
+  {
+   "fetch_from": "allocated_to.full_name",
+   "fieldname": "allocated_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Allocated Name",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2022-02-05 18:20:55.095758",
+ "modified_by": "Administrator",
+ "module": "FOLK Trip",
+ "name": "FOLK Trip Train Passenger",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

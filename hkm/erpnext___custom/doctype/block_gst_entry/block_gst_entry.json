@@ -1,0 +1,58 @@
+{
+ "actions": [],
+ "creation": "2022-07-14 18:39:32.446961",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "department",
+  "block_input_gst",
+  "block_output_gst"
+ ],
+ "fields": [
+  {
+   "columns": 3,
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "columns": 3,
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "block_input_gst",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Input GST"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "block_output_gst",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Output GST"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2022-07-14 19:01:56.865559",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Block GST Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

@@ -1,0 +1,90 @@
+<div class="rtl-project-dashboard">
+  <div class="dashboard-header">
+    <h2 class="page-title">RTL Project Dashboard</h2>
+    <div class="actions" data-admin-only>
+      <button class="btn btn-primary" data-action="new-project">Create Project</button>
+      <select class="form-control" data-role="assignee-filter"></select>
+    </div>
+  </div>
+
+  <div class="dashboard-content">
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Projects Not Started</h3>
+        </div>
+        <div class="panel-body" data-section="not_started"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Projects In Process</h3>
+        </div>
+        <div class="panel-body" data-section="in_process"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <h3>Completed Projects</h3>
+        </div>
+        <div class="panel-body" data-section="completed"></div>
+      </div>
+    </div>
+
+    <div class="bulk-status">
+      <h3>Daily Progress Update</h3>
+      <form data-role="bulk-form">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Status</th>
+                <th>Remarks</th>
+              </tr>
+            </thead>
+            <tbody data-role="bulk-rows"></tbody>
+          </table>
+        </div>
+        <button class="btn btn-success" type="submit">Save Daily Updates</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" data-modal="project">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Create Project</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form data-role="project-form">
+            <div class="form-group">
+              <label>Project Name</label>
+              <input type="text" class="form-control" name="project_name" required>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" name="description"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Assign To</label>
+              <select class="form-control" name="assigned_to" required></select>
+            </div>
+            <div class="form-group">
+              <label>End Date</label>
+              <input type="date" class="form-control" name="end_date" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-action="save-project">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+@import './hkmj-theme-constants';
+/* Navigation Bar */
+.navbar {
+    padding: 0.1rem 1rem;
+}
+.navbar a {
+    font-size: 12px;
+    font-weight: bold;
+}
+.navbar-light{
+   background-color: var(--navbar-bg-color) !important;
+   box-shadow: 5px 2px 8px var(--extra-dark-color) !important;
+}
+.navbar-light .navbar-nav .nav-link {
+    color:var(--text-color) !important;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link.active {
+    color:var(--text-color);
+}
+.navbar-light .navbar-brand, .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    color:var(--text-color);
+}
+.navbar-default {
+   background-color: var(--navbar-bg-color) !important;
+   box-shadow: 5px 2px 8px var(--navbar-box-shadow-color) !important;
+}
+.navbar-default .navbar-nav>li>a{
+  color:var(--text-color);
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color:var(--text-dark);
+}
+.navbar-default .navbar-brand:hover {
+  color:var(--text-dark);
+}
+.navbar-brand {
+    float: left;
+    height: 40px;
+    padding: 10px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+.brand-name{
+  float: right;
+  font-weight: bold;
+  font-size:   12px;
+  text-align:  right;
+  color: var(--extra-dark-color) !important;
+  text-transform: capitalize;
+  white-space: nowrap;
+}
+#navbar-search {
+    background-color: var(--form-control-bg-color);
+}
+
+
+/*Body*/
+.body{
+    background-color: var(--body-bg-color);
+}
+
+/*Footer*/
+.web-footer {
+    padding: 1rem 0 !important;
+    bottom:0 !important;
+    width:100%;
+    border-top: 0px !important;
+    background-color: var(--navbar-bg-color) !important;
+}
+.footer-info {
+    border-top: none;
+    color:var(--text-dark);
+}
+
+/*Page Card*/
+
+.login-content .page-card {
+    box-shadow: 2px 2px 5px var(--extra-dark-color) !important;
+}
+.page-card-actions{
+    box-shadow: 2px 2px 5px var(--extra-dark-color) !important;
+}
+
+#navbar-breadcrumbs li.disabled a {
+    color: var(--navbar-doc-name-color);
+}
+
+.navbar{
+    height: 100px;
+}
+
+.navbar-brand {
+    float: left;
+    height: 100px;
+    padding: 0px 10px;
+    font-size: 18px;
+    line-height: 0px;
+}
+
+.navbar-brand img {
+    display: inline-block;
+    max-width: 150px;
+    max-height: 90px;
+}

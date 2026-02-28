@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-07-31 11:58:41.641251",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "target_doctype",
+  "dimension",
+  "fields_applicable",
+  "transitions"
+ ],
+ "fields": [
+  {
+   "fieldname": "transitions",
+   "fieldtype": "Table",
+   "label": "Transitions",
+   "options": "Approval Matrix Detail",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_doctype",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Target Doctype",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dimension",
+   "fieldtype": "Link",
+   "label": "Dimension",
+   "options": "Accounting Dimension",
+   "reqd": 1
+  },
+  {
+   "description": "Comma-separated list of additional fields used in conditions (optional). The dimension field is automatically included.",
+   "fieldname": "fields_applicable",
+   "fieldtype": "Data",
+   "label": "Fields Applicable"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-24 18:04:27.156444",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Approval Matrix",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

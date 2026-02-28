@@ -1,0 +1,5 @@
+import erpnext.accounts.report.supplier_ledger_summary.supplier_ledger_summary
+
+from hkm.erpnext___custom.extend.reports.supplier_ledger_summary.supplier_ledger_summary import execute as hkm_supplier_ledger_summary_execute
+
+erpnext.accounts.report.supplier_ledger_summary.supplier_ledger_summary.execute = hkm_supplier_ledger_summary_execute

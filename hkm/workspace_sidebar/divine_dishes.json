@@ -1,0 +1,28 @@
+{
+ "app": "hkm",
+ "creation": "2026-01-29 08:42:13.107324",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "dashboard",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "Divine Dishes",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-30 09:29:36.199209",
+ "modified_by": "Administrator",
+ "module": "Divine Dishes",
+ "name": "Divine Dishes",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Divine Dishes"
+}

@@ -1,0 +1,203 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "color": "green",
+ "creation": "2021-05-04 14:55:19.881790",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "rent_of_section",
+  "folk_student",
+  "student_name",
+  "residency",
+  "rent_type",
+  "column_break_4",
+  "month",
+  "year",
+  "amended_from",
+  "receipt_details_section",
+  "receipt_no",
+  "receipt_date",
+  "payment_details_column",
+  "payment_date",
+  "mode_of_payment",
+  "payment_reference_details",
+  "amount",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "rent_of_section",
+   "fieldtype": "Section Break",
+   "label": "Rent Of"
+  },
+  {
+   "fieldname": "folk_student",
+   "fieldtype": "Link",
+   "label": "FOLK Student",
+   "options": "FOLK Student",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "folk_student.full_name",
+   "fieldname": "student_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Student Name",
+   "width": "2"
+  },
+  {
+   "fetch_from": "folk_student.residency",
+   "fieldname": "residency",
+   "fieldtype": "Data",
+   "label": "Residency",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "rent_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Rent Type",
+   "options": "Hostel Rent\nSecurity"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.rent_type=='Hostel Rent'",
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Month",
+   "mandatory_depends_on": "eval:doc.rent_type=='Hostel Rent'",
+   "options": "January\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "width": "1"
+  },
+  {
+   "depends_on": "eval:doc.rent_type=='Hostel Rent'",
+   "fieldname": "year",
+   "fieldtype": "Select",
+   "label": "Year",
+   "mandatory_depends_on": "eval:doc.rent_type=='Hostel Rent'"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "FOLK Residency Rent",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "receipt_details_section",
+   "fieldtype": "Section Break",
+   "label": "Receipt Details"
+  },
+  {
+   "fieldname": "receipt_no",
+   "fieldtype": "Data",
+   "label": "Receipt No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "receipt_date",
+   "fieldtype": "Date",
+   "label": "Receipt Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_details_column",
+   "fieldtype": "Column Break",
+   "label": "Payment Details"
+  },
+  {
+   "fieldname": "payment_date",
+   "fieldtype": "Date",
+   "label": "Payment Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Select",
+   "label": "Mode of Payment",
+   "options": "Cash\nUPI\nNEFT\nIMPS\nAccount Transfer\nBank Deposit\nOthers",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_reference_details",
+   "fieldtype": "Data",
+   "label": "Payment Reference Details"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "reqd": 1,
+   "width": "2"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "FRP-.YY.-.MM.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-03-01 18:01:53.917670",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Residency Rent",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "show_preview_popup": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "student_name",
+ "track_changes": 1
+}

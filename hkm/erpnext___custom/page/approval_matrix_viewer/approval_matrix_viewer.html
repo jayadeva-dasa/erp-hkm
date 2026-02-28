@@ -1,0 +1,78 @@
+<div class="approval-matrix-viewer-page">
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <h4>View Approval Matrix</h4>
+            <p class="text-muted">Select dimension and value to view approval rules</p>
+        </div>
+        
+        <div class="filter-controls">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Dimension <span class="text-danger">*</span></label>
+                        <select class="form-control" data-filter="dimension">
+                            <option value="">Select Dimension...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Dimension Value <span class="text-danger">*</span></label>
+                        <select class="form-control" data-filter="dimension_value">
+                            <option value="">Select Value...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="btn btn-primary btn-block" data-action="load-matrices">
+                            <svg class="icon icon-sm"><use href="#icon-search"></use></svg>
+                            View Approval Matrix
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section" data-section="results" style="display: none;">
+        <div class="section-header">
+            <h4>Approval Rules for <span data-display="dimension-value-label"></span></h4>
+            <div class="header-actions">
+                <button class="btn btn-sm btn-default" data-action="print-view">
+                    <svg class="icon icon-xs"><use href="#icon-printer"></use></svg>
+                    Print
+                </button>
+                <button class="btn btn-sm btn-default" data-action="clear-filters">
+                    <svg class="icon icon-xs"><use href="#icon-close"></use></svg>
+                    Clear
+                </button>
+            </div>
+        </div>
+
+        <div class="matrices-container" data-container="matrices">
+            <!-- Matrices will be rendered here -->
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" data-section="empty-state">
+        <div class="empty-state-content">
+            <svg class="icon icon-xl text-muted"><use href="#icon-eye"></use></svg>
+            <h5>View Approval Matrix</h5>
+            <p class="text-muted">Select a dimension and value to view approval rules</p>
+        </div>
+    </div>
+
+    <!-- No Results State -->
+    <div class="no-results-state" data-section="no-results" style="display: none;">
+        <div class="no-results-content">
+            <svg class="icon icon-xl text-muted"><use href="#icon-file"></use></svg>
+            <h5>No Approval Rules Found</h5>
+            <p class="text-muted">There are no approval rules configured for the selected dimension value.</p>
+        </div>
+    </div>
+</div>

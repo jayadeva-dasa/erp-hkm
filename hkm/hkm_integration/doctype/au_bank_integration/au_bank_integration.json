@@ -1,0 +1,82 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-08-28 18:14:16.562988",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "client_key",
+  "client_secret",
+  "encryption_key",
+  "access_token",
+  "upi_integration_tab",
+  "npci_integration",
+  "active_company"
+ ],
+ "fields": [
+  {
+   "fieldname": "client_key",
+   "fieldtype": "Data",
+   "label": "Client Key"
+  },
+  {
+   "fieldname": "client_secret",
+   "fieldtype": "Password",
+   "label": "Client Secret"
+  },
+  {
+   "fieldname": "encryption_key",
+   "fieldtype": "Password",
+   "label": "Encryption Key"
+  },
+  {
+   "fieldname": "access_token",
+   "fieldtype": "Password",
+   "label": "Access Token"
+  },
+  {
+   "fieldname": "upi_integration_tab",
+   "fieldtype": "Tab Break",
+   "label": "UPI Integration"
+  },
+  {
+   "fieldname": "npci_integration",
+   "fieldtype": "Table",
+   "label": "NPCI Integration",
+   "options": "AU Bank Integration Detail"
+  },
+  {
+   "fieldname": "active_company",
+   "fieldtype": "Table",
+   "label": "Active Company",
+   "options": "HKM Active Company"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-12-11 13:59:31.664952",
+ "modified_by": "Administrator",
+ "module": "HKM Integration",
+ "name": "AU Bank Integration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

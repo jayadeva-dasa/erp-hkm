@@ -1,0 +1,244 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"SDTCAokJEh\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\" style=\\\"\\\">FOLK Jaipur</span>\",\"col\":12}},{\"id\":\"z0jSeoQFN3\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"nK1jWTxj9s\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"FOLK Student\",\"col\":3}},{\"id\":\"mgi-STdyly\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Residency Rent\",\"col\":3}},{\"id\":\"DlUqIVsdw2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Donation\",\"col\":3}},{\"id\":\"OFzNWtJRCo\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rent Report\",\"col\":3}},{\"id\":\"S71upLy4kK\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"SIbF-VNfew\",\"type\":\"card\",\"data\":{\"card_name\":\"Student Master\",\"col\":4}},{\"id\":\"_xtVlHNILN\",\"type\":\"card\",\"data\":{\"card_name\":\"Dormitory\",\"col\":4}},{\"id\":\"xd9T1RKi63\",\"type\":\"card\",\"data\":{\"card_name\":\"Miscellaneous\",\"col\":4}}]",
+ "creation": "2022-12-09 18:50:48.029324",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "share",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "FOLK",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student Master",
+   "link_count": 7,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Student List",
+   "link_count": 0,
+   "link_to": "FOLK Student",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Guide Master",
+   "link_count": 0,
+   "link_to": "FOLK Guide",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Residency",
+   "link_count": 0,
+   "link_to": "FOLK Residency",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rent",
+   "link_count": 0,
+   "link_to": "FOLK Residency Rent",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Rent Return",
+   "link_count": 0,
+   "link_to": "FOLK Residency Rent Return",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Donation",
+   "link_count": 0,
+   "link_to": "FOLK Donation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Raw Data Collect",
+   "link_count": 0,
+   "link_to": "FOLK Student Collect",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dormitory",
+   "link_count": 5,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bed Type",
+   "link_count": 0,
+   "link_to": "Bed Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Bed",
+   "link_count": 0,
+   "link_to": "Bed",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dormitory",
+   "link_count": 0,
+   "link_to": "Dormitory",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dormitory Bed",
+   "link_count": 0,
+   "link_to": "Dormitory Bed",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Dormitory Reservation",
+   "link_count": 0,
+   "link_to": "Dormitory Reservation",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Miscellaneous",
+   "link_count": 4,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FOLK Event Settings",
+   "link_count": 0,
+   "link_to": "FOLK Event Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FOLK Event Participant",
+   "link_count": 0,
+   "link_to": "FOLK Event Participant",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "FOLK Student App OTP",
+   "link_count": 0,
+   "link_to": "FOLK Student App OTP",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "URL Shortener",
+   "link_count": 0,
+   "link_to": "FOLK Redirect",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-28 10:30:26.143465",
+ "modified_by": "developer@harekrishnamandir.org",
+ "module": "FOLK Base",
+ "name": "FOLK",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "HKM",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 7.0,
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Student",
+   "label": "FOLK Student",
+   "link_to": "FOLK Student",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Residency Rent",
+   "link_to": "FOLK Residency Rent",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Rent Report",
+   "link_to": "Student Rent Report",
+   "report_ref_doctype": "FOLK Student",
+   "type": "Report"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Donation",
+   "link_to": "FOLK Donation",
+   "type": "DocType"
+  }
+ ],
+ "title": "FOLK"
+}

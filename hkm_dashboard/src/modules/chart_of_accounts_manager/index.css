@@ -1,0 +1,112 @@
+/* Chart of Accounts Manager Styles */
+
+.account-tree-container {
+  position: relative;
+}
+
+.account-tree-node {
+  transition: all 0.2s ease;
+}
+
+.account-tree-node:hover {
+  transform: translateX(4px);
+}
+
+.account-dragging {
+  opacity: 0.5;
+  cursor: grabbing !important;
+}
+
+.account-drop-target {
+  background-color: rgba(66, 153, 225, 0.1);
+  border: 2px dashed #4299e1;
+}
+
+.account-invalid-drop {
+  background-color: rgba(245, 101, 101, 0.1);
+  border: 2px dashed #f56565;
+}
+
+/* Smooth expand/collapse animations */
+.account-children-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.account-children-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.account-children-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.account-children-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Custom scrollbar for tree */
+.account-tree-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.account-tree-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.account-tree-container::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+}
+
+.account-tree-container::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* Highlight search results */
+.search-highlight {
+  background-color: #fef08a;
+  font-weight: 600;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* Account level indentation lines */
+.account-indent-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #e2e8f0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .account-tree-node {
+    font-size: 14px;
+  }
+  
+  .account-balance {
+    display: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .account-filters,
+  .account-actions,
+  .account-drag-handle {
+    display: none !important;
+  }
+  
+  .account-tree-node {
+    page-break-inside: avoid;
+  }
+}

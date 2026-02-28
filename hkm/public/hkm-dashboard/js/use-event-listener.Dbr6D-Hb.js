@@ -1,0 +1,1 @@
+import{O as r,r as f}from"./index.bundle.D0kWxRFF.js";function i(e,n,c,o){const s=r(c);return f.useEffect(()=>{const u=typeof e=="function"?e():e??document;if(!(!c||!u))return u.addEventListener(n,s,o),()=>{u.removeEventListener(n,s,o)}},[n,e,o,s,c]),()=>{(typeof e=="function"?e():e??document)?.removeEventListener(n,s,o)}}export{i as u};

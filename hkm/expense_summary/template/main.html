@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summary Report</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    "
+  >
+    <div
+      style="
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      "
+    >
+      <h1 style="text-align: center; color: #2c3e50; margin-bottom: 10px; margin-top: 20px">
+        Income/Expense Summary Report
+      </h1>
+      <p
+        style="
+          text-align: center;
+          color: #7f8c8d;
+          font-style: italic;
+          margin-bottom: 20px;
+        "
+      >
+        From {{ from_date }} to {{ to_date }}
+      </p>
+      <div>
+        <h1 style="color: #2c3e50; margin-bottom: 10px; margin-top: 30px; text-align: center">Cost Heads Summary</h1>
+        <br/>
+
+        <h2 style="color: #2c3e50; margin-bottom: 10px; margin-top: 10px; text-align: left">GL Summary</h2>
+        {{ cost_heads_summary_gl }}
+        <br/>
+        <h2 style="color: #2c3e50; margin-bottom: 10px; margin-top: 10px; text-align: left">Internal Adjustment Summary</h2>
+        {{ cost_heads_summary_internal_adjustment }}
+        <br/>
+      </div>
+
+      <br />
+      <br />
+      <div>
+        <h1 style="color: #2c3e50; margin-bottom: 10px; margin-top: 30px; text-align: center">Account Wise Summary</h1>
+        <br/>
+        <h2 style="color: #2c3e50; margin-bottom: 10px; margin-top: 10px; text-align: left">GL Summary</h2>
+        {{ account_summary_gl }}
+        <br/>
+        <h2 style="color: #2c3e50; margin-bottom: 10px; margin-top: 10px; text-align: left">Internal Adjustment Summary</h2>
+        {{ account_summary_internal_adjustment }}
+        <br/> <br/>
+        {{grand_total}}
+        <br/>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-06-15 07:38:17.178737",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "update_suspense_jv_section",
+  "jvs",
+  "clearing_jv"
+ ],
+ "fields": [
+  {
+   "fieldname": "update_suspense_jv_section",
+   "fieldtype": "Section Break",
+   "label": "Update Suspense JV"
+  },
+  {
+   "fieldname": "jvs",
+   "fieldtype": "Text",
+   "label": "JVs"
+  },
+  {
+   "fieldname": "clearing_jv",
+   "fieldtype": "Link",
+   "label": "Clearing JV",
+   "options": "Journal Entry"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2023-06-20 12:00:35.044558",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Suspense Tool",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -1,0 +1,23 @@
+# Copyright (c) 2025, Narahari Dasa and contributors
+# For license information, please see license.txt
+
+# import frappe
+from frappe.model.document import Document
+
+
+class ExecutionDepartment(Document):
+	# begin: auto-generated types
+	# This code is auto-generated. Do not modify anything in this block.
+
+	from typing import TYPE_CHECKING
+
+	if TYPE_CHECKING:
+		from frappe.types import DF
+		from hkm.erpnext___custom.doctype.execution_department_concern_person.execution_department_concern_person import ExecutionDepartmentConcernPerson
+
+		department_hod: DF.Link | None
+		department_name: DF.Data
+		disabled: DF.Check
+		spoc: DF.Table[ExecutionDepartmentConcernPerson]
+	# end: auto-generated types
+	pass

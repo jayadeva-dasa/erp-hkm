@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-01-03 14:38:49.250360",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "google_sheets_link",
+  "process",
+  "month",
+  "cut_off_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "google_sheets_link",
+   "fieldtype": "Data",
+   "label": "Google Sheets Link"
+  },
+  {
+   "fieldname": "month",
+   "fieldtype": "Select",
+   "label": "Month",
+   "options": "\nJanuary\nFebruary\nMarch\nApril\nMay\nJune\nJuly\nAugust\nSeptember\nOctober\nNovember\nDecember",
+   "read_only": 1
+  },
+  {
+   "fieldname": "process",
+   "fieldtype": "Button",
+   "label": "Process"
+  },
+  {
+   "fieldname": "cut_off_date",
+   "fieldtype": "Date",
+   "label": "Cut Off Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-02-12 13:43:59.897349",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM HR Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,115 @@
+{
+ "charts": [
+  {
+   "chart_name": "Purchase Order IT-HKMJ",
+   "label": "IT Purchases"
+  }
+ ],
+ "content": "[{\"id\":\"P1sH2s032M\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"BAeAvRn081\",\"type\":\"chart\",\"data\":{\"chart_name\":\"IT Purchases\",\"col\":12}},{\"id\":\"YrInQMGy_Z\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"XQK-C8vq2U\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New User\",\"col\":4}},{\"id\":\"UBr9DaRRaf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"New Device\",\"col\":4}},{\"id\":\"lO3RGSkJGB\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"q48yNEmigf\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Reports &amp; Masters</span>\",\"col\":12}},{\"id\":\"o54kQSdUbx\",\"type\":\"card\",\"data\":{\"card_name\":\"Master\",\"col\":4}}]",
+ "creation": "2022-02-06 16:15:27.236488",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "hide_custom": 0,
+ "icon": "accounting",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "IT",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Master",
+   "link_count": 0,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Brand",
+   "link_count": 0,
+   "link_to": "IT Brand",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Specification",
+   "link_count": 0,
+   "link_to": "IT Specification",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "UOM",
+   "link_count": 0,
+   "link_to": "IT UOM",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Category",
+   "link_count": 0,
+   "link_to": "IT Category",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Device",
+   "link_count": 0,
+   "link_to": "IT Device",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "User",
+   "link_count": 0,
+   "link_to": "IT User",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-28 10:30:25.999281",
+ "modified_by": "developer@harekrishnamandir.org",
+ "module": "IT",
+ "name": "IT",
+ "number_cards": [],
+ "owner": "nrhd@hkmjaipur.org",
+ "parent_page": "HKM",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 4.0,
+ "shortcuts": [
+  {
+   "doc_view": "New",
+   "label": "New User",
+   "link_to": "IT User",
+   "type": "DocType"
+  },
+  {
+   "doc_view": "New",
+   "label": "New Device",
+   "link_to": "IT Device",
+   "type": "DocType"
+  }
+ ],
+ "title": "IT"
+}

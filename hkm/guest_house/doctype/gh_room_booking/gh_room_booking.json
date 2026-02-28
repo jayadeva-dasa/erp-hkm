@@ -1,0 +1,233 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-22 13:44:36.292521",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "from_date",
+  "column_break_muqq",
+  "to_date",
+  "section_break_vtvx",
+  "customer",
+  "address",
+  "column_break_dlgr",
+  "total_person",
+  "section_break_rbzt",
+  "guest_type",
+  "amount",
+  "column_break_talz",
+  "devotee",
+  "section_break_9ji5",
+  "column_break_idlm",
+  "room_details",
+  "additional_services",
+  "section_break_checkin",
+  "booking_status",
+  "column_break_checkin",
+  "actual_check_in",
+  "actual_check_out",
+  "section_break_checkout",
+  "amended_from",
+  "sales_invoice"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_9ji5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "GH Room Booking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "description": "Standard check-in time: 12:00 PM (noon) on this date",
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check-In Date"
+  },
+  {
+   "description": "Standard check-out time: 10:00 AM on this date",
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check-Out Date"
+  },
+  {
+   "fieldname": "guest_type",
+   "fieldtype": "Link",
+   "label": "Guest Type",
+   "options": "GH Guest Category",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "label": "Amount",
+   "non_negative": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "devotee",
+   "fieldtype": "Link",
+   "label": "Devotee",
+   "options": "DED Devotee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_muqq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rbzt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_talz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_vtvx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_dlgr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_person",
+   "fieldtype": "Int",
+   "label": "Total Person",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_checkin",
+   "fieldtype": "Section Break",
+   "label": "Check-In / Check-Out Details"
+  },
+  {
+   "default": "Booked",
+   "fieldname": "booking_status",
+   "fieldtype": "Select",
+   "label": "Booking Status",
+   "options": "Booked\nInvoiced",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_checkin",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_check_in",
+   "fieldtype": "Datetime",
+   "label": "Actual Check-In Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_checkout",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "actual_check_out",
+   "fieldtype": "Datetime",
+   "label": "Actual Check-Out Time",
+   "read_only": 1
+  },
+  {
+   "fieldname": "room_details",
+   "fieldtype": "Table",
+   "label": "Room Details",
+   "options": "GH Room Booking Details"
+  },
+  {
+   "fieldname": "column_break_idlm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "additional_services",
+   "fieldtype": "Table",
+   "label": "Additional Services",
+   "options": "GH Room Booking Additional Service"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Sales Invoice",
+   "link_fieldname": "gh_room_booking"
+  }
+ ],
+ "modified": "2026-01-09 16:12:53.323662",
+ "modified_by": "Administrator",
+ "module": "Guest House",
+ "name": "GH Room Booking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Guest House Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "autoname": "field:folk_student",
+ "creation": "2021-10-13 16:45:00.417753",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "folk_student",
+  "mobile",
+  "otp"
+ ],
+ "fields": [
+  {
+   "fieldname": "folk_student",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "FOLK Student",
+   "options": "FOLK Student",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fetch_from": "folk_student.student_mobile_number",
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "label": "Mobile",
+   "read_only": 1
+  },
+  {
+   "fieldname": "otp",
+   "fieldtype": "Int",
+   "label": "OTP"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:53:22.901110",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Student App OTP",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

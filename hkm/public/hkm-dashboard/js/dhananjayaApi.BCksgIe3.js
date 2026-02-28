@@ -1,0 +1,1 @@
+import{b as t}from"./apiClient.D0s_Rd1t.js";const a="/api/method/hkm.api.hkm_dashboard.donation_insights.get_donation_insights",n="/api/method/hkm.api.hkm_dashboard.donor_search.search_donors",i=(o={},s)=>t.get(a,{params:o,signal:s}),e=(o={},s)=>t.get(n,{params:o,signal:s});export{i as f,e as s};

@@ -1,0 +1,267 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SCR-{MM}-{YY}-{#####}",
+ "creation": "2022-02-28 12:16:30.446124",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "gstin",
+  "gst_category",
+  "supplier_name",
+  "mobile_number",
+  "email",
+  "column_break_irwm",
+  "supplier_type",
+  "supplier_group",
+  "msme_type",
+  "msme_number",
+  "address_section",
+  "address_line_1",
+  "address_line_2",
+  "city",
+  "pincode",
+  "column_break_daui",
+  "country",
+  "state",
+  "accounts_related_section",
+  "pan",
+  "aadhar_no",
+  "bank_account_details_column",
+  "bank",
+  "bank_branch_code",
+  "bank_account_name",
+  "bank_account_number"
+ ],
+ "fields": [
+  {
+   "fieldname": "supplier_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Supplier Name",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Supplier Type",
+   "options": "Company\nIndividual\nPartnership",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_section",
+   "fieldtype": "Section Break",
+   "label": "Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Address Line 1",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2",
+   "read_only_depends_on": "eval:doc.gstin"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City/Town",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Select",
+   "label": "State",
+   "options": "\nAndaman and Nicobar Islands\nAndhra Pradesh\nArunachal Pradesh\nAssam\nBihar\nChandigarh\nChhattisgarh\nDadra and Nagar Haveli and Daman and Diu\nDelhi\nGoa\nGujarat\nHaryana\nHimachal Pradesh\nJammu and Kashmir\nJharkhand\nKarnataka\nKerala\nLadakh\nLakshadweep Islands\nMadhya Pradesh\nMaharashtra\nManipur\nMeghalaya\nMizoram\nNagaland\nOdisha\nOther Territory\nPondicherry\nPunjab\nRajasthan\nSikkim\nTamil Nadu\nTelangana\nTripura\nUttar Pradesh\nUttarakhand\nWest Bengal",
+   "read_only_depends_on": "eval:doc.gstin"
+  },
+  {
+   "default": "India",
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pan",
+   "fieldtype": "Data",
+   "label": "PAN",
+   "read_only_depends_on": "eval:doc.gstin"
+  },
+  {
+   "fieldname": "gstin",
+   "fieldtype": "Data",
+   "label": "Party GST"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Postal Code",
+   "read_only_depends_on": "eval:doc.gstin",
+   "reqd": 1
+  },
+  {
+   "fieldname": "supplier_group",
+   "fieldtype": "Link",
+   "label": "Supplier Group",
+   "options": "Supplier Group",
+   "reqd": 1
+  },
+  {
+   "fieldname": "aadhar_no",
+   "fieldtype": "Data",
+   "label": "Aadhar No",
+   "mandatory_depends_on": "'ERP Coordinator' in frappe.get_roles(frappe.session.user)"
+  },
+  {
+   "fieldname": "column_break_irwm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_daui",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "accounts_related_section",
+   "fieldtype": "Section Break",
+   "label": "Accounts Related"
+  },
+  {
+   "description": "This will be required at the time of payment.",
+   "fieldname": "bank_account_details_column",
+   "fieldtype": "Column Break",
+   "label": "Bank Account Details"
+  },
+  {
+   "fieldname": "bank_account_name",
+   "fieldtype": "Data",
+   "label": "Bank Account Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_account_number",
+   "fieldtype": "Data",
+   "label": "Bank Account Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank_branch_code",
+   "fieldtype": "Data",
+   "label": "Bank Branch Code",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bank",
+   "fieldtype": "Link",
+   "label": "Bank",
+   "options": "Bank",
+   "reqd": 1
+  },
+  {
+   "default": "Pending",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "no_copy": 1,
+   "options": "Pending\nCreated\nRejected",
+   "read_only": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "msme_type",
+   "fieldtype": "Select",
+   "label": "MSME Type",
+   "options": "\nMicro\nSmall\nMedium"
+  },
+  {
+   "fieldname": "msme_number",
+   "fieldtype": "Data",
+   "label": "MSME Number"
+  },
+  {
+   "default": "Unregistered",
+   "fieldname": "gst_category",
+   "fieldtype": "Select",
+   "label": "GST Category",
+   "options": "Registered Regular\nRegistered Composition\nUnregistered\nSEZ\nOverseas\nDeemed Export\nUIN Holders\nTax Deductor\nTax Collector\nInput Service Distributor",
+   "read_only_depends_on": "eval:doc.gstin"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-10-10 10:17:05.562036",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Supplier Creation Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "ERP Coordinator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1
+}

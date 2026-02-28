@@ -1,0 +1,169 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-03-12 12:38:29.513937",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "printer_name",
+  "company",
+  "price_list",
+  "item_code",
+  "quantity",
+  "date_printer_section",
+  "date",
+  "quantity_date",
+  "expiry_date_printer_section_section",
+  "manufacturing_date",
+  "day_after_expiry",
+  "quantity_exp",
+  "general_printer_section_section",
+  "general_item_code",
+  "general_print_quantity",
+  "general_print_date",
+  "aged_inventory__printer_section_section",
+  "old_stock_item_code",
+  "old_stock_print_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "price_list",
+   "fieldtype": "Link",
+   "label": "Price List",
+   "options": "Price List"
+  },
+  {
+   "fieldname": "printer_name",
+   "fieldtype": "Data",
+   "label": "Printer Name"
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "date_printer_section",
+   "fieldtype": "Section Break",
+   "label": "Date Printer"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "quantity_date",
+   "fieldtype": "Int",
+   "label": "Quantity (Date)"
+  },
+  {
+   "fieldname": "expiry_date_printer_section_section",
+   "fieldtype": "Section Break",
+   "label": "Expiry Date Printer Section"
+  },
+  {
+   "fieldname": "manufacturing_date",
+   "fieldtype": "Date",
+   "label": "Manufacturing Date"
+  },
+  {
+   "fieldname": "day_after_expiry",
+   "fieldtype": "Int",
+   "label": "Day After Expiry"
+  },
+  {
+   "fieldname": "quantity_exp",
+   "fieldtype": "Int",
+   "label": "Quantity (EXP)"
+  },
+  {
+   "fieldname": "general_printer_section_section",
+   "fieldtype": "Section Break",
+   "label": "General Printer Section"
+  },
+  {
+   "fieldname": "general_item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "general_print_quantity",
+   "fieldtype": "Int",
+   "label": "Quantity (General)"
+  },
+  {
+   "fieldname": "general_print_date",
+   "fieldtype": "Date",
+   "label": "Date (General)"
+  },
+  {
+   "fieldname": "aged_inventory__printer_section_section",
+   "fieldtype": "Section Break",
+   "label": "Aged Inventory  Printer Section"
+  },
+  {
+   "fieldname": "old_stock_item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "old_stock_print_quantity",
+   "fieldtype": "Int",
+   "label": "Quantity (Old Stock)"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-06-09 11:32:18.020333",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "QZ Printer",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Stock Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

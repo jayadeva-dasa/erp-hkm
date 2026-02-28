@@ -1,0 +1,5 @@
+import erpnext.accounts.report.accounts_payable_summary.accounts_payable_summary
+
+from hkm.erpnext___custom.extend.reports.accounts_payable_summary.accounts_payable_summary import execute as hkm_accounts_payable_summary_execute
+
+erpnext.accounts.report.accounts_payable_summary.accounts_payable_summary.execute = hkm_accounts_payable_summary_execute

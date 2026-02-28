@@ -1,0 +1,285 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-11 15:40:47.792214",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "transaction_tracking_id",
+  "status",
+  "debited_from",
+  "transfer_type",
+  "user",
+  "remarks",
+  "amount",
+  "column_break_irky",
+  "beneficiary_name",
+  "utr",
+  "mobile_number",
+  "customer_ref_no",
+  "bill_received",
+  "is_return",
+  "column_break_xrjd",
+  "bank_account",
+  "account_number",
+  "ifsc_code",
+  "column_break_jbkl",
+  "upi_id",
+  "approval_status",
+  "approving_authority",
+  "section_break_blpt",
+  "api_response",
+  "column_break_mmlr",
+  "api_payload",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "User",
+   "options": "HKMP User",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Remarks",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "transfer_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Transfer Type",
+   "options": "UPI\nIMPS\nNEFT\nRTGS",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Pending\nProcessing\nSuccess\nFailed",
+   "read_only": 1,
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "utr",
+   "fieldtype": "Data",
+   "label": "UTR",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "debited_from",
+   "fieldtype": "Link",
+   "label": "Debited From",
+   "options": "DocType",
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "column_break_irky",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "bill_received",
+   "fieldtype": "Check",
+   "label": "Bill Received"
+  },
+  {
+   "allow_on_submit": 1,
+   "default": "0",
+   "fieldname": "is_return",
+   "fieldtype": "Check",
+   "label": "Is Return"
+  },
+  {
+   "fieldname": "upi_id",
+   "fieldtype": "Data",
+   "label": "VPA (UPI)",
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "HKMP Entry",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fetch_from": "bank.beneficiary_name",
+   "fieldname": "beneficiary_name",
+   "fieldtype": "Data",
+   "label": "Beneficiary Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "bank.account_number",
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "label": "Bank Account",
+   "options": "HKMP Bank Account",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_xrjd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jbkl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_blpt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "api_response",
+   "fieldtype": "JSON",
+   "label": "API Response",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_mmlr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "api_payload",
+   "fieldtype": "JSON",
+   "label": "API Payload",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "bank_account.account_number",
+   "fieldname": "account_number",
+   "fieldtype": "Data",
+   "label": "Account Number"
+  },
+  {
+   "fetch_from": "bank_account.ifsc_code",
+   "fieldname": "ifsc_code",
+   "fieldtype": "Data",
+   "label": "IFSC Code",
+   "read_only": 1
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Int",
+   "label": "Mobile No.",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "customer_ref_no",
+   "fieldtype": "Data",
+   "label": "Customer Ref No.",
+   "read_only": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "transaction_tracking_id",
+   "fieldtype": "Data",
+   "label": "Transaction Tracking ID",
+   "search_index": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "approval_status",
+   "fieldtype": "Select",
+   "label": "Approval Status",
+   "options": "Not Sent for Approval\nApproval Pending\nApproved\nRejected"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "approving_authority",
+   "fieldtype": "Link",
+   "label": "Approving Authority",
+   "options": "User"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-19 17:03:09.722812",
+ "modified_by": "Administrator",
+ "module": "HKM Pay",
+ "name": "HKMP Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HKMP User",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts User",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

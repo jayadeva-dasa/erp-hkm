@@ -1,0 +1,111 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"URnqoRPtmv\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Divine Dishes</span>\",\"col\":12}},{\"id\":\"-PhTDCsKBT\",\"type\":\"card\",\"data\":{\"card_name\":\"Shortcuts\",\"col\":4}}]",
+ "creation": "2023-10-22 16:43:38.052207",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "dashboard",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Divine Dishes",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Shortcuts",
+   "link_count": 7,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Approve Address",
+   "link_count": 0,
+   "link_to": "DD User Address",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Sale Item",
+   "link_count": 0,
+   "link_to": "DD Item",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Orders",
+   "link_count": 0,
+   "link_to": "DD Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Subscription",
+   "link_count": 0,
+   "link_to": "DD Subscription",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 1,
+   "label": "Order Summary",
+   "link_count": 0,
+   "link_to": "Orders Summary",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Wallet",
+   "link_count": 0,
+   "link_to": "DD Wallet Tx",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Settings",
+   "link_count": 0,
+   "link_to": "Divine Dishes Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-28 10:30:27.606122",
+ "modified_by": "developer@harekrishnamandir.org",
+ "module": "Divine Dishes",
+ "name": "Divine Dishes",
+ "number_cards": [],
+ "owner": "nrhd@hkmjaipur.org",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [
+  {
+   "role": "DD Manager"
+  }
+ ],
+ "sequence_id": 32.0,
+ "shortcuts": [],
+ "title": "Divine Dishes"
+}

@@ -1,0 +1,89 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2022-03-28 08:19:16.146799",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "semester",
+  "session",
+  "session_type",
+  "session_title",
+  "attendance_section",
+  "bhaktas_html"
+ ],
+ "fields": [
+  {
+   "fieldname": "semester",
+   "fieldtype": "Link",
+   "label": "Semester",
+   "options": "Bhakta Training Semester",
+   "reqd": 1
+  },
+  {
+   "fieldname": "attendance_section",
+   "fieldtype": "Section Break",
+   "label": "Attendance"
+  },
+  {
+   "fieldname": "bhaktas_html",
+   "fieldtype": "HTML",
+   "label": "Bhaktas HTML"
+  },
+  {
+   "fieldname": "session",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Session",
+   "options": "Bhakta Training Session",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "session.session_type",
+   "fieldname": "session_type",
+   "fieldtype": "Data",
+   "label": "Session Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "session.session_title",
+   "fieldname": "session_title",
+   "fieldtype": "Data",
+   "label": "Session Title",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2022-03-28 12:58:42.019438",
+ "modified_by": "Administrator",
+ "module": "Bhakta Training",
+ "name": "Bhakta Training Attendance Tool",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Bhakta Training Coordinator",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC"
+}

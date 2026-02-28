@@ -1,0 +1,61 @@
+{
+ "app": "hkm",
+ "creation": "2026-01-29 08:42:13.057839",
+ "docstatus": 0,
+ "doctype": "Workspace Sidebar",
+ "header_icon": "table",
+ "idx": 0,
+ "items": [
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Home",
+   "link_to": "Ashram Store",
+   "link_type": "Workspace",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Issue Store Item",
+   "link_to": "Ashram Store Item Issue",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Issue Book",
+   "link_to": "Ashram Library Book Issue",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Return Book",
+   "link_to": "Ashram Library Book Return",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2026-01-30 09:29:04.999021",
+ "modified_by": "Administrator",
+ "module": "Ashram Issue Counter",
+ "name": "Ashram Store",
+ "owner": "Administrator",
+ "standard": 1,
+ "title": "Ashram Store"
+}

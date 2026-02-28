@@ -1,0 +1,345 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-06-16 10:49:09.948110",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_3",
+  "full_name",
+  "occupation",
+  "column_break_4",
+  "naming_series",
+  "student_email_id",
+  "student_mobile_number",
+  "image",
+  "section_break_7",
+  "date_of_birth",
+  "blood_group",
+  "column_break_3",
+  "gender",
+  "married",
+  "marriage_anniversary",
+  "spiritual_status_section",
+  "chanting_rounds",
+  "ashraya",
+  "column_break_27",
+  "initiated",
+  "institute_details_section",
+  "institute_name",
+  "degree_pursuing",
+  "degree_pursuing_since",
+  "company_details_section",
+  "company_name",
+  "designation",
+  "section_break_22",
+  "address_line_1",
+  "address_line_2",
+  "pincode",
+  "column_break_20",
+  "city",
+  "state",
+  "current_address_section",
+  "c_address_line_1",
+  "c_address_line_2",
+  "c_pincode",
+  "column_break_35",
+  "c_city",
+  "c_state",
+  "folk_plus_extra_section",
+  "from_institute",
+  "batch",
+  "from_institute_degree"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Occupation",
+   "options": "\nStudent\nWorking\nBusiness",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "FDC-.YY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "no_copy": 1,
+   "options": "FDC-.YY.-",
+   "read_only": 1,
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "student_email_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Email Address",
+   "unique": 1
+  },
+  {
+   "fieldname": "student_mobile_number",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Mobile Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "description": "Attachment should be less than 1 MB.",
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image",
+   "width": "10"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "blood_group",
+   "fieldtype": "Select",
+   "label": "Blood Group",
+   "options": "\nA+\nA-\nB+\nB-\nO+\nO-\nAB+\nAB-"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Male",
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.folk_plus==true",
+   "fieldname": "married",
+   "fieldtype": "Check",
+   "label": "Married"
+  },
+  {
+   "depends_on": "eval:doc.married==true",
+   "fieldname": "marriage_anniversary",
+   "fieldtype": "Date",
+   "label": "Marriage Anniversary"
+  },
+  {
+   "fieldname": "spiritual_status_section",
+   "fieldtype": "Section Break",
+   "label": "Spiritual Status"
+  },
+  {
+   "fieldname": "chanting_rounds",
+   "fieldtype": "Int",
+   "in_standard_filter": 1,
+   "label": "Chanting Rounds"
+  },
+  {
+   "fieldname": "ashraya",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Ashraya",
+   "options": "\nSraddhawan\nSevak\nSadhak\nUpasak\nCharanashraya"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "initiated",
+   "fieldtype": "Check",
+   "label": "Initiated"
+  },
+  {
+   "depends_on": "eval:doc.occupation=='Student'",
+   "fieldname": "institute_details_section",
+   "fieldtype": "Section Break",
+   "label": "Institute Details"
+  },
+  {
+   "fieldname": "institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name"
+  },
+  {
+   "fieldname": "degree_pursuing",
+   "fieldtype": "Link",
+   "label": "Degree Pursuing",
+   "options": "FOLK Institute Degree"
+  },
+  {
+   "fieldname": "degree_pursuing_since",
+   "fieldtype": "Date",
+   "label": "Degree Pursuing Since"
+  },
+  {
+   "depends_on": "eval:in_list(['Business','Working'], doc.occupation)",
+   "fieldname": "company_details_section",
+   "fieldtype": "Section Break",
+   "label": "Company Details"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break",
+   "label": "Home Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "current_address_section",
+   "fieldtype": "Section Break",
+   "label": "Current Address"
+  },
+  {
+   "fieldname": "c_address_line_1",
+   "fieldtype": "Data",
+   "label": "C Address Line 1"
+  },
+  {
+   "fieldname": "c_address_line_2",
+   "fieldtype": "Data",
+   "label": "C Address Line 2"
+  },
+  {
+   "fieldname": "c_pincode",
+   "fieldtype": "Data",
+   "label": "C Pincode"
+  },
+  {
+   "fieldname": "column_break_35",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "c_city",
+   "fieldtype": "Data",
+   "label": "C City"
+  },
+  {
+   "fieldname": "c_state",
+   "fieldtype": "Data",
+   "label": "C State"
+  },
+  {
+   "fieldname": "folk_plus_extra_section",
+   "fieldtype": "Section Break",
+   "label": "FOLK Plus Extra"
+  },
+  {
+   "fieldname": "from_institute",
+   "fieldtype": "Data",
+   "label": "From Institute"
+  },
+  {
+   "description": "Please mention the year of Passing Out.",
+   "fieldname": "batch",
+   "fieldtype": "Data",
+   "label": "Batch"
+  },
+  {
+   "fieldname": "from_institute_degree",
+   "fieldtype": "Data",
+   "label": "Degree"
+  }
+ ],
+ "image_field": "image",
+ "links": [],
+ "modified": "2022-02-05 18:53:18.971363",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Student Collect",
+ "name_case": "Title Case",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "restrict_to_domain": "FOLK",
+ "search_fields": "full_name",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "full_name"
+}

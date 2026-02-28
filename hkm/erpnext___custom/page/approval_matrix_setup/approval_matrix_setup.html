@@ -1,0 +1,92 @@
+<div class="approval-matrix-setup-page">
+    <!-- Matrices List Section -->
+    <div class="matrices-list-section">
+        <div class="section-header">
+            <div>
+                <h4>Approval Matrices</h4>
+                <p class="text-muted">Manage and edit approval matrices for each dimension.</p>
+            </div>
+            <button class="btn btn-primary btn-sm" data-action="create-new">
+                <svg class="icon icon-sm"><use href="#icon-add"></use></svg>
+                Create New Matrix
+            </button>
+        </div>
+        <div class="matrices-grid" data-section="matrices-list">
+            <!-- Matrix cards will be rendered here -->
+        </div>
+        <div class="empty-state" data-section="empty-state" style="display: none;">
+            <div class="empty-state-content">
+                <svg class="icon icon-xl text-muted"><use href="#icon-file"></use></svg>
+                <p class="text-muted">No approval matrices configured yet</p>
+                <button class="btn btn-sm btn-default" data-action="create-new">Create Your First Matrix</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Matrix Editor Section -->
+    <div class="matrix-editor-section" data-section="matrix-editor" style="display: none;">
+        <div class="editor-header-compact">
+            <div class="header-top">
+                <div class="header-left">
+                    <h4 data-editor="title" style="margin: 0;">New Approval Matrix</h4>
+                    <span class="auto-save-indicator">
+                        <svg class="icon icon-xs"><use href="#icon-check"></use></svg>
+                        Auto-saving
+                    </span>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-sm btn-default" data-action="print-matrix">
+                        <svg class="icon icon-xs"><use href="#icon-printer"></use></svg>
+                        Print
+                    </button>
+                    <button class="btn btn-sm btn-default" data-action="cancel-edit">
+                        <svg class="icon icon-xs"><use href="#icon-left"></use></svg>
+                        Back to List
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Compact Basic Configuration -->
+            <div class="config-compact">
+                <div class="config-item">
+                    <label>Target DocType</label>
+                    <select class="form-control form-control-sm" data-field="target_doctype" required>
+                        <option value="">Select DocType...</option>
+                    </select>
+                </div>
+                <div class="config-item">
+                    <label>Dimension</label>
+                    <select class="form-control form-control-sm" data-field="dimension" required>
+                        <option value="">Select Dimension...</option>
+                    </select>
+                </div>
+                <div class="config-item">
+                    <label>Fields Applicable</label>
+                    <input type="text" class="form-control form-control-sm" data-field="fields_applicable" 
+                        placeholder="e.g., type, grand_total">
+                </div>
+            </div>
+        </div>
+
+        <div class="editor-content">
+
+            <!-- Rules Section -->
+            <div class="rules-section">
+                <div class="section-header-with-action">
+                    <h5>Approval Rules</h5>
+                    <button class="btn btn-sm btn-primary" data-action="add-rule">
+                        <svg class="icon icon-xs"><use href="#icon-add"></use></svg>
+                        Add Rule
+                    </button>
+                </div>
+
+                <div class="rules-container" data-container="rules">
+                    <!-- Rule cards will be rendered here -->
+                </div>
+                <div class="empty-rules" data-section="empty-rules">
+                    <p class="text-muted text-center">No approval rules added yet. Click "Add Rule" to create one.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-06-21 14:06:58.321713",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "posting_date",
+  "section_break_nlnl",
+  "from_date",
+  "column_break_mrka",
+  "to_date",
+  "cost_head_section",
+  "service_department",
+  "column_break_yegj",
+  "execution_department",
+  "section_break_qudk",
+  "specific_accounts",
+  "section_break_hbbi",
+  "accounts"
+ ],
+ "fields": [
+  {
+   "fieldname": "cost_head_section",
+   "fieldtype": "Section Break",
+   "label": "Cost Head"
+  },
+  {
+   "fieldname": "service_department",
+   "fieldtype": "Table",
+   "label": "Service Department Cost Head",
+   "options": "Internal Adjustment Creator Cost Head"
+  },
+  {
+   "fieldname": "column_break_yegj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "execution_department",
+   "fieldtype": "Table",
+   "label": "Execution Department Cost Head",
+   "options": "Internal Adjustment Creator Cost Head"
+  },
+  {
+   "fieldname": "section_break_qudk",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "specific_accounts",
+   "fieldtype": "Check",
+   "label": "Specific Accounts"
+  },
+  {
+   "fieldname": "section_break_hbbi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "accounts",
+   "fieldtype": "Table",
+   "label": "Accounts",
+   "options": "Internal Adjustment Creator Account"
+  },
+  {
+   "fieldname": "from_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "From Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_mrka",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "to_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "To Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "posting_date",
+   "fieldtype": "Date",
+   "label": "Posting Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_nlnl",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Internal Adjustment",
+   "link_fieldname": "internal_adjustment_creator"
+  }
+ ],
+ "modified": "2025-07-28 13:49:22.416268",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Internal Adjustment Creator",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

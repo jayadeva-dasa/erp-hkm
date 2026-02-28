@@ -1,0 +1,155 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:cost_head_name",
+ "creation": "2024-12-22 14:24:53.688501",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_ac7y",
+  "cost_head_name",
+  "old_parent",
+  "parent_cost_head",
+  "column_break_txxa",
+  "is_group",
+  "disabled",
+  "freeze",
+  "lft",
+  "rgt",
+  "section_break_omcz",
+  "concerned_persons",
+  "expense_approver"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_ac7y",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Old Parent",
+   "options": "Cost Head"
+  },
+  {
+   "fieldname": "parent_cost_head",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent Cost Head",
+   "options": "Cost Head"
+  },
+  {
+   "fieldname": "cost_head_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cost Head Name",
+   "no_copy": 1,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "column_break_txxa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_omcz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "concerned_persons",
+   "fieldtype": "Table",
+   "label": "Concerned Persons",
+   "options": "Cost Head Concerned Person"
+  },
+  {
+   "fieldname": "expense_approver",
+   "fieldtype": "Table",
+   "label": "Expense Approver",
+   "options": "Cost Head Expense Approver"
+  },
+  {
+   "default": "0",
+   "fieldname": "freeze",
+   "fieldtype": "Check",
+   "label": "Freeze"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2025-12-29 17:51:12.393486",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Cost Head",
+ "naming_rule": "By fieldname",
+ "nsm_parent_field": "parent_cost_head",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

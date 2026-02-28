@@ -1,0 +1,94 @@
+<div>
+  <table style="width: 100%; border-collapse: collapse; margin-top: 20px">
+    <thead>
+      <tr>
+        <th
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: left;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+          "
+        >
+          Cost Head
+        </th>
+        <th
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: right;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+          "
+        >
+          Expense
+        </th>
+        <th
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: right;
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            font-size: 14px;
+          "
+        >
+          Income
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in cost_heads_results %}
+      <tr style="background-color: #ffffff">
+        <td style="border: 1px solid #ecf0f1; padding: 12px; text-align: left">
+          {{ row.cost_head or 'N/A' }}
+        </td>
+        <td style="border: 1px solid #ecf0f1; padding: 12px; text-align: right">
+          {{ (row.total_expense or 0) | indian_currency }}
+        </td>
+        <td style="border: 1px solid #ecf0f1; padding: 12px; text-align: right">
+          {{ (row.total_income or 0) | indian_currency }}
+        </td>
+      </tr>
+      {% endfor %}
+      <tr style="font-weight: bold; background-color: #dfe4ea">
+        <td
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: left;
+            color: #2c3e50;
+          "
+        >
+          Total
+        </td>
+        <td
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: right;
+            color: #2c3e50;
+          "
+        >
+          {{ cost_heads_total_expense | indian_currency }}
+        </td>
+        <td
+          style="
+            border: 1px solid #ecf0f1;
+            padding: 12px;
+            text-align: right;
+            color: #2c3e50;
+          "
+        >
+          {{ cost_heads_total_income | indian_currency }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

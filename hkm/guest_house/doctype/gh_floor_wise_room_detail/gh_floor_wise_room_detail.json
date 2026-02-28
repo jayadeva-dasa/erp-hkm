@@ -1,0 +1,48 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-12-22 13:26:12.399353",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "floor",
+  "total_room",
+  "layout_settings"
+ ],
+ "fields": [
+  {
+   "fieldname": "floor",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Floor",
+   "options": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+  },
+  {
+   "fieldname": "total_room",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Room"
+  },
+  {
+   "fieldname": "layout_settings",
+   "fieldtype": "JSON",
+   "label": "Layout Settings"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2025-12-22 13:28:06.833607",
+ "modified_by": "Administrator",
+ "module": "Guest House",
+ "name": "GH Floor-wise Room Detail",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

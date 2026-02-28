@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:bed_type",
+ "creation": "2022-03-21 12:12:22.400372",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "bed_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "bed_type",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bed Type",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "links": [],
+ "modified": "2022-05-19 17:58:06.554209",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "Bed Type",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "restrict_to_domain": "FOLK",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

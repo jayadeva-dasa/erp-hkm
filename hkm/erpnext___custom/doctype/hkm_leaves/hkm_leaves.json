@@ -1,0 +1,61 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-01-03 15:03:07.020535",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "el_opening_balance",
+  "cl_opening_balance",
+  "coff_opening_balance"
+ ],
+ "fields": [
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "el_opening_balance",
+   "fieldtype": "Float",
+   "label": "EL Opening Balance"
+  },
+  {
+   "fieldname": "cl_opening_balance",
+   "fieldtype": "Float",
+   "label": "CL Opening Balance"
+  },
+  {
+   "fieldname": "coff_opening_balance",
+   "fieldtype": "Float",
+   "label": "Coff Opening Balance"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-02-12 13:41:51.601112",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM Leaves",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

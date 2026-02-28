@@ -1,0 +1,77 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2025-09-05 08:45:50.561781",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "General - RKM",
+ "letterhead": null,
+ "modified": "2025-09-05 08:45:50.561781",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Asset Lifewise",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Asset",
+ "report_name": "Asset Lifewise",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Item & Supplier Creator"
+  },
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Purchase User"
+  },
+  {
+   "role": "DCC Executive"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Item & Supplier Creator"
+  },
+  {
+   "role": "Item Manager"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Auditor"
+  },
+  {
+   "role": "Item Manager"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "Asset Manager"
+  },
+  {
+   "role": "IT Manager"
+  }
+ ],
+ "timeout": 0
+}

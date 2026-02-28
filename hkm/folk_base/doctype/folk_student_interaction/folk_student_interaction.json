@@ -1,0 +1,140 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-06-10 13:33:22.440960",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "folk_student",
+  "folk_student_name",
+  "interaction_section",
+  "type",
+  "rate_conversation",
+  "comments",
+  "column_break_6",
+  "call_duration",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Student"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "folk_student",
+   "fieldtype": "Link",
+   "label": "FOLK Student",
+   "options": "FOLK Student"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fetch_from": "folk_student.full_name",
+   "fieldname": "folk_student_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "FOLK Student Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "interaction_section",
+   "fieldtype": "Section Break",
+   "label": "Interaction"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "default": "Phone Call",
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Phone Call\nWhatsApp\nMessage"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "rate_conversation",
+   "fieldtype": "Rating",
+   "in_list_view": 1,
+   "label": "Rate Conversation"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "comments",
+   "fieldtype": "Text",
+   "label": "Comments"
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "In Minutes",
+   "fieldname": "call_duration",
+   "fieldtype": "Int",
+   "label": "Call Duration"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "FSI-.YY.-.MM.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-02-18 17:47:09.043073",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Student Interaction",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "comments",
+ "track_changes": 1
+}

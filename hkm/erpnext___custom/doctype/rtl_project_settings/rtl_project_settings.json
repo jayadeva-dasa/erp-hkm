@@ -1,0 +1,77 @@
+{
+    "actions": [],
+    "creation": "2025-10-26 12:30:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "enable_daily_notifications",
+        "regular_holiday_day",
+        "column_break_3",
+        "holiday_list"
+    ],
+    "fields": [
+        {
+            "default": "1",
+            "fieldname": "enable_daily_notifications",
+            "fieldtype": "Check",
+            "label": "Enable Daily Notifications"
+        },
+        {
+            "fieldname": "regular_holiday_day",
+            "fieldtype": "Select",
+            "label": "Regular Holiday Day",
+            "options": "\nMonday\nTuesday\nWednesday\nThursday\nFriday\nSaturday\nSunday",
+            "description": "This day will be automatically considered a holiday every week (Notification times are configured in hooks.py)"
+        },
+        {
+            "fieldname": "column_break_3",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "holiday_list",
+            "fieldtype": "Table",
+            "label": "Holiday List",
+            "options": "RTL Holiday",
+            "description": "Specific holiday dates to exclude from daily status tracking"
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "issingle": 1,
+    "links": [],
+    "modified": "2025-10-26 12:30:00.000000",
+    "modified_by": "Administrator",
+    "module": "ERPNext - Custom",
+    "name": "RTL Project Settings",
+    "naming_rule": "Random",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        },
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "RTL Admin",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

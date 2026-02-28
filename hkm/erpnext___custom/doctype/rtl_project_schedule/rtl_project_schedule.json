@@ -1,0 +1,154 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SCHED-{####}",
+ "creation": "2025-01-14 10:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "schedule_name",
+  "project_template",
+  "description",
+  "column_break_1",
+  "is_active",
+  "section_break_2",
+  "frequency",
+  "start_day",
+  "duration_days",
+  "column_break_3",
+  "assigned_to",
+  "first_run_date",
+  "next_creation_date",
+  "section_break_4",
+  "last_created_project",
+  "last_run_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "schedule_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Schedule Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_template",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Name Template",
+   "reqd": 1,
+   "description": "Template for project name. Use {month}, {year}, {date} as placeholders"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Active"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Schedule Configuration"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Frequency",
+   "options": "Daily\nWeekly\nMonthly\nQuarterly",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.frequency == 'Monthly' || doc.frequency == 'Quarterly'",
+   "fieldname": "start_day",
+   "fieldtype": "Int",
+   "label": "Day of Month to Start",
+   "description": "Day of the month when project should be created (1-28)"
+  },
+  {
+   "fieldname": "duration_days",
+   "fieldtype": "Int",
+   "label": "Duration (Days)",
+   "reqd": 1,
+   "description": "Number of days from start date to end date"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "first_run_date",
+   "fieldtype": "Date",
+   "label": "First Run Date",
+   "reqd": 1,
+   "description": "Date when this schedule should run for the first time"
+  },
+  {
+   "fieldname": "next_creation_date",
+   "fieldtype": "Date",
+   "label": "Next Creation Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Last Run Information"
+  },
+  {
+   "fieldname": "last_created_project",
+   "fieldtype": "Link",
+   "label": "Last Created Project",
+   "options": "RTL Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_run_date",
+   "fieldtype": "Datetime",
+   "label": "Last Run Date",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-14 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "RTL Project Schedule",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

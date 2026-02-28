@@ -1,0 +1,79 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:dormitory_name",
+ "creation": "2022-03-21 12:22:39.187311",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "dormitory_name",
+  "abbr",
+  "column_break_3",
+  "disabled"
+ ],
+ "fields": [
+  {
+   "fieldname": "dormitory_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Dormitory Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "disabled",
+   "fieldtype": "Check",
+   "label": "Disabled"
+  },
+  {
+   "fieldname": "abbr",
+   "fieldtype": "Data",
+   "label": "Abbreviation"
+  }
+ ],
+ "links": [],
+ "modified": "2022-05-19 17:58:11.310168",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "Dormitory",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "restrict_to_domain": "FOLK",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

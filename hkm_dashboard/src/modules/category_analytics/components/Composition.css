@@ -1,0 +1,169 @@
+.composition-list {
+  margin-top: 20px;
+}
+
+.composition-section {
+  margin-bottom: 30px;
+}
+
+.composition-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.composition-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #2196F3;
+  transition: all 0.2s;
+}
+
+.composition-item:hover {
+  background: #e3f2fd;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.composition-item.uncategorized {
+  border-left-color: #ff9800;
+  background: #fff3e0;
+}
+
+.composition-item.uncategorized:hover {
+  background: #ffe0b2;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 15px;
+}
+
+.item-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a237e;
+  font-family: monospace;
+}
+
+.item-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.item-accounts-count {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.item-accounts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.account-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  background: white;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.account-name {
+  color: #555;
+  flex: 1;
+}
+
+.account-amount {
+  color: #1a237e;
+  font-weight: 600;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.account-more {
+  padding: 6px 10px;
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.composition-total {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-label {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.total-value {
+  font-size: 24px;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+.composition-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #999;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .item-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .item-value {
+    font-size: 16px;
+  }
+
+  .account-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .composition-total {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+
+
+

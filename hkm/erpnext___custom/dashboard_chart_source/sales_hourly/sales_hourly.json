@@ -1,0 +1,13 @@
+{
+ "creation": "2023-06-03 18:00:18.923682",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2023-06-03 18:00:18.923682",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Sales Hourly",
+ "owner": "Administrator",
+ "source_name": "Sales Hourly",
+ "timeseries": 0
+}

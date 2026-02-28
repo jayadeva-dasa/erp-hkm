@@ -1,0 +1,615 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:student_mobile_number",
+ "creation": "2021-04-28 11:42:55.408004",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_1",
+  "enabled",
+  "section_break_3",
+  "full_name",
+  "short_name",
+  "call1",
+  "user",
+  "folk_guide",
+  "occupation",
+  "security_key",
+  "otp",
+  "column_break_4",
+  "title",
+  "student_email_id",
+  "student_mobile_number",
+  "alternative_mobile_number",
+  "call",
+  "folk_resident",
+  "folk_plus",
+  "image",
+  "section_break_7",
+  "date_of_birth",
+  "blood_group",
+  "column_break_3",
+  "gender",
+  "married",
+  "marriage_anniversary",
+  "wifes_name",
+  "section_break_28",
+  "book_reading",
+  "spiritual_status_section",
+  "chanting_rounds",
+  "ashraya",
+  "column_break_27",
+  "initiated",
+  "initiated_name",
+  "folk_residecny_section",
+  "residency",
+  "since",
+  "father_name",
+  "mother_name",
+  "father_mobile_no",
+  "column_break_25",
+  "reference",
+  "reference_remarks",
+  "institute_details_section",
+  "institute_name",
+  "degree_pursuing",
+  "degree_pursuing_since",
+  "company_details_section",
+  "company_name",
+  "designation",
+  "section_break_22",
+  "address_line_1",
+  "address_line_2",
+  "column_break_20",
+  "city",
+  "state",
+  "pincode",
+  "current_address_section",
+  "c_address_line_1",
+  "c_address_line_2",
+  "column_break_35",
+  "c_city",
+  "c_state",
+  "c_pincode",
+  "exit",
+  "date_of_leaving",
+  "leaving_certificate_number",
+  "column_break_31",
+  "reason_for_leaving",
+  "folk_plus_extra_section",
+  "plus_level",
+  "plus_remarks",
+  "calling_group",
+  "column_break_63",
+  "from_institute",
+  "batch",
+  "from_institute_degree",
+  "proof_ids_section",
+  "aadhar_id",
+  "vehicle_license_id",
+  "voter_id"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name"
+  },
+  {
+   "fieldname": "short_name",
+   "fieldtype": "Data",
+   "label": "Short Name"
+  },
+  {
+   "fieldname": "call1",
+   "fieldtype": "Button",
+   "label": "Call"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "User ID",
+   "options": "User"
+  },
+  {
+   "fieldname": "folk_guide",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "FOLK Guide",
+   "options": "FOLK Guide"
+  },
+  {
+   "fieldname": "occupation",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Occupation",
+   "options": "\nStudent\nWorking\nBusiness",
+   "reqd": 1
+  },
+  {
+   "fieldname": "security_key",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Security Key",
+   "unique": 1
+  },
+  {
+   "fieldname": "otp",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "OTP"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "{full_name}",
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title",
+   "no_copy": 1,
+   "print_hide": 1
+  },
+  {
+   "fieldname": "student_email_id",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "label": "Email Address",
+   "options": "Email",
+   "unique": 1
+  },
+  {
+   "fieldname": "student_mobile_number",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Mobile Number",
+   "options": "Phone",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "alternative_mobile_number",
+   "fieldtype": "Data",
+   "label": "Alternative Mobile Number"
+  },
+  {
+   "fieldname": "call",
+   "fieldtype": "Button",
+   "label": "Call"
+  },
+  {
+   "default": "0",
+   "fieldname": "folk_resident",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "FOLK Resident"
+  },
+  {
+   "default": "0",
+   "fieldname": "folk_plus",
+   "fieldtype": "Check",
+   "in_standard_filter": 1,
+   "label": "FOLK Plus"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image",
+   "width": "10"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break",
+   "label": "Personal Details"
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "blood_group",
+   "fieldtype": "Select",
+   "label": "Blood Group",
+   "options": "\nA+\nA-\nB+\nB-\nO+\nO-\nAB+\nAB-"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "Male",
+   "fieldname": "gender",
+   "fieldtype": "Select",
+   "label": "Gender",
+   "options": "Male\nFemale",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "depends_on": "eval:doc.folk_plus==true",
+   "fieldname": "married",
+   "fieldtype": "Check",
+   "label": "Married"
+  },
+  {
+   "depends_on": "eval:doc.married==true",
+   "fieldname": "marriage_anniversary",
+   "fieldtype": "Date",
+   "label": "Marriage Anniversary"
+  },
+  {
+   "depends_on": "eval:doc.married==true",
+   "fieldname": "wifes_name",
+   "fieldtype": "Data",
+   "label": "Wife's Name"
+  },
+  {
+   "fieldname": "section_break_28",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "book_reading",
+   "fieldtype": "Table",
+   "label": "Book Reading",
+   "options": "FOLK Student Book"
+  },
+  {
+   "fieldname": "spiritual_status_section",
+   "fieldtype": "Section Break",
+   "label": "Spiritual Status"
+  },
+  {
+   "fieldname": "chanting_rounds",
+   "fieldtype": "Int",
+   "in_standard_filter": 1,
+   "label": "Chanting Rounds"
+  },
+  {
+   "fieldname": "ashraya",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Ashraya",
+   "options": "\nSraddhawan\nSevak\nSadhak\nUpasak\nCharanashraya"
+  },
+  {
+   "fieldname": "column_break_27",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "initiated",
+   "fieldtype": "Check",
+   "label": "Initiated"
+  },
+  {
+   "depends_on": "eval:doc.initiated==true",
+   "fieldname": "initiated_name",
+   "fieldtype": "Data",
+   "label": "Initiated Name"
+  },
+  {
+   "depends_on": "eval:doc.folk_resident == true",
+   "fieldname": "folk_residecny_section",
+   "fieldtype": "Section Break",
+   "label": "FOLK Residecny"
+  },
+  {
+   "fieldname": "residency",
+   "fieldtype": "Link",
+   "label": "Residency",
+   "options": "FOLK Residency"
+  },
+  {
+   "fieldname": "since",
+   "fieldtype": "Date",
+   "label": "Joining Date"
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father Name"
+  },
+  {
+   "fieldname": "mother_name",
+   "fieldtype": "Data",
+   "label": "Mother Name"
+  },
+  {
+   "fieldname": "father_mobile_no",
+   "fieldtype": "Data",
+   "label": "Father Mobile No"
+  },
+  {
+   "fieldname": "column_break_25",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reference",
+   "fieldtype": "Select",
+   "label": "Reference",
+   "options": "FOLK Guide\nFOLK Student\nOnline\nTemple\nBook Distribution\nOther"
+  },
+  {
+   "fieldname": "reference_remarks",
+   "fieldtype": "Data",
+   "label": "Reference Remarks"
+  },
+  {
+   "depends_on": "eval:doc.occupation=='Student'",
+   "fieldname": "institute_details_section",
+   "fieldtype": "Section Break",
+   "label": "Institute Details"
+  },
+  {
+   "fieldname": "institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name"
+  },
+  {
+   "fieldname": "degree_pursuing",
+   "fieldtype": "Link",
+   "label": "Degree Pursuing",
+   "options": "FOLK Institute Degree"
+  },
+  {
+   "fieldname": "degree_pursuing_since",
+   "fieldtype": "Select",
+   "label": "Degree Pursuing Since",
+   "options": "2018\n2019\n2020\n2021\n2022\n2023\n2024\n2025\n2026\n2027\n2028\n2029\n2030"
+  },
+  {
+   "depends_on": "eval:in_list(['Business','Working'], doc.occupation)",
+   "fieldname": "company_details_section",
+   "fieldtype": "Section Break",
+   "label": "Company Details"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Data",
+   "label": "Designation"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_22",
+   "fieldtype": "Section Break",
+   "label": "Home Address"
+  },
+  {
+   "fieldname": "address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "current_address_section",
+   "fieldtype": "Section Break",
+   "label": "Current Address"
+  },
+  {
+   "fieldname": "c_address_line_1",
+   "fieldtype": "Data",
+   "label": "Address Line 1"
+  },
+  {
+   "fieldname": "c_address_line_2",
+   "fieldtype": "Data",
+   "label": "Address Line 2"
+  },
+  {
+   "fieldname": "column_break_35",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "c_city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "c_state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "c_pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "exit",
+   "fieldtype": "Section Break",
+   "label": "Exit"
+  },
+  {
+   "fieldname": "date_of_leaving",
+   "fieldtype": "Date",
+   "label": "Date of Leaving"
+  },
+  {
+   "fieldname": "leaving_certificate_number",
+   "fieldtype": "Data",
+   "label": "Leaving Certificate Number"
+  },
+  {
+   "fieldname": "column_break_31",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason_for_leaving",
+   "fieldtype": "Text",
+   "label": "Reason For Leaving"
+  },
+  {
+   "fieldname": "folk_plus_extra_section",
+   "fieldtype": "Section Break",
+   "label": "FOLK Plus Extra"
+  },
+  {
+   "description": "1 Denotes Very Less Touch. 5 Denotes Very Close Touch",
+   "fieldname": "plus_level",
+   "fieldtype": "Select",
+   "in_standard_filter": 1,
+   "label": "Plus Level",
+   "options": "\n1\n2\n3\n4\n5"
+  },
+  {
+   "fieldname": "plus_remarks",
+   "fieldtype": "Long Text",
+   "label": "Plus Remarks"
+  },
+  {
+   "fieldname": "calling_group",
+   "fieldtype": "Link",
+   "label": "Temporary Caling Group Assigned",
+   "options": "FOLK Calling Group"
+  },
+  {
+   "fieldname": "column_break_63",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "from_institute",
+   "fieldtype": "Data",
+   "label": "From Institute"
+  },
+  {
+   "fieldname": "batch",
+   "fieldtype": "Data",
+   "label": "Batch"
+  },
+  {
+   "fieldname": "from_institute_degree",
+   "fieldtype": "Data",
+   "label": "From Institute Degree"
+  },
+  {
+   "fieldname": "proof_ids_section",
+   "fieldtype": "Section Break",
+   "label": "Proof IDs"
+  },
+  {
+   "fieldname": "aadhar_id",
+   "fieldtype": "Data",
+   "label": "Aadhar ID"
+  },
+  {
+   "fieldname": "vehicle_license_id",
+   "fieldtype": "Data",
+   "label": "Vehicle License ID"
+  },
+  {
+   "fieldname": "voter_id",
+   "fieldtype": "Data",
+   "label": "Voter ID"
+  }
+ ],
+ "grid_page_length": 50,
+ "image_field": "image",
+ "links": [],
+ "modified": "2025-05-26 16:47:46.293858",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Student",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "search_fields": "full_name, folk_guide",
+ "show_name_in_global_search": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "title",
+ "track_changes": 1
+}

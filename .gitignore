@@ -1,0 +1,18 @@
+.DS_Store
+*.pyc
+*.egg-info
+*.swp
+*.md
+tags
+hkm/docs/current
+hkm/public/dist
+hkm/fixtures
+# hkm/operations
+# hkm/operations/operations.py
+hkm/mobile_app/test.py
+hkm/erpnext___custom/extend/hr/operations.py
+hkm/operations/hkm_pay_test.py
+hkm/operations/bank
+node_modules
+hkm/operations/send_message
+hkm/operations/smartPing/send_message.py

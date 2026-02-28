@@ -1,0 +1,175 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-06-18 19:51:55.162859",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "purchase_order_tab",
+  "po_approval_section",
+  "po_approval_on_whatsapp",
+  "smartping_enabled",
+  "po_whatsapp_template",
+  "material_request_expiry",
+  "purchase_order_expiry",
+  "material_request_required_for_purchase_order",
+  "voucher_flow_section",
+  "pp_group",
+  "item_code_section",
+  "item_code_default_series",
+  "accounts_section",
+  "one_time_restrictions_enabled",
+  "one_time_vendor_limit",
+  "active_company_for_hkm_expense_voucher_section",
+  "active_company",
+  "approval_matrix_section",
+  "approval_email_fernet_key",
+  "bank_qr_api",
+  "other_tab"
+ ],
+ "fields": [
+  {
+   "fieldname": "purchase_order_tab",
+   "fieldtype": "Tab Break",
+   "label": "General"
+  },
+  {
+   "default": "0",
+   "fieldname": "po_approval_on_whatsapp",
+   "fieldtype": "Check",
+   "label": "PO Approval on WhatsApp",
+   "mandatory_depends_on": "eval:doc.po_approval_on_whatsapp"
+  },
+  {
+   "fieldname": "other_tab",
+   "fieldtype": "Tab Break",
+   "label": "Other"
+  },
+  {
+   "fieldname": "po_whatsapp_template",
+   "fieldtype": "Data",
+   "label": "WhatsApp Template"
+  },
+  {
+   "fieldname": "po_approval_section",
+   "fieldtype": "Section Break",
+   "label": "Buying"
+  },
+  {
+   "fieldname": "voucher_flow_section",
+   "fieldtype": "Section Break",
+   "label": "Voucher Flow"
+  },
+  {
+   "fieldname": "pp_group",
+   "fieldtype": "Link",
+   "label": "Paid & Purchased Supplier Group",
+   "options": "Supplier Group"
+  },
+  {
+   "fieldname": "item_code_section",
+   "fieldtype": "Section Break",
+   "label": "Item Code"
+  },
+  {
+   "description": "This series will be fetched in case the Item Group doesn't have a Series set in. This will be used in New Item Creation.",
+   "fieldname": "item_code_default_series",
+   "fieldtype": "Data",
+   "label": "Default Series"
+  },
+  {
+   "fieldname": "accounts_section",
+   "fieldtype": "Section Break",
+   "label": "One Time Vendor Rules"
+  },
+  {
+   "default": "10000",
+   "description": "This restriction will be put on Purchase Order Amount to disallow big amounts to be tagged in One Time Vendor.",
+   "fieldname": "one_time_vendor_limit",
+   "fieldtype": "Currency",
+   "label": "One Time Vendor Limit",
+   "mandatory_depends_on": "eval:doc.one_time_restrictions_enabled"
+  },
+  {
+   "default": "0",
+   "fieldname": "one_time_restrictions_enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "material_request_expiry",
+   "fieldtype": "Int",
+   "label": "Material Request Expiry",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "purchase_order_expiry",
+   "fieldtype": "Int",
+   "label": "Purchase Order Expiry",
+   "non_negative": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "material_request_required_for_purchase_order",
+   "fieldtype": "Check",
+   "label": "Material Request Required for Purchase Order"
+  },
+  {
+   "fieldname": "active_company_for_hkm_expense_voucher_section",
+   "fieldtype": "Section Break",
+   "label": "Active Company For HKM Expense Voucher"
+  },
+  {
+   "fieldname": "active_company",
+   "fieldtype": "Table",
+   "label": "Companies",
+   "options": "HKM Active Company"
+  },
+  {
+   "fieldname": "approval_matrix_section",
+   "fieldtype": "Section Break",
+   "label": "Approval Matrix"
+  },
+  {
+   "fieldname": "approval_email_fernet_key",
+   "fieldtype": "Data",
+   "label": "Approval Matrix Email Fernet Key"
+  },
+  {
+   "fieldname": "bank_qr_api",
+   "fieldtype": "Attach",
+   "label": "BANK QR API "
+  },
+  {
+   "default": "0",
+   "fieldname": "smartping_enabled",
+   "fieldtype": "Check",
+   "label": "SmartPing Enabled"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-21 11:12:16.750133",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM General Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

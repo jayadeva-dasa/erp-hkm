@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-06-21 12:29:32.746451",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "for_section",
+  "registration_type",
+  "naming_series",
+  "course",
+  "session",
+  "remarks",
+  "section_break_7",
+  "students"
+ ],
+ "fields": [
+  {
+   "fieldname": "for_section",
+   "fieldtype": "Section Break",
+   "label": "For"
+  },
+  {
+   "fieldname": "registration_type",
+   "fieldtype": "Select",
+   "label": "Registration Type",
+   "options": "Course\nSession"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "FSR-.YY.-.MM.-"
+  },
+  {
+   "depends_on": "eval:doc.registration_type == 'Course'",
+   "fieldname": "course",
+   "fieldtype": "Link",
+   "label": "Course",
+   "options": "FOLK Course"
+  },
+  {
+   "depends_on": "eval:doc.registration_type == 'Session'",
+   "fieldname": "session",
+   "fieldtype": "Link",
+   "label": "Session",
+   "options": "FOLK Session"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "section_break_7",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "students",
+   "fieldtype": "Table",
+   "label": "Students",
+   "options": "FOLK Session Registration Student"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:53:21.373751",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Session Registration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

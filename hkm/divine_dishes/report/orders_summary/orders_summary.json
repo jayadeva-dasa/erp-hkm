@@ -1,0 +1,29 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2023-10-28 12:31:58.918041",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-10-28 12:31:58.918041",
+ "modified_by": "Administrator",
+ "module": "Divine Dishes",
+ "name": "Orders Summary",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "DD Order",
+ "report_name": "Orders Summary",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "DD Manager"
+  }
+ ]
+}

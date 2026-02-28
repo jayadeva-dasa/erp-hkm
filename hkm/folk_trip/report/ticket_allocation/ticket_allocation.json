@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2021-12-19 22:38:27.341665",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2022-02-05 18:29:51.536707",
+ "modified_by": "Administrator",
+ "module": "FOLK Trip",
+ "name": "Ticket Allocation",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "FOLK Trip Train Ticket",
+ "report_name": "Ticket Allocation",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "FOLK Admin"
+  }
+ ]
+}

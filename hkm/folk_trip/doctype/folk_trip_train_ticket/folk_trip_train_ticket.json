@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:pnr_number",
+ "creation": "2021-12-19 16:31:55.428080",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "train",
+  "pnr_number",
+  "irctc_id",
+  "passengers"
+ ],
+ "fields": [
+  {
+   "fieldname": "train",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Train",
+   "options": "FOLK Trip Train",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pnr_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "PNR Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "irctc_id",
+   "fieldtype": "Link",
+   "label": "IRCTC ID",
+   "options": "FOLK Trip IRCTC ID"
+  },
+  {
+   "fieldname": "passengers",
+   "fieldtype": "Table",
+   "label": "Passengers",
+   "options": "FOLK Trip Train Passenger"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:20:54.518638",
+ "modified_by": "Administrator",
+ "module": "FOLK Trip",
+ "name": "FOLK Trip Train Ticket",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,258 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500;700&display=swap" rel="stylesheet">
+<style>
+	.print-format table, .print-format tr, 
+	.print-format td, .print-format div, .print-format p {
+		line-height: 150%;
+		vertical-align: middle;
+		font-family: 'Open Sans', sans-serif;
+	}
+	@media screen {
+		.print-format {
+			width: 4in;
+			padding: 0.25in;
+			min-height: 8in;
+		}
+	}
+	.numberCircle {
+		margin: auto;
+		border-radius: 50%;
+		width: 36px;
+		height: 36px;
+		padding: 8px;
+
+		background: #fff;
+		border: 2px solid #666;
+		color: #666;
+		text-align: center;
+
+		font: 32px Arial, sans-serif;
+	}
+	/* #watermark
+	{
+		position:fixed;
+		bottom:5px;
+		right:5px;
+		opacity:0.5;
+		z-index:99;
+		color:white;
+	} */
+	#topdetails {
+		height: 50px;
+		display: flex;
+		justify-content: space-between;
+	}
+	#billdetails {
+		height: 70px;
+		display: flex;
+		justify-content: space-between;
+	}
+	#counter_name{
+		font-size: 20px;
+		font-weight: bold;
+	}
+	#order_by{
+		font-size: 12px;
+		font-weight: bold;
+	}
+</style>
+
+{% if letter_head %}
+    {{ letter_head }}
+{% endif %}
+
+{% set response = doc.get_items_segregated() %}
+
+{% set c_datas = response[0] %}
+
+{% set token = response[1] %}
+
+{%- for c_data in c_datas -%}
+		<div>
+			{%- set group_record = frappe.get_doc("Item Group", c_data) -%}
+
+			<div id="topdetails" class="my-2">
+					<div>
+						<div style="display: inline-block; writing-mode: vertical-lr; transform: rotate(-180deg); font-size: 10px;">Token No.</div>
+						<div style="font-size:30px;font-weight:bold;display:inline-block;width:auto;height:auto;border:1px solid;padding:0px 10px; border-radius:10px 5px;text-align:center">
+							<p>{{token}}</p>
+						</div>
+						
+					</div>
+					<div style="text-align:end;padding: 0px 2px;">
+						<p>{{c_data}}<br></b>{{ doc.get_formatted("posting_date") }}</b> | {{ doc.get_formatted("posting_time") }} <br>BL No. <b>{{ doc.name }}</b></p>
+					</div>
+			</div>
+
+			<!-- <h3><span class ="numberCircle">{{group_record.live_counter_no}}</span> {{c_data}}</h3><br> -->
+			
+			
+			<table class="table table-condensed table-bordered">
+				<!-- <thead>
+					<tr>
+						<th width="20%" class="text-left">{{ _("S.No.") }}</th>
+						<th width="60%" class="text-left">{{ _("Item Name") }}</th>
+						<th width="20%" class="text-left">{{ _("Qty") }}</th>
+					</tr>
+				</thead> -->
+				<tbody>
+					{%- for c_item in c_datas[c_data] -%}
+					<tr>
+						<!-- <td class="text-left">{{loop.index}}</td> -->
+						<td style = "font-size:large;font-weight: bold;" class="text-left">{{c_datas[c_data][c_item].name}}</td>
+						<td style = "font-size:x-large" class="text-center">{{c_datas[c_data][c_item].qty}}</td>
+					</tr>
+					{%- endfor -%}
+				</tbody>
+			</table>
+
+		</div>
+		<div class="page-break"></div>
+{%- endfor -%}
+<br>
+<br>
+{% set gst_details = doc.get_gst_breakup() %}
+<p class="text-center" style="margin-bottom: 1rem;">
+	<span style="font-size:17px ;text-transform:uppercase;"><b>{{ doc.company }}</b><br></span>
+	<span style="font-size:11px ; text-transform:uppercase;">
+	{% set address_company = doc.get_company_address() %}
+	{{ address_company }}
+	<b>{{ _("GSTIN") }}:</b>{{ doc.company_gstin }}
+	</span>
+	
+	<br>
+	<b>{{ doc.select_print_heading or _("Tax Invoice") }}</b><br>
+</p>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<div id="billdetails" class ="my-2">
+	<div style="margin-block: auto;">
+		<div style="display: inline-block; writing-mode: vertical-lr; transform: rotate(-180deg); font-size: 10px;">Token No.</div>
+		<div style="font-size:30px;font-weight:bold;display:inline-block;width:auto;height:auto;border:1px solid;padding:0px 10px; border-radius:10px 5px;text-align:center">
+			<p>{{token}}</p>
+		</div>
+		
+	</div>
+	<div style="margin-block: auto;">
+		<div style="font-size:12px">
+			{{ _("BL No") }}:<b> {{ doc.name }}</b><br>
+			<i class="fa-solid fa-user"></i>{{ _("Customer") }}:</b> {{ doc.customer_name }}<br>
+			{{ _("Date") }}: <b></b>{{ doc.get_formatted("posting_date") }}</b>
+			{{ _("Time") }}: <b>{{  doc.get_formatted("posting_time") }}</b><br>
+			{{ _("Cashier") }}:<b>{{ gst_details[2] }}</b>
+		</div>
+	</div>
+</div>
+
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<table class="table table-condensed table-bordered">
+	<thead>
+		<tr>
+		    <th width="10%" class="text-right">{{ _("HSN") }}</th>
+			<th width="30%">{{ _("Item") }}</th>
+			<th width="20%" class="text-right">{{ _("Qty") }}</th>
+			<th width="15%" class="text-right">{{ _("Rate") }}</th>
+			<th width="30%" class="text-right">{{ _("Amount") }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for item in doc.items -%}
+		<tr>
+		    {%- set item_record = frappe.get_doc("Item", item.item_code) -%}
+			<td class="text-right">{{item_record.gst_hsn_code}}</td>
+			<td>
+				<!--<span style="font-size:7px">{{ item.item_code }}</span>-->
+				
+				{%- if item.item_name != item.item_code -%}
+					<b>{{ item.item_name }}</b>
+				{%- endif -%}
+				{%- if item.serial_no -%}
+					<b>{{ _("SR.No") }}:</b><br>
+					{{ item.serial_no | replace("\n", ", ") }}
+				{%- endif -%}
+			</td>
+			<td class="text-right">{{ item.qty }} {{item.uom}}</td>
+			<td class="text-right">{{ item.rate }}</td>
+			{% set temp_taxable = (item.qty*item.rate) %}
+			<td class="text-right">{{ "%.2f"|format(temp_taxable) }}</td>
+			
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+
+<p style="text-align:left;">
+    Subtotal
+    <span style="float:right;">
+       {{ doc.get_formatted("total") }}
+    </span>
+</p>
+<p style="text-align:left;">
+    GST on {{ doc.get_formatted("total") }}
+    <span style="float:right;">
+       ₹ {{ gst_details[1]}}
+    </span>
+</p>
+<p style="text-align:left;">
+    Bill Total
+    <span style="float:right;">
+      {{ doc.get_formatted("grand_total") }}
+    </span>
+</p>
+<p style="text-align:left;">
+    Round Off(+-)
+    <span style="float:right;">
+      {{ doc.get_formatted("rounding_adjustment") }}
+    </span>
+</p>
+{%- if doc.discount_amount -%}
+<p style="text-align:left;">
+    Discount
+    <span style="float:right;">
+     {{ doc.get_formatted("discount_amount") }}
+    </span>
+</p>
+{%- endif -%}
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<p style="text-align:left; font-weight:700;font-size:18px">
+    TOTAL PAYABLE
+    <span style="float:right;">
+      {{ doc.get_formatted("rounded_total") }}
+    </span>
+</p>
+<hr style="height:1px; width: 100%; margin:0 auto;line-height:1px;background-color: #848484">
+<br>
+<p>GST BREAKUP DETAILS</p>
+
+<table class="table table-condensed table-bordered">
+	<thead>
+		<tr>
+		    <th width="20%" class="text-right">{{ _("HSN") }}</th>
+			<th width="10%" class="text-right">{{ _("GST%age") }}</th>
+			<th width="20%" class="text-right">{{ _("Taxable") }}</th>
+			<th width="10%" class="text-right">{{ _("CGST") }}</th>
+			<th width="10%" class="text-right">{{ _("SGST") }}</th>
+		</tr>
+	</thead>
+	<tbody>
+		{%- for tax_row in gst_details[0] -%}
+		<tr>
+			<td class="text-right">{{tax_row.HSN}}</td>
+			<td class="text-right">{{tax_row.GSTp}}%</td>
+			<td class="text-right">{{tax_row.Taxable}}</td>
+			<td class="text-right">{{tax_row.CGSTI}}</td>
+			<td class="text-right">{{tax_row.SGSTI}}</td>
+			
+		</tr>
+		{%- endfor -%}
+	</tbody>
+</table>
+<p>{{ doc.terms or "" }}</p>
+
+<p class="text-center">{{ _("No Return, No Exchange.") }}</p>
+<p class="text-center">{{ _("Thank you, please visit again.") }}</p>
+
+<br>
+<br>
+<p>...</p>

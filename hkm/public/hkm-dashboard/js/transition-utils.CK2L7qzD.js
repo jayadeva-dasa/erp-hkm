@@ -1,0 +1,1 @@
+const s={ease:[.25,.1,.25,1],easeIn:[.4,0,1,1],easeOut:[0,0,.2,1]},a={enter:{duration:.2,ease:s.easeOut},exit:{duration:.1,ease:s.easeIn}},n={enter:(t,e)=>({...t,delay:typeof e=="number"?e:e?.enter}),exit:(t,e)=>({...t,delay:typeof e=="number"?e:e?.exit})};export{s as T,a,n as w};

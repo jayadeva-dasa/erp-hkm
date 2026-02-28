@@ -1,0 +1,113 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "ALB-SLE-.YYYY.-.#####",
+ "creation": "2022-02-07 10:40:15.048353",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "datetime",
+  "voucher_type",
+  "voucher_no",
+  "book",
+  "qty",
+  "qty_after_transaction",
+  "issue_details_section",
+  "transaction_user",
+  "transaction"
+ ],
+ "fields": [
+  {
+   "fieldname": "voucher_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Voucher Type",
+   "options": "DocType",
+   "reqd": 1
+  },
+  {
+   "fieldname": "voucher_no",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Voucher No",
+   "options": "voucher_type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "book",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Book",
+   "options": "Ashram Library Book",
+   "reqd": 1
+  },
+  {
+   "fieldname": "qty_after_transaction",
+   "fieldtype": "Int",
+   "label": "Actual Qty After Transaction"
+  },
+  {
+   "fieldname": "qty",
+   "fieldtype": "Int",
+   "label": "Actual Quantity"
+  },
+  {
+   "fieldname": "datetime",
+   "fieldtype": "Datetime",
+   "label": "Posting Date Time"
+  },
+  {
+   "fieldname": "issue_details_section",
+   "fieldtype": "Section Break",
+   "label": "Issue Return Details"
+  },
+  {
+   "fieldname": "transaction",
+   "fieldtype": "Select",
+   "label": "Transaction",
+   "options": "Inward\nIssue\nReturn"
+  },
+  {
+   "fieldname": "transaction_user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "Ashram Store User"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-04-20 09:20:05.994176",
+ "modified_by": "Administrator",
+ "module": "Ashram Issue Counter",
+ "name": "Ashram Library Book Ledger",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Ashram Store Manager",
+   "select": 1,
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

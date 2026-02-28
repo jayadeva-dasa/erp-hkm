@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_guest_to_view": 1,
+ "autoname": "short_link",
+ "creation": "2021-06-13 10:43:04.342954",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purpose",
+  "redirect_to",
+  "short_link",
+  "count"
+ ],
+ "fields": [
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Purpose",
+   "reqd": 1
+  },
+  {
+   "fieldname": "redirect_to",
+   "fieldtype": "Data",
+   "label": "Redirect To",
+   "reqd": 1
+  },
+  {
+   "description": "https://{domain}/r-{Short Link}",
+   "fieldname": "short_link",
+   "fieldtype": "Data",
+   "label": "Short Link",
+   "reqd": 1,
+   "set_only_once": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "count",
+   "fieldtype": "Int",
+   "label": "Count",
+   "non_negative": 1,
+   "read_only": 1
+  }
+ ],
+ "links": [],
+ "modified": "2023-02-18 17:44:47.977336",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Redirect",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "purpose",
+ "track_changes": 1
+}

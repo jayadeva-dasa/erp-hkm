@@ -1,0 +1,212 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "prompt",
+ "creation": "2024-10-25 10:03:56.173686",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "accounting_dimensions_section",
+  "cost_center",
+  "project",
+  "budget_details_section",
+  "fiscal_year",
+  "amount",
+  "column_break_budget",
+  "utilization",
+  "available",
+  "utilization_breakdown_section",
+  "utilization_payment_entries",
+  "utilization_unpaid_invoices",
+  "utilization_stock_expenses",
+  "column_break_util",
+  "utilization_purchase_orders",
+  "utilization_additional_expenses",
+  "connections_section",
+  "connections_html",
+  "budget_documentation_section",
+  "budget_documentation"
+ ],
+ "fields": [
+  {
+   "fieldname": "accounting_dimensions_section",
+   "fieldtype": "Section Break",
+   "label": "Accounting Dimensions"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "budget_details_section",
+   "fieldtype": "Section Break",
+   "label": "Budget Details"
+  },
+  {
+   "fieldname": "fiscal_year",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Fiscal Year",
+   "options": "Fiscal Year",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Budget Amount",
+   "precision": "0",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_budget",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utilization",
+   "fieldtype": "Currency",
+   "label": "Utilization",
+   "precision": "0",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Auto-calculated budget utilization (updated on each transaction)"
+  },
+  {
+   "fieldname": "available",
+   "fieldtype": "Currency",
+   "label": "Available",
+   "precision": "0",
+   "read_only": 1,
+   "in_list_view": 1,
+   "description": "Available budget (Amount - Utilization)"
+  },
+  {
+   "fieldname": "utilization_breakdown_section",
+   "fieldtype": "Section Break",
+   "label": "Utilization Breakdown",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "utilization_payment_entries",
+   "fieldtype": "Currency",
+   "label": "Payment Entries",
+   "precision": "0",
+   "read_only": 1,
+   "description": "Direct payments made via Payment Entry"
+  },
+  {
+   "fieldname": "utilization_unpaid_invoices",
+   "fieldtype": "Currency",
+   "label": "Unpaid Purchase Invoices",
+   "precision": "0",
+   "read_only": 1,
+   "description": "Outstanding amount from unpaid purchase invoices"
+  },
+  {
+   "fieldname": "utilization_stock_expenses",
+   "fieldtype": "Currency",
+   "label": "Stock Expenses",
+   "precision": "0",
+   "read_only": 1,
+   "description": "Stock-related expenses from Stock Entry (Material Issue/Consumption)"
+  },
+  {
+   "fieldname": "column_break_util",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "utilization_purchase_orders",
+   "fieldtype": "Currency",
+   "label": "Unpaid/Uninvoiced Purchase Orders",
+   "precision": "0",
+   "read_only": 1,
+   "description": "PO amounts not yet invoiced or paid"
+  },
+  {
+   "fieldname": "utilization_additional_expenses",
+   "fieldtype": "Currency",
+   "label": "Additional Expenses (GL Entries)",
+   "precision": "0",
+   "read_only": 1,
+   "description": "Other expense GL entries (Journal Entry, etc. excluding Stock Entry)"
+  },
+  {
+   "fieldname": "connections_section",
+   "fieldtype": "Section Break",
+   "label": "Connections"
+  },
+  {
+   "fieldname": "connections_html",
+   "fieldtype": "HTML",
+   "label": "Related Transactions"
+  },
+  {
+   "fieldname": "budget_documentation_section",
+   "fieldtype": "Section Break",
+   "label": "How Budget Works",
+   "collapsible": 1,
+   "collapsed": 1
+  },
+  {
+   "fieldname": "budget_documentation",
+   "fieldtype": "HTML",
+   "label": "Documentation",
+   "options": "<div style='padding: 15px; background: #f8f9fa; border-radius: 8px; font-size: 13px; line-height: 1.8;'>\n<h4 style='margin-top: 0; color: #2563eb;'>📊 Understanding HKM Budget System</h4>\n\n<h5 style='color: #374151; margin-top: 20px;'>🎯 What is Budget?</h5>\n<p>Budget is a financial allocation for a specific accounting dimension (Cost Center, Project, Cost Head, etc.) for a fiscal year. It helps track and control expenses.</p>\n\n<h5 style='color: #374151; margin-top: 20px;'>📝 How to Set a Budget:</h5>\n<ol style='margin-left: 20px;'>\n<li><strong>Select Accounting Dimension:</strong> Choose Cost Center, Project, or any custom dimension where you want to allocate budget</li>\n<li><strong>Set Fiscal Year:</strong> Select the financial year for this budget</li>\n<li><strong>Enter Budget Amount:</strong> Specify the total amount allocated</li>\n<li><strong>Save:</strong> The system will automatically track utilization</li>\n</ol>\n\n<h5 style='color: #374151; margin-top: 20px;'>💰 Budget Utilization Components:</h5>\n<ul style='margin-left: 20px;'>\n<li><strong>Payment Entries:</strong> Direct payments made via Payment Entry</li>\n<li><strong>Unpaid Purchase Invoices:</strong> Outstanding invoices not yet paid (includes both stock and non-stock items)</li>\n<li><strong>Stock Expenses:</strong> Stock consumption/issue expenses from Stock Entry</li>\n<li><strong>Purchase Orders:</strong> Committed amounts in POs not yet invoiced or paid</li>\n<li><strong>Additional Expenses:</strong> Other GL entries like Journal Entries</li>\n</ul>\n\n<h5 style='color: #374151; margin-top: 20px;'>⚠️ Important Notes:</h5>\n<ul style='margin-left: 20px;'>\n<li><strong>Purchase at Invoice Level:</strong> Budget is utilized when Purchase Invoice is created (not when stock is issued)</li>\n<li><strong>Asset Purchases:</strong> Assets are counted immediately at purchase, not when depreciated</li>\n<li><strong>Stock Tracking:</strong> Stock expenses are shown separately to help identify stock consumption patterns</li>\n<li><strong>Auto-Calculation:</strong> Utilization updates automatically on each transaction</li>\n<li><strong>Available Amount:</strong> Shows remaining budget (Budget Amount - Utilization)</li>\n</ul>\n\n<h5 style='color: #374151; margin-top: 20px;'>📈 Monitoring Budget:</h5>\n<ul style='margin-left: 20px;'>\n<li>View <strong>Budget Variance Report</strong> to see all budgets with detailed breakdown</li>\n<li>Check <strong>Utilization Breakdown</strong> section to see component-wise expenses</li>\n<li>Monitor <strong>Stock Expenses</strong> separately to ensure proper stock management</li>\n<li>Set alerts when budget exceeds certain threshold</li>\n</ul>\n\n<h5 style='color: #374151; margin-top: 20px;'>🔍 Example Scenario:</h5>\n<p style='background: white; padding: 10px; border-left: 3px solid #2563eb; margin-top: 10px;'>\n<strong>Budget:</strong> ₹10,00,000 for \"Vrindavan Yatra\" (Cost Head)<br>\n<strong>Utilization:</strong><br>\n- Payment Entries: ₹3,00,000 (direct payments made)<br>\n- Unpaid Invoices: ₹2,00,000 (invoices pending payment)<br>\n- Stock Expenses: ₹1,50,000 (materials issued from stock)<br>\n- Purchase Orders: ₹1,00,000 (POs not yet invoiced)<br>\n- Additional: ₹50,000 (other adjustments)<br>\n<strong>Total Utilization:</strong> ₹8,00,000<br>\n<strong>Available:</strong> ₹2,00,000\n</p>\n\n<p style='margin-top: 20px; color: #6b7280; font-size: 12px;'>\n<em>💡 Tip: Regularly review the Budget Variance Report to stay on top of your budget allocations and prevent overspending.</em>\n</p>\n</div>"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-01-29 11:05:57.660402",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM Budget",
+ "naming_rule": "Set by user",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All",
+   "share": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

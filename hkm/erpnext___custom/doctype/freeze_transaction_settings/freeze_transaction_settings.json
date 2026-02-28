@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "field:company",
+ "creation": "2022-02-08 11:13:14.037241",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "freeze_from",
+  "column_break_3",
+  "freeze_upto",
+  "frozen_documents_section",
+  "forzen_documents"
+ ],
+ "fields": [
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "freeze_upto",
+   "fieldtype": "Date",
+   "label": "Freeze Upto"
+  },
+  {
+   "fieldname": "frozen_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Frozen Documents"
+  },
+  {
+   "fieldname": "forzen_documents",
+   "fieldtype": "Table",
+   "options": "Freeze Transaction Settings Document",
+   "reqd": 1
+  },
+  {
+   "fieldname": "freeze_from",
+   "fieldtype": "Date",
+   "label": "Freeze From"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2023-10-07 16:21:57.999621",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "Freeze Transaction Settings",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

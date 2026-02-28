@@ -1,0 +1,167 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-11-19 10:42:59.712136",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_fgrq",
+  "company",
+  "asset_category",
+  "asset_name",
+  "asset_id",
+  "purchased_date",
+  "purchased_amount",
+  "availability_status",
+  "column_break_oydw",
+  "custodian_department",
+  "secondary_custodian",
+  "location",
+  "remarks",
+  "amended_from",
+  "section_break_gasb",
+  "specification"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_fgrq",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "HKM Assets Reco",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fieldname": "asset_category",
+   "fieldtype": "Link",
+   "label": "Asset Category",
+   "options": "Asset Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fetch_from": "asset_id.purchase_date",
+   "fetch_if_empty": 1,
+   "fieldname": "purchased_date",
+   "fieldtype": "Date",
+   "label": "Purchased Date"
+  },
+  {
+   "fetch_from": "asset_id.purchase_amount",
+   "fetch_if_empty": 1,
+   "fieldname": "purchased_amount",
+   "fieldtype": "Currency",
+   "label": "Purchased Amount"
+  },
+  {
+   "fieldname": "secondary_custodian",
+   "fieldtype": "Link",
+   "label": "Secondary Custodian",
+   "options": "User"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Data",
+   "label": "Remarks"
+  },
+  {
+   "fetch_from": "asset_category.execution_department",
+   "fieldname": "custodian_department",
+   "fieldtype": "Link",
+   "label": "Custodian Department",
+   "options": "Execution Department",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_oydw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_gasb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "asset_id.asset_name",
+   "fetch_if_empty": 1,
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "label": "Asset Name"
+  },
+  {
+   "fieldname": "availability_status",
+   "fieldtype": "Select",
+   "label": "Availability Status",
+   "options": "New\nAvailable"
+  },
+  {
+   "fieldname": "asset_id",
+   "fieldtype": "Link",
+   "label": "Asset ID",
+   "options": "Asset"
+  },
+  {
+   "fieldname": "specification",
+   "fieldtype": "Table",
+   "label": "Specification",
+   "options": "HKM Asset Specification Value"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-11-30 10:53:43.203739",
+ "modified_by": "Administrator",
+ "module": "ERPNext - Custom",
+ "name": "HKM Assets Reco",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Asset Reco",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

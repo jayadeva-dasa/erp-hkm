@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-05-24 15:10:26.355555",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "purpose",
+  "calling_script",
+  "volunteers",
+  "naming_series"
+ ],
+ "fields": [
+  {
+   "fieldname": "purpose",
+   "fieldtype": "Data",
+   "label": "Purpose"
+  },
+  {
+   "fieldname": "calling_script",
+   "fieldtype": "Long Text",
+   "label": "Calling Script"
+  },
+  {
+   "fieldname": "volunteers",
+   "fieldtype": "Table",
+   "label": "Volunteers",
+   "options": "FOLK Volunteer User"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "FCC-.YY.-.MM.-"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-02-05 18:53:20.150926",
+ "modified_by": "Administrator",
+ "module": "FOLK Base",
+ "name": "FOLK Calling Campaign",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "FOLK Guide",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

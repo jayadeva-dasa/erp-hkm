@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Warehouse Sales & Stock Analysis</title>
+</head>
+<style>
+    /* table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        font-size: 10px;
+        } */
+        body{
+            font-size: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 0.5px solid black;
+            padding: 2px;
+            text-align: left;
+            
+        }
+
+        /* Center align the 2nd and 3rd columns */
+        td:nth-child(2),
+        td:nth-child(3) {
+            text-align: center;
+            font-weight: bold;
+        }
+</style>
+<body>
+    <h4>POS Closing Stock</h4>
+    <h5 id="dateToday"></h5>
+    <table style="border: 1px;">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>CB</th>
+                <th>POS</th>
+                <th>PH</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+        const date = new Date();
+
+        let currentDay= String(date.getDate()).padStart(2, '0');
+
+        let currentMonth = String(date.getMonth()+1).padStart(2,"0");
+
+        let currentYear = date.getFullYear();
+
+        let currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
+        // Function to fetch data from the URL
+        function fetchData() {
+            
+            const apiUrl = 'https://hkmjerp.in/api/method/frappe.desk.query_report.run';
+            const filters = {
+                company: 'Touchstone Foundation Jaipur',
+                warehouse: 'Bakery & Confectionary - TSFJ',
+                from_date: currentDate,
+                to_date: currentDate,
+                show_for_pos_closing: 1
+            };
+
+            const queryParams = `filters=${encodeURIComponent(JSON.stringify(filters))}`;
+
+            const fullUrl = `${apiUrl}?report_name=Warehouse%20Sales%20%26%20Stock%20Analysis&${queryParams}&are_default_filters=false`;
+
+            fetch(fullUrl)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('dateToday').innerHTML = `Date : ${currentDate}`;
+                    const tableBody = document.getElementById('tableBody');
+                    data.message.result.forEach(item => {
+                        const row = document.createElement('tr');
+                        const itemNameCell = document.createElement('td');
+                        const closingBalanceCell = document.createElement('td');
+                        const unconsolidatedPOSQtyCell = document.createElement('td');
+                        const emptyPhysicalCell = document.createElement('td');
+
+                        itemNameCell.textContent = item.item_name;
+                        closingBalanceCell.textContent = Number(item.closing_balance).toFixed(2);
+                        if( "unconsolidated_pos_qty" in item){
+                            unconsolidatedPOSQtyCell.textContent = Number(item.unconsolidated_pos_qty).toFixed(2);
+                        }else{
+                            unconsolidatedPOSQtyCell.textContent = 0.00;
+                        }
+                        
+                        row.appendChild(itemNameCell);
+                        row.appendChild(closingBalanceCell);
+                        row.appendChild(unconsolidatedPOSQtyCell);
+                        row.appendChild(emptyPhysicalCell);
+
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+        fetchData();
+    </script>
+</body>
+</html>

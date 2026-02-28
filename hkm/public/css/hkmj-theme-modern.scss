@@ -1,0 +1,882 @@
+// ============================================
+// NAVBAR - Light & Clean
+// ============================================
+
+.navbar-light,
+.navbar-default,
+.navbar-expand {
+    background: var(--navbar-bg) !important;
+    box-shadow: var(--navbar-shadow) !important;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.navbar-default .navbar-nav > li > a,
+.navbar-expand .navbar-nav > li > a,
+.navbar-brand,
+.brand-name {
+    color: var(--navbar-text) !important;
+    
+    &:hover {
+        color: var(--navbar-text-hover) !important;
+    }
+}
+
+#navbar-search {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--input-text);
+    border-radius: var(--radius-md);
+    
+    &:focus {
+        border-color: var(--input-border-focus);
+        box-shadow: var(--input-shadow-focus);
+    }
+    
+    &::placeholder {
+        color: var(--input-placeholder);
+    }
+}
+
+#navbar-breadcrumbs li.disabled a {
+    color: var(--navbar-doc-name-color);
+}
+
+// ============================================
+// PAGE HEADER - Minimal Spacing
+// ============================================
+
+.page-head {
+    padding: var(--space-2) 0 !important;
+    margin-bottom: var(--space-2) !important;
+    min-height: auto !important;
+}
+
+.page-title {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+}
+
+.page-head-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+// Reduce space below breadcrumbs
+.page-breadcrumb {
+    margin-bottom: var(--space-1) !important;
+    padding: 0 !important;
+}
+
+// Compact page actions
+.page-head .standard-actions {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+// Container padding
+.container {
+    padding-top: var(--space-2) !important;
+    padding-bottom: var(--space-2) !important;
+}
+
+// Page title area
+.page-title-area {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+// Title and actions row
+.page-head .row {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+// List view page header
+.list-page .page-head {
+    padding: var(--space-2) 0 !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+// Form view page header
+.form-page .page-head {
+    padding: var(--space-2) 0 !important;
+    margin-bottom: var(--space-2) !important;
+}
+
+// ============================================
+// CHECKBOXES - Proper Size & Spacing
+// ============================================
+
+input[type="checkbox"],
+.checkbox input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    min-height: 16px !important;
+    margin: 0 !important;
+    margin-right: var(--space-2) !important;
+    vertical-align: middle;
+}
+
+.checkbox label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+// List view checkbox spacing
+.list-row-checkbox {
+    padding-right: var(--space-3) !important;
+    
+    input[type="checkbox"] {
+        margin-right: var(--space-3) !important;
+    }
+}
+
+.list-row-col:first-child {
+    padding-left: var(--space-3) !important;
+}
+
+// Ensure proper spacing in list rows
+.list-row {
+    .level-left {
+        gap: var(--space-3);
+    }
+}
+
+// ============================================
+// LINK FIELD - Icon Alignment Fix & Minimal Padding
+// ============================================
+
+.link-field {
+    .awesomplete {
+        input {
+            padding-right: 38px !important; // Minimal padding for icons
+        }
+    }
+}
+
+// Link field action buttons (X and →) - Smaller
+.link-field .btn-open,
+.link-field .btn-clear {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 16px !important;
+    height: 16px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    vertical-align: middle !important;
+    
+    svg, i {
+        width: 10px !important;
+        height: 10px !important;
+        display: block !important;
+    }
+}
+
+// Container for link field buttons - Closer to edge
+.control-input-wrapper {
+    position: relative;
+    
+    .link-btn {
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 1px;
+    }
+}
+
+// Fix link field input padding specifically - Minimal
+input[data-fieldtype="Link"],
+.link-field input {
+    padding-right: 38px !important;
+}
+
+// Awesomplete dropdown button
+.link-field .awesomplete > ul {
+    right: 38px;
+}
+
+// ============================================
+// SIDEBAR - Clean & Modern
+// ============================================
+
+.desk-sidebar {
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+}
+
+.desk-sidebar .desk-sidebar-item {
+    background-color: var(--sidebar-item-bg);
+    border-radius: var(--radius-md);
+    margin: var(--space-1) var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    color: var(--sidebar-item-text);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+    
+    &:hover {
+        background-color: var(--sidebar-item-hover-bg);
+        color: var(--primary-700);
+        transform: translateX(2px);
+    }
+    
+    &.selected {
+        background-color: var(--sidebar-item-selected-bg);
+        color: var(--sidebar-item-selected-text);
+        border-color: var(--primary-300);
+        font-weight: 600;
+    }
+}
+
+.list-sidebar .list-sidebar-label,
+.list-sidebar .sidebar-action {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+// ============================================
+// CARDS & WIDGETS - Clean with Depth
+// ============================================
+
+.widget,
+.desk-page .widget,
+.dashboard .widget {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    transition: box-shadow var(--transition-base);
+    
+    &:hover {
+        box-shadow: var(--card-hover-shadow);
+    }
+}
+
+.widget .widget-head {
+    border-bottom: 1px solid var(--border-light);
+    padding: var(--space-4);
+    
+    .widget-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.01em;
+    }
+}
+
+.widget .widget-body {
+    padding: var(--space-4);
+}
+
+.widget-group .widget-group-head {
+    .widget-group-control,
+    .widget-group-title {
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+}
+
+.widget.shortcut-widget-box .widget-head .widget-title i {
+    color: var(--primary-600);
+}
+
+.widget.onboarding-widget-box .widget-body .onboarding-step span {
+    color: var(--text-primary);
+}
+
+// Make spacer widget invisible (no border, background, shadow)
+.widget.spacer {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+// Reduce spacing in shortcut cards
+.widget.shortcut-widget-box .widget-head {
+    padding: var(--space-2) var(--space-3); // 8px 12px instead of 16px
+    border-bottom: none; // Remove the line below title in small shortcut cards
+}
+
+// Hide empty body and footer in shortcut cards
+.widget.shortcut-widget-box .widget-body:empty,
+.widget.shortcut-widget-box .widget-footer:empty {
+    display: none;
+    padding: 0;
+    margin: 0;
+}
+
+// If widget-body has content, use minimal padding
+.widget.shortcut-widget-box .widget-body:not(:empty) {
+    padding: var(--space-2); // 8px instead of 16px
+}
+
+// ============================================
+// PAGE LAYOUT - Clean Background
+// ============================================
+
+.page-container {
+    background-color: var(--page-container-bg-color);
+}
+
+.page-head {
+    background-color: var(--page-head-bg-color);
+    padding: var(--space-2) 0 !important; // Minimal padding
+    margin-bottom: var(--space-2) !important;
+}
+
+.page-form {
+    background-color: var(--page-form-bg-color);
+}
+
+.layout-main-section.frappe-card,
+.form-section.card-section {
+    background: var(--bg-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.content {
+    background-color: var(--page-bg);
+}
+
+// ============================================
+// FORMS & INPUTS - High Visibility
+// ============================================
+
+.form-control,
+.input-with-feedback {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: var(--input-radius);
+    color: var(--input-text);
+    min-height: var(--input-height);
+    padding: var(--space-2) var(--space-3);
+    transition: all var(--transition-fast);
+    font-size: 14px;
+    
+    &:hover {
+        border-color: var(--input-border-hover);
+    }
+    
+    &:focus {
+        border-color: var(--input-border-focus);
+        outline: none;
+        background-color: var(--input-bg);
+        box-shadow: var(--input-shadow-focus);
+    }
+    
+    &:disabled {
+        background-color: var(--input-disabled-bg);
+        color: var(--input-disabled-text);
+        cursor: not-allowed;
+    }
+    
+    &::placeholder {
+        color: var(--input-placeholder);
+    }
+}
+
+.control-label {
+    color: var(--control-label-text-color);
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: var(--space-2);
+}
+
+// ============================================
+// BUTTONS - Modern & Accessible
+// ============================================
+
+.btn.btn-primary {
+    background-color: var(--btn-primary-bg);
+    border: none;
+    border-radius: var(--btn-radius);
+    color: var(--btn-primary-text);
+    font-weight: 500;
+    min-height: var(--btn-height);
+    padding: var(--space-2) var(--space-4);
+    box-shadow: var(--btn-shadow);
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+    
+    &:hover {
+        background-color: var(--btn-primary-hover-bg);
+        box-shadow: var(--btn-shadow-hover);
+        transform: translateY(-1px);
+    }
+    
+    &:active {
+        background-color: var(--btn-primary-active-bg);
+        transform: translateY(0);
+    }
+    
+    &:focus {
+        box-shadow: var(--shadow-focus);
+    }
+}
+
+.btn-default {
+    background-color: var(--btn-secondary-bg);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--btn-radius);
+    color: var(--btn-secondary-text);
+    font-weight: 500;
+    min-height: var(--btn-height);
+    padding: var(--space-2) var(--space-4);
+    transition: all var(--transition-fast);
+    
+    &:hover {
+        background-color: var(--btn-secondary-hover-bg);
+        border-color: var(--border-strong);
+        transform: translateY(-1px);
+    }
+    
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// ============================================
+// TABLES & GRIDS - (Using default Frappe styles)
+// ============================================
+
+// ============================================
+// CHILD TABLES - Normal Background for Non-Link Fields
+// ============================================
+
+// Reset all child table inputs to normal background
+.grid-body,
+.grid-row {
+    .form-control,
+    input,
+    select,
+    textarea {
+        background-color: var(--input-bg) !important;
+    }
+    
+    // Only link fields get special background
+    .link-field {
+        input {
+            background-color: var(--bg-secondary) !important;
+        }
+    }
+    
+    // Data fields should have normal background
+    input[data-fieldtype="Data"],
+    input[data-fieldtype="Float"],
+    input[data-fieldtype="Int"],
+    input[data-fieldtype="Currency"],
+    input[data-fieldtype="Percent"],
+    input[data-fieldtype="Date"],
+    input[data-fieldtype="Datetime"],
+    input[data-fieldtype="Time"],
+    select,
+    textarea {
+        background-color: var(--input-bg) !important;
+    }
+    
+    // Link fields get distinct background
+    input[data-fieldtype="Link"] {
+        background-color: var(--bg-secondary) !important;
+    }
+}
+
+// Ensure grid cells have proper background
+.grid-body .data-row .col {
+    background-color: transparent !important;
+}
+
+// Static cells (read-only) should be white
+.grid-body .data-row .static-area {
+    background-color: var(--bg-primary) !important;
+}
+
+// ============================================
+// SCROLLBARS - Subtle & Modern
+// ============================================
+
+::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast);
+    
+    &:hover {
+        background: var(--scrollbar-thumb-hover);
+    }
+}
+
+[data-page-route=Workspaces] .layout-main .layout-main-section-wrapper::-webkit-scrollbar-thumb,
+[data-page-route=Workspaces] .layout-main .layout-side-section::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
+// ============================================
+// TYPOGRAPHY - Better Readability
+// ============================================
+
+h6.uppercase,
+.h6.uppercase {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.collapse-indicator {
+    color: var(--text-secondary);
+    transition: transform var(--transition-fast);
+}
+
+// ============================================
+// BADGES & LABELS - High Contrast
+// ============================================
+
+.form-links .document-link .document-link-badge,
+.form-links .document-link .report-link-badge {
+    background-color: var(--primary-100);
+    color: var(--primary-700);
+    border-radius: var(--radius-sm);
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+// ============================================
+// FORM LINKS - Compact Layout
+// ============================================
+
+.form-links {
+    .document-link,
+    .report-link {
+        margin-bottom: var(--space-2) !important; // Reduced from default
+        
+        .btn-new,
+        .btn-open {
+            padding: var(--space-1) var(--space-2) !important;
+            min-height: 28px !important;
+            height: 28px !important;
+            width: 28px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            
+            svg, i {
+                width: 14px !important;
+                height: 14px !important;
+            }
+        }
+    }
+    
+    .document-link-badge,
+    .report-link-badge {
+        padding: var(--space-1) var(--space-3) !important;
+        height: 32px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        font-size: 13px !important;
+    }
+}
+
+// Compact form links section
+.links-section {
+    .section-head {
+        margin-bottom: var(--space-2) !important;
+    }
+}
+
+// ============================================
+// REPORT FILTERS - Compact Layout
+// ============================================
+
+.page-form {
+    // Make filter section more compact
+    .form-section {
+        padding: var(--space-3) var(--space-4) !important;
+        margin-bottom: var(--space-3) !important;
+    }
+    
+    // Compact filter fields
+    .frappe-control {
+        margin-bottom: var(--space-2) !important;
+        
+        .control-label {
+            font-size: 12px !important;
+            margin-bottom: var(--space-1) !important;
+            font-weight: 500 !important;
+        }
+        
+        .control-input,
+        .control-input-wrapper {
+            .form-control,
+            input,
+            select,
+            textarea {
+                min-height: 32px !important;
+                height: 32px !important;
+                padding: var(--space-1) var(--space-2) !important;
+                font-size: 13px !important;
+            }
+        }
+    }
+    
+    // Compact checkboxes in filters
+    .checkbox {
+        margin-bottom: var(--space-1) !important;
+        
+        label {
+            font-size: 12px !important;
+            padding: var(--space-1) 0 !important;
+        }
+    }
+    
+    // Compact buttons in filter section
+    .form-section .btn {
+        min-height: 32px !important;
+        height: 32px !important;
+        padding: var(--space-1) var(--space-3) !important;
+        font-size: 13px !important;
+    }
+}
+
+// Report page specific
+.page-content[data-page-route*="query-report"],
+.page-content[data-page-route*="Report"] {
+    .page-form {
+        // Even more compact for reports
+        .form-section {
+            padding: var(--space-2) var(--space-3) !important;
+        }
+        
+        .frappe-control {
+            margin-bottom: var(--space-1) !important;
+        }
+    }
+    
+    // Give more space to results
+    .page-head {
+        padding: var(--space-2) 0 !important;
+    }
+}
+
+// Compact filter row layout
+.filter-area,
+.standard-filter-section {
+    .form-group {
+        margin-bottom: var(--space-2) !important;
+    }
+    
+    .clearfix {
+        margin-bottom: var(--space-1) !important;
+    }
+}
+
+// ============================================
+// FOOTER
+// ============================================
+
+.web-footer {
+    background-color: var(--footer-bg-color);
+    border-top: 1px solid var(--border-light);
+}
+
+// ============================================
+// DARK MODE SPECIFIC ADJUSTMENTS
+// ============================================
+
+[data-theme="dark"] {
+    // Body background
+    body {
+        background-color: var(--page-bg);
+        color: var(--text-primary);
+    }
+    
+    // Improve contrast for links
+    a {
+        color: var(--primary-400);
+        
+        &:hover {
+            color: var(--primary-300);
+        }
+    }
+    
+    // Modal backgrounds
+    .modal-content {
+        background-color: var(--card-bg);
+        border-color: var(--border-medium);
+    }
+    
+    // Dropdown menus
+    .dropdown-menu {
+        background-color: var(--card-bg);
+        border-color: var(--border-medium);
+        
+        .dropdown-item {
+            color: var(--text-primary);
+            
+            &:hover {
+                background-color: var(--bg-hover);
+            }
+        }
+    }
+    
+    // Code blocks
+    pre, code {
+        background-color: var(--bg-tertiary);
+        color: var(--text-primary);
+        border-color: var(--border-medium);
+    }
+    
+    // Alerts
+    .alert {
+        border-color: var(--border-medium);
+    }
+    
+    // Badges
+    .badge {
+        &.badge-primary {
+            background-color: var(--primary-600);
+            color: var(--neutral-100);
+        }
+    }
+    
+    // Improve image visibility
+    img {
+        opacity: 0.9;
+        
+        &:hover {
+            opacity: 1;
+        }
+    }
+    
+    // Form sections
+    .form-section {
+        background-color: var(--card-bg);
+        border-color: var(--border-light);
+    }
+    
+    // Timeline
+    .timeline-item {
+        border-color: var(--border-light);
+        
+        .timeline-badge {
+            background-color: var(--bg-tertiary);
+            border-color: var(--border-medium);
+        }
+    }
+}
+
+// ============================================
+// THEME TOGGLE BUTTON - HIDDEN
+// ============================================
+
+.theme-toggle-btn {
+    display: none !important;
+}
+
+// ============================================
+// FULL WIDTH BY DEFAULT
+// ============================================
+
+// Force full width layout by default
+.container,
+.page-container {
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+// Main content area - full width with minimal padding
+.layout-main-section-wrapper,
+.page-content {
+    max-width: 100% !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+}
+
+// Form layout - full width
+.form-layout,
+.form-page {
+    max-width: 100% !important;
+}
+
+// List view - full width
+.frappe-list,
+.list-view {
+    max-width: 100% !important;
+}
+
+// Report view - full width
+.report-wrapper,
+.page-content[data-page-route*="query-report"],
+.page-content[data-page-route*="Report"] {
+    max-width: 100% !important;
+    
+    .page-form,
+    .page-body {
+        max-width: 100% !important;
+    }
+}
+
+// Dashboard - full width
+.dashboard-page,
+.workspace-page {
+    max-width: 100% !important;
+}
+
+// Hide "Toggle Full Width" button (optional - uncomment to hide)
+// .dropdown-menu a[onclick*="toggle_full_width"] {
+//     display: none !important;
+// }
+
+// Alternative: Keep button but make it non-functional since we're always full width
+.dropdown-menu a[onclick*="toggle_full_width"] {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+    
+    &::after {
+        content: " (Always On)";
+        font-size: 11px;
+        color: var(--text-muted);
+    }
+}
+
+// Ensure body doesn't restrict width
+body {
+    .page-container {
+        max-width: 100% !important;
+    }
+}
+
+// Remove any container restrictions
+.container-fluid {
+    max-width: 100% !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+}
+
+// ============================================
+// UTILITY CLASSES
+// ============================================
+
+.add-list-group-by > sidebar-action {
+    background-color: var(--bg-secondary);
+}
