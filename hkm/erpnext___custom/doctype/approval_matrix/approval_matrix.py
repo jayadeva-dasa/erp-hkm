@@ -26,6 +26,7 @@ class ApprovalMatrix(Document):
         target_doctype: DF.Link
         transitions: DF.Table[ApprovalMatrixDetail]
     # end: auto-generated types
+
     def validate(self):
         self.validate_applicable_fields()
 

@@ -40,15 +40,6 @@ def execute():
                 "description": "Secondary user who will receive MRN approval notifications for this warehouse",
             },
         ],
-        "HKM General Settings": {
-            "dt": "HKM General Settings",
-            "fieldtype": "Link",
-            "label": "Default Stock Issuer",
-            "fieldname": "default_stock_issuer",
-            "insert_after": "material_request_required_for_purchase_order",
-            "options": "User",
-            "description": "Default user to receive MRN approval notifications when warehouse doesn't have a stock issuer assigned",
-        },
     }
 
     try:

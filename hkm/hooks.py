@@ -145,6 +145,7 @@ override_doctype_class = {
     "POS Closing Entry": "hkm.erpnext___custom.overrides.HKMPOSClosingEntry.HKMPOSClosingEntry",
     "POS Invoice": "hkm.erpnext___custom.overrides.HKMPOSInvoice.HKMPOSInvoice",
     "Sales Invoice": "hkm.erpnext___custom.overrides.HKMSalesInvoice.HKMSalesInvoice",
+    "Sales Order": "hkm.erpnext___custom.overrides.HKMSalesOrder.HKMSalesOrder",
     "Journal Entry": "hkm.erpnext___custom.overrides.HKMJournalEntry.HKMJournalEntry",
     "Material Request": "hkm.erpnext___custom.overrides.HKMMaterialRequest.HKMMaterialRequest",
     "Purchase Order": "hkm.erpnext___custom.overrides.purchase_order.HKMPurchaseOrder.HKMPurchaseOrder",

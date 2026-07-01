@@ -53,7 +53,7 @@ class AUBankIntegration(Document):
 
     def on_update(self):
         old_doc = self.get_doc_before_save()
-        if self.active_company != old_doc.active_company:
+        if old_doc and self.active_company != old_doc.active_company:
             frappe.cache().hdel("hkm_box", "au_active_companies")
 
 @frappe.whitelist()
