@@ -99,7 +99,7 @@ frappe.ui.form.on("Supplier Creation Request", {
   gstin: async function (frm) {
     if (frm.doc.gstin) {
       // Validate GSTIN format
-      const validated_gstin = india_compliance.validate_gstin(frm.doc.gstin, true);
+      const validated_gstin = india_compliance.validate_gstin(frm.doc.gstin, false);
       
       if (validated_gstin) {
         frm.set_value('gstin', validated_gstin);

@@ -33,11 +33,6 @@ class HKMPaymentRequest(Document):
     def before_submit(self):
         self.request_creation = frappe.utils.now_datetime()
 
-    def autoname(self):
-        abbrevation = frappe.db.get_value("Company", self.company, "abbr")
-        prefix = f"B{abbrevation}"
-        self.name = prefix + getseries(prefix, 6)
-
     def validate(self):
         if (
             frappe.db.get_value("Bank Account", self.bank_account, "company")

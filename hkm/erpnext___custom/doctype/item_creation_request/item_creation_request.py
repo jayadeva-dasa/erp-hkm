@@ -30,6 +30,7 @@ class ItemCreationRequest(Document):
 
         asset_category: DF.Link | None
         asset_item: DF.Check
+        hsn_code: DF.Link | None
         is_sales_item: DF.Check
         item_group: DF.Link
         item_name: DF.Data
@@ -39,8 +40,8 @@ class ItemCreationRequest(Document):
         tax_category: DF.Link | None
         unit_of_measure: DF.Link
         valuation_rate: DF.Float
-
     # end: auto-generated types
+
     def validate(self):
         pass
         # if self.selling_rate is not None and self.valuation_rate is not None and self.selling_rate < self.valuation_rate:

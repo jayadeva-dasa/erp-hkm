@@ -3,8 +3,7 @@
  * Handles custom buttons and form behavior for Purchase Order doctype
  */
 frappe.ui.form.on("Purchase Order", {
-  onload: function (frm) {
-    // addApprovalActionItems(frm);
+  async onload(frm) {
     if (frm.doc.__islocal) {
       frm.set_value("locked", 0);
       frm.set_value("approval_status", null);
@@ -16,19 +15,21 @@ frappe.ui.form.on("Purchase Order", {
     if (frm.fields_dict["volunteer"]) {
       frm.set_query("volunteer", function () {
         return {
-          filters: { enabled: 1 }
+          filters: { enabled: 1 },
         };
       });
     } else {
       console.log("Volunteer field does not exist in this Doctype");
     }
+
+    await update_item_group_cache(frm);
+    register_item_query(frm);
   },
 
-  refresh: function (frm) {
-    // Hide submit button when document is locked and docstatus is 0
-    if (frm.doc.locked && frm.doc.docstatus == 0) {
-      frm.disable_save();
-    }
+  refresh(frm) {
+    // DO NOT do async work here — refresh fires too often and causes race conditions
+    register_item_query(frm);
+
     if (frm.fields_dict["volunteer"]) {
       frm.set_query("volunteer", function () {
         return {
@@ -37,6 +38,10 @@ frappe.ui.form.on("Purchase Order", {
       });
     } else {
       console.log("Volunteer field does not exist in this Doctype");
+    }
+
+    if (frm.doc.locked && frm.doc.docstatus == 0) {
+      frm.disable_save();
     }
 
     // Add approval action items (with duplicate prevention)
@@ -74,7 +79,6 @@ frappe.ui.form.on("Purchase Order", {
                   async: false,
                   freeze: true,
                   freeze_message: "Unlocking Purchase Order",
-
                   callback: (r) => {
                     if (!r.exc) {
                       frappe.show_alert({
@@ -96,7 +100,6 @@ frappe.ui.form.on("Purchase Order", {
                           }
                         });
 
-                      // If Actions has no items left, remove the Actions button itself
                       document
                         .querySelectorAll(".actions-btn-group")
                         .forEach((group) => {
@@ -107,6 +110,7 @@ frappe.ui.form.on("Purchase Order", {
                             group.remove();
                           }
                         });
+
                       frm.reload_doc();
                     }
                   },
@@ -128,6 +132,7 @@ frappe.ui.form.on("Purchase Order", {
       if (
         !frm.doc.locked &&
         (frappe.user.has_role("Purchase Manager") ||
+          frappe.user.has_role("Stock User") ||
           frappe.user.has_role("System Manager"))
       ) {
         frm
@@ -148,13 +153,10 @@ frappe.ui.form.on("Purchase Order", {
                       "Document Checked ... Setting Up Authorization",
                     callback: (r) => {
                       if (!r.exc) {
-                        // Show success message
                         frappe.show_alert({
                           message: "Purchase Order cancelled successfully",
                           indicator: "green",
                         });
-
-                        // Reload document
                         if (!r.exc) {
                           frm.reload_doc();
                           frm.refresh();
@@ -192,21 +194,124 @@ frappe.ui.form.on("Purchase Order", {
     }
   },
 
-  company: function (frm) {
-    frm.set_query("department", () => {
-      return {
-        filters: {
-          company: frm.doc.company,
-        },
-      };
-    });
+  async company(frm) {
+    frm.set_query("department", () => ({
+      filters: { company: frm.doc.company },
+    }));
+
+    await update_item_group_cache(frm);
+    register_item_query(frm);
   },
 });
 
-/**
- * Add approval action items (Approve/Reject) with proper duplicate prevention
- * @param {Object} frm - The form object
+/*
+ * Purchase Order Item Events
  */
+frappe.ui.form.on("Purchase Order Item", {
+  // Re-assign get_query on every row render to handle per-instance field objects
+  form_rendered(frm, cdt, cdn) {
+    const field = frm.fields_dict["items"]?.grid?.get_field("item_code");
+    if (field) {
+      field.get_query = function () {
+        return build_item_filters(frm);
+      };
+    }
+  },
+
+  item_code(frm, cdt, cdn) {
+    let row = frappe.get_doc(cdt, cdn);
+    if (row.item_code) {
+      frappe.db.get_doc("Item", row.item_code).then((doc) => {
+        if (doc.is_fixed_asset == 1) {
+          row.item_type = "Asset";
+        } else if (doc.is_stock_item == 1) {
+          row.item_type = "Stock";
+        } else {
+          row.item_type = "Non-Stock";
+        }
+        frm.refresh_field("items");
+      });
+    }
+  },
+});
+
+// ─── Item Group Filter Helpers ────────────────────────────────────────────────
+
+// Company to allowed top-level item group mapping
+const company_group_map = {
+  "Touchstone Foundation Hyderabad": "Touchstone Foundation Hyderabad",
+  "Vasudha": "Touchstone Foundation Hyderabad",
+  "TSF-General": "Touchstone Foundation Hyderabad",
+  "Kandi Kitchen": "Touchstone Foundation Hyderabad",
+  "AP Cova Factory": "Touchstone Foundation Hyderabad",
+  "Bhadrachalam Books Counter": "Touchstone Foundation Hyderabad",
+  "TRIDAS": "TRIDAS",
+  "SP Books Warehouse": "TRIDAS",
+  "SP Books HKGT Counter": "TRIDAS",
+  "Tridas Yatra": "TRIDAS",
+};
+
+/**
+ * Fetch all item group names under the company's allowed top-level group
+ * and cache them on frm._cached_group_names
+ */
+async function update_item_group_cache(frm) {
+  frm._cached_group_names = null; // reset
+
+  const company = frm.doc.company;
+  if (!company) return;
+
+  const allowed_group = company_group_map[company];
+  if (!allowed_group) return;
+
+  const group_res = await frappe.db.get_value(
+    "Item Group",
+    allowed_group,
+    ["lft", "rgt"]
+  );
+  const { lft, rgt } = group_res?.message || {};
+  if (!lft || !rgt) return;
+
+  const groups = await frappe.db.get_list("Item Group", {
+    filters: [
+      ["lft", ">=", lft],
+      ["rgt", "<=", rgt],
+    ],
+    fields: ["name"],
+    limit: 0,
+  });
+
+  frm._cached_group_names = groups.map((g) => g.name);
+}
+
+/**
+ * Build the filter array using the cached group names
+ */
+function build_item_filters(frm) {
+  let filters = [
+    ["Item", "disabled", "=", 0],
+    ["Item", "is_purchase_item", "=", 1],
+    ["Item", "has_variants", "=", 0],
+  ];
+
+  if (frm._cached_group_names?.length) {
+    filters.push(["Item", "item_group", "in", frm._cached_group_names]);
+  }
+
+  return { filters };
+}
+
+/**
+ * Register set_query on the item_code field (sync — uses existing cache)
+ */
+function register_item_query(frm) {
+  frm.set_query("item_code", "items", function () {
+    return build_item_filters(frm);
+  });
+}
+
+// ─── Approval Helpers ─────────────────────────────────────────────────────────
+
 function addApprovalActionItems(frm) {
   if (
     frm.doc.docstatus == 0 &&
@@ -216,14 +321,12 @@ function addApprovalActionItems(frm) {
     frm.doc.current_approving_authority === frappe.session.user &&
     frm.doc.approval_status != "Rejected"
   ) {
-    // Check if actions already exist by looking at the actual DOM content
     const actionsMenu = frm.page.actions;
     const existingApprove =
       actionsMenu.find('a .menu-item-label:contains("Approve")').length > 0;
     const existingReject =
       actionsMenu.find('a .menu-item-label:contains("Reject")').length > 0;
 
-    // Add Approve action item only if it doesn't exist
     if (!existingApprove) {
       frm.page.add_action_item(
         __('Approve <i class="fa fa-check text-success"></i>'),
@@ -233,7 +336,6 @@ function addApprovalActionItems(frm) {
       );
     }
 
-    // Add Reject action item only if it doesn't exist
     if (!existingReject) {
       frm.page.add_action_item(
         __('Reject <i class="fa fa-times text-danger"></i>'),
@@ -259,12 +361,10 @@ function approvePurchaseOrder(frm) {
         freeze_message: "Approving Purchase Order",
         callback: (r) => {
           if (!r.exc) {
-            // Show success message
             frappe.show_alert({
               message: "Purchase Order sent for approval",
               indicator: "green",
             });
-
             frm.reload_doc();
             frm.refresh();
           }
@@ -288,13 +388,10 @@ function rejectPurchaseOrder(frm) {
         freeze_message: "Rejecting Purchase Order",
         callback: (r) => {
           if (!r.exc) {
-            // Show success message
             frappe.show_alert({
               message: "Purchase Order rejected successfully",
               indicator: "green",
             });
-
-            // Reload document
             frm.reload_doc();
             frm.refresh();
           }
@@ -304,12 +401,6 @@ function rejectPurchaseOrder(frm) {
   );
 }
 
-/**
- * Helper function to handle approval requests
- * @param {Object} frm - The form object
- * @param {string} method - The method to call (send_approval or resend_approval)
- * @param {string} action - The action description for confirmation dialog
- */
 function handleApprovalRequest(frm, method, action) {
   frappe.confirm(`Are you sure you want to ${action}?`, function () {
     frappe.call({
@@ -322,13 +413,10 @@ function handleApprovalRequest(frm, method, action) {
       freeze_message: "Document Checked ... Setting Up Authorization",
       callback: (r) => {
         if (!r.exc) {
-          // Show success message
           frappe.show_alert({
             message: "Purchase Order sent for approval",
             indicator: "green",
           });
-
-          // Reload document
           if (!r.exc) {
             frm.reload_doc();
             frm.refresh();
@@ -339,10 +427,6 @@ function handleApprovalRequest(frm, method, action) {
   });
 }
 
-/**
- * Show modal to select resend method (Email or WhatsApp)
- * @param {Object} frm - The form object
- */
 function showResendApprovalModal(frm) {
   let d = new frappe.ui.Dialog({
     title: __("Resend Approval Request"),
@@ -390,7 +474,6 @@ function showResendApprovalModal(frm) {
     },
   });
 
-  // Add click handlers for custom buttons
   d.$wrapper.find(".resend-email-btn").on("click", function () {
     resendApprovalWithMethod(frm, "email");
     d.hide();
@@ -404,11 +487,6 @@ function showResendApprovalModal(frm) {
   d.show();
 }
 
-/**
- * Resend approval with specified method
- * @param {Object} frm - The form object
- * @param {string} method - "email" or "whatsapp"
- */
 function resendApprovalWithMethod(frm, method) {
   frappe.call({
     method: "hkm.hkm_approval_matrix.main.resend_approval",
@@ -421,13 +499,12 @@ function resendApprovalWithMethod(frm, method) {
     freeze_message: `Resending approval via ${method === "whatsapp" ? "WhatsApp" : "Email"}...`,
     callback: (r) => {
       if (!r.exc) {
-        // Show success message
         frappe.show_alert({
-          message: r.message || `Approval resent successfully via ${method === "whatsapp" ? "WhatsApp" : "Email"}`,
+          message:
+            r.message ||
+            `Approval resent successfully via ${method === "whatsapp" ? "WhatsApp" : "Email"}`,
           indicator: "green",
         });
-
-        // Reload document
         frm.reload_doc();
         frm.refresh();
       }
@@ -435,30 +512,7 @@ function resendApprovalWithMethod(frm, method) {
   });
 }
 
-/*
- * Purchase Order Item Events
- * Handles item-specific logic in the child table
- */
-frappe.ui.form.on("Purchase Order Item", {
-  /**
-   * Set item type based on item properties when item code is selected
-   */
-  item_code(frm, cdt, cdn) {
-    let row = frappe.get_doc(cdt, cdn);
-    if (row.item_code) {
-      frappe.db.get_doc("Item", row.item_code).then((doc) => {
-        if (doc.is_fixed_asset == 1) {
-          row.item_type = "Asset";
-        } else if (doc.is_stock_item == 1) {
-          row.item_type = "Stock";
-        } else {
-          row.item_type = "Non-Stock";
-        }
-        frm.refresh_field("items");
-      });
-    }
-  },
-});
+// ─── List View Settings ───────────────────────────────────────────────────────
 
 frappe.listview_settings["Purchase Order"] = {
   has_indicator_for_draft: true,
@@ -467,7 +521,6 @@ frappe.listview_settings["Purchase Order"] = {
   add_fields: ["status_indicator"],
 
   get_indicator: function (doc) {
-
     if (doc.status_indicator == "Approved") {
       return [__("Approved"), "green", "docstatus,=,1"];
     }
@@ -490,7 +543,6 @@ frappe.listview_settings["Purchase Order"] = {
       return [__("Rejected"), "red", "docstatus,=,0"];
     }
 
-    // fallback
     return [__("Draft"), "gray", "docstatus,=,0"];
   },
 };

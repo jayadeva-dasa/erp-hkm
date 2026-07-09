@@ -3,7 +3,7 @@ frappe.ui.form.on("Stock Entry", {
     frm.set_query("default_difference_account", function () {
       return {
         filters: {
-          root_type: "Expense",
+          root_type: ["in",["Expense","Liability"]],
           company: frm.doc.company,
           is_group: 0,
           disabled: 0,

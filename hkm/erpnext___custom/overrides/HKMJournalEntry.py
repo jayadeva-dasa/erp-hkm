@@ -12,14 +12,6 @@ from frappe.model.naming import getseries
 
 
 class HKMJournalEntry(JournalEntry):
-    def autoname(self):
-        dateF = getdate(self.posting_date)
-        company_abbr = frappe.get_cached_value("Company", self.company, "abbr")
-        year = dateF.strftime("%y")
-        month = dateF.strftime("%m")
-        prefix = f"{company_abbr}-JV-{year}{month}-"
-        self.name = prefix + getseries(prefix, 5)
-
     def validate(self):
         """Override validate to allow HKM Asset reference type"""
         # Call parent validate first

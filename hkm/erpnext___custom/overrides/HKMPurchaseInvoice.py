@@ -19,16 +19,6 @@ from frappe.model.naming import getseries
 
 
 class HKMPurchaseInvoice(PurchaseInvoice):
-    def autoname(self):
-        dateF = getdate(self.posting_date)
-        company_abbr = frappe.get_cached_value("Company", self.company, "abbr")
-        year = dateF.strftime("%y")
-        month = dateF.strftime("%m")
-        prefix = f"{company_abbr}-PI-{year}{month}-"
-        if self.is_return:
-            prefix = "D-" + prefix
-        self.name = prefix + getseries(prefix, 5)
-
     def validate(self):
         super().validate()
         self.asset_pr_required()

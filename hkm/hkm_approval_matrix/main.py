@@ -37,11 +37,11 @@ def _check_permissions(message=None):
     roles = frappe.get_roles(frappe.session.user)
     if "Purchase Manager" not in roles and frappe.session.user != "Administrator":
         if "System Manager" not in roles:
-            message = (
-                message or "Purchase Manager or System Manager can only send approval"
-            )
-
-            frappe.throw(message)
+            if "Stock User" not in roles:
+                message = (
+                    message or "Purchase Manager or System Manager can only send approval"
+                )
+                frappe.throw(message)
 
 
 def _get_success_response(message, docname, doctype):

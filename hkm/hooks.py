@@ -14,7 +14,7 @@ Comprehensive Frappe application extending ERPNext for HKM operations including:
 """
 
 from __future__ import unicode_literals
-
+import frappe
 from . import __version__ as app_version
 from hkm.fixtures import custom_fixtures
 
@@ -120,7 +120,17 @@ permission_query_conditions = {
     "HKM Voucher": "hkm.erpnext___custom.doctype.hkm_voucher.hkm_voucher_filter.list_filter",
     "RTL Project": "hkm.erpnext___custom.doctype.rtl_project.rtl_project_filter.list",
     "HKMP Entry": "hkm.hkm_pay.doctype.hkmp_entry.hkmp_entry_filter.list_filter",
-    "Cost_Head" : "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.list_filter"
+    "Cost_Head": "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.list_filter",
+    "Purchase Order":   "hkm.permissions.pqc_purchase_order",
+    "Purchase Invoice": "hkm.permissions.pqc_purchase_invoice",
+    "Sales Order":      "hkm.permissions.pqc_sales_order",
+    "Sales Invoice":    "hkm.permissions.pqc_sales_invoice",
+    "Payment Entry":    "hkm.permissions.pqc_payment_entry",
+    "Purchase Receipt": "hkm.permissions.pqc_purchase_receipt",
+    "Delivery Note":    "hkm.permissions.pqc_delivery_note",
+    "Journal Entry":    "hkm.permissions.pqc_journal_entry",
+    "Stock Entry":      "hkm.permissions.pqc_stock_entry",
+    "Company":          "hkm.permissions.pqc_company",
 }
 
 # Single document permission checks
@@ -128,7 +138,17 @@ has_permission = {
     "HKM Voucher": "hkm.erpnext___custom.doctype.hkm_voucher.hkm_voucher_filter.has_single_access",
     "RTL Project": "hkm.erpnext___custom.doctype.rtl_project.rtl_project_filter.single",
     "HKMP Entry": "hkm.hkm_pay.doctype.hkmp_entry.hkmp_entry_filter.doc_filter",
-    "Cost Head": "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.single"
+    "Cost Head": "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.single",
+    "Purchase Order":   "hkm.permissions.has_permission",
+    "Purchase Invoice": "hkm.permissions.has_permission",
+    "Sales Order":      "hkm.permissions.has_permission",
+    "Sales Invoice":    "hkm.permissions.has_permission",
+    "Payment Entry":    "hkm.permissions.has_permission",
+    "Purchase Receipt": "hkm.permissions.has_permission",
+    "Delivery Note":    "hkm.permissions.has_permission",
+    "Journal Entry":    "hkm.permissions.has_permission",
+    "Stock Entry":      "hkm.permissions.has_permission",
+    "Company":          "hkm.permissions.has_permission",
 }
 
 
@@ -315,3 +335,4 @@ repost_allowed_doctypes = ["Stock Entry"]
 
 # Fixtures to export/import
 fixtures = custom_fixtures
+

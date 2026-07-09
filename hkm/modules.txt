@@ -13,3 +13,4 @@ HKM Integration
 HKM Pay
 Guest House
 SmartPing
+HKM
