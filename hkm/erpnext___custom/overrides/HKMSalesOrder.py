@@ -4,6 +4,7 @@ import frappe
 from frappe import _
 from frappe.utils import flt
 from erpnext.selling.doctype.sales_order.sales_order import SalesOrder
+from erpnext.stock.stock_ledger import is_negative_stock_allowed
 
 
 class HKMSalesOrder(SalesOrder):
@@ -32,11 +33,10 @@ class HKMSalesOrder(SalesOrder):
 		  - Items with no item_code or warehouse set
 		  - Non-stock items
 		  - Drop-ship items (delivered_by_supplier = 1)
-		  - When 'Allow Negative Stock' is enabled globally
+		  - Items where 'Allow Negative Stock' is enabled, either globally
+		    (Stock Settings) or on the Item itself — matches core ERPNext's
+		    own is_negative_stock_allowed() logic.
 		"""
-		if frappe.get_single_value("Stock Settings", "allow_negative_stock"):
-			return
-
 		insufficient_items = []
 
 		for item in self.items:
@@ -49,6 +49,10 @@ class HKMSalesOrder(SalesOrder):
 
 			# Skip drop-ship items — stock is not consumed from our warehouse
 			if item.delivered_by_supplier:
+				continue
+
+			# Skip if negative stock is allowed for this item (globally or per-item)
+			if is_negative_stock_allowed(item_code=item.item_code):
 				continue
 
 			actual_qty = flt(
