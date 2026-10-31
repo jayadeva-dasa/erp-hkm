@@ -58,7 +58,12 @@ frappe.query_reports["Yatra Wise Income and Expenditure"] = {
       fieldname: "show",
       label: __("Show"),
       fieldtype: "Select",
-      options: ["Yatra", "Yatra and Batch", "Yatra, Batch and Account"],
+      options: [
+        "Yatra",
+        "Yatra and Batch",
+        "Yatra, Batch and Account",
+        "Yatra, Batch, Account and Entries",
+      ],
       default: "Yatra and Batch",
       reqd: 1,
     },
@@ -85,6 +90,9 @@ frappe.query_reports["Yatra Wise Income and Expenditure"] = {
         batch: data.batch,
       }).replace(/"/g, "&quot;");
       value = `<a onclick="frappe.query_reports['Yatra Wise Income and Expenditure'].open_general_ledger(${args})">${value}</a>`;
+    }
+    if (column.fieldname === "label" && data.voucher_no) {
+      value = frappe.utils.get_form_link(data.voucher_type, data.voucher_no, true);
     }
     if (["surplus", "margin"].includes(column.fieldname) && data[column.fieldname] < 0) {
       value = `<span class="text-danger">${value}</span>`;
