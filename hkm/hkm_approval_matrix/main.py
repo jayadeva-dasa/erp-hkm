@@ -31,17 +31,19 @@ from .utils.validation import (
 )
 
 
-def _check_permissions(message=None):
+def _check_permissions(message=None, extra_roles=None):
     """Check if user has permission to send/manage approvals."""
 
+    allowed_roles = {"Purchase Manager", "System Manager", "Stock User"}
+    if extra_roles:
+        allowed_roles.update(extra_roles)
+
     roles = frappe.get_roles(frappe.session.user)
-    if "Purchase Manager" not in roles and frappe.session.user != "Administrator":
-        if "System Manager" not in roles:
-            if "Stock User" not in roles:
-                message = (
-                    message or "Purchase Manager or System Manager can only send approval"
-                )
-                frappe.throw(message)
+    if frappe.session.user != "Administrator" and not allowed_roles.intersection(roles):
+        message = (
+            message or "Purchase Manager or System Manager can only send approval"
+        )
+        frappe.throw(message)
 
 
 def _get_success_response(message, docname, doctype):
@@ -57,7 +59,7 @@ def _get_success_response(message, docname, doctype):
 
 @frappe.whitelist()
 def send_approval(doctype, docname):
-    _check_permissions()
+    _check_permissions(extra_roles=["PO Checker"])
 
     # Set approving authorities
     set_approving_authority(doctype, docname)

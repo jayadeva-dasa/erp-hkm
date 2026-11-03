@@ -129,12 +129,16 @@ frappe.ui.form.on("Purchase Order", {
       }
 
       // Show buttons for unlocked documents
-      if (
+      const canCancel =
         !frm.doc.locked &&
         (frappe.user.has_role("Purchase Manager") ||
           frappe.user.has_role("Stock User") ||
-          frappe.user.has_role("System Manager"))
-      ) {
+          frappe.user.has_role("System Manager"));
+
+      const canCheck =
+        canCancel || (!frm.doc.locked && frappe.user.has_role("PO Checker"));
+
+      if (canCancel) {
         frm
           .add_custom_button(
             "Cancel <i class='fa fa-times' style='color:white'></i>",
@@ -173,7 +177,9 @@ frappe.ui.form.on("Purchase Order", {
             "background-color": "#e63900",
             "font-weight": "800",
           });
+      }
 
+      if (canCheck) {
         frm
           .add_custom_button(
             "Check <i class='fa fa-check' style='color:white'></i>",
