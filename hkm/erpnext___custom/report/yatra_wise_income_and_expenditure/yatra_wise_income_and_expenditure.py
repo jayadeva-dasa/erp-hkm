@@ -7,8 +7,9 @@ from frappe.utils import flt
 
 NO_YATRA = "(No Yatra)"
 NO_BATCH = "(No Batch)"
-SHOW_BATCH = ("Yatra and Batch", "Yatra, Batch and Account")
-SHOW_ACCOUNT = "Yatra, Batch and Account"
+SHOW_ENTRIES = "Yatra, Batch, Account and Entries"
+SHOW_BATCH = ("Yatra and Batch", "Yatra, Batch and Account", SHOW_ENTRIES)
+SHOW_ACCOUNT = ("Yatra, Batch and Account", SHOW_ENTRIES)
 # validated categorical pair (light and dark surfaces); green/red stay reserved for status
 INCOME_COLOR, EXPENDITURE_COLOR = "#2a78d6", "#d95926"
 
@@ -21,7 +22,7 @@ def execute(filters=None):
     currency = frappe.get_cached_value("Company", filters.company, "default_currency")
     data, total = get_data(filters, currency)
     return (
-        get_columns(),
+        get_columns(filters),
         data,
         None,
         get_chart(data, currency),
@@ -29,14 +30,32 @@ def execute(filters=None):
     )
 
 
-def get_columns():
-    return [
+def get_columns(filters):
+    show_entries = filters.show == SHOW_ENTRIES
+    columns = [
         {
             "fieldname": "label",
-            "label": _("Yatra / Batch / Account"),
+            "label": _("Yatra / Batch / Account / Voucher") if show_entries else _("Yatra / Batch / Account"),
             "fieldtype": "Data",
             "width": 420,
         },
+    ]
+    if show_entries:
+        columns += [
+            {
+                "fieldname": "posting_date",
+                "label": _("Posting Date"),
+                "fieldtype": "Date",
+                "width": 110,
+            },
+            {
+                "fieldname": "voucher_type",
+                "label": _("Voucher Type"),
+                "fieldtype": "Data",
+                "width": 140,
+            },
+        ]
+    columns += [
         {
             "fieldname": "income",
             "label": _("Income"),
@@ -72,11 +91,40 @@ def get_columns():
             "hidden": 1,
         },
     ]
+    if show_entries:
+        columns += [
+            {
+                "fieldname": "party_type",
+                "label": _("Party Type"),
+                "fieldtype": "Data",
+                "hidden": 1,
+            },
+            {
+                "fieldname": "party",
+                "label": _("Party"),
+                "fieldtype": "Dynamic Link",
+                "options": "party_type",
+                "width": 180,
+            },
+            {
+                "fieldname": "against",
+                "label": _("Against Account"),
+                "fieldtype": "Data",
+                "width": 180,
+            },
+            {
+                "fieldname": "remarks",
+                "label": _("Remarks"),
+                "fieldtype": "Data",
+                "width": 300,
+            },
+        ]
+    return columns
 
 
-def get_gl_amounts(filters):
-    """Income and expense per Yatra, Batch and account. Year closing entries are left
-    out, so a closed year still shows its income and expenditure."""
+def get_gl_amounts(filters, entries=False):
+    """Income and expense per Yatra, Batch and account, or each GL entry when `entries`.
+    Year closing entries are left out, so a closed year still shows its income and expenditure."""
     conditions = []
     values = {
         "company": filters.company,
@@ -94,6 +142,15 @@ def get_gl_amounts(filters):
     if not filters.include_untagged:
         conditions.append("ifnull(gle.pk_yatra, '') != ''")
 
+    if entries:
+        amounts = """gle.name, gle.posting_date, gle.voucher_type, gle.voucher_no,
+            gle.party_type, gle.party, gle.against, gle.remarks,
+            gle.debit, gle.credit"""
+        group_by = ""
+    else:
+        amounts = "sum(gle.debit) as debit, sum(gle.credit) as credit"
+        group_by = "group by yatra, batch, gle.account, acc.root_type"
+
     return frappe.db.sql(
         """
         select
@@ -101,8 +158,7 @@ def get_gl_amounts(filters):
             ifnull(nullif(gle.pk_yatra_batch, ''), %(no_batch)s) as batch,
             gle.account,
             acc.root_type,
-            sum(gle.debit) as debit,
-            sum(gle.credit) as credit
+            {amounts}
         from `tabGL Entry` gle
         join `tabAccount` acc on acc.name = gle.account
         where gle.company = %(company)s
@@ -111,18 +167,23 @@ def get_gl_amounts(filters):
             and gle.posting_date between %(from_date)s and %(to_date)s
             and acc.root_type in ('Income', 'Expense')
             {conditions}
-        group by yatra, batch, gle.account, acc.root_type
-        """.format(conditions="".join(f" and {c}" for c in conditions)),
+        {group_by}
+        """.format(
+            amounts=amounts,
+            conditions="".join(f" and {c}" for c in conditions),
+            group_by=group_by,
+        ),
         values,
         as_dict=True,
     )
 
 
 def get_data(filters, currency):
-    """Tree rows: Yatra, then Batch, then account, as the "Show" filter asks.
+    """Tree rows: Yatra, then Batch, then account, then each entry, as the "Show" filter asks.
     Untagged entries go last, under (No Yatra) / (No Batch)."""
     show_batch = filters.show in SHOW_BATCH
-    show_account = filters.show == SHOW_ACCOUNT
+    show_account = filters.show in SHOW_ACCOUNT
+    show_entries = filters.show == SHOW_ENTRIES
     rows, by_name = [], {}
 
     def node(name, parent, label, indent, **extra):
@@ -142,8 +203,16 @@ def get_data(filters, currency):
 
     total = frappe._dict(income=0.0, expenditure=0.0)
     amounts = sorted(
-        get_gl_amounts(filters),
-        key=lambda d: (d.yatra == NO_YATRA, d.yatra, d.batch == NO_BATCH, d.batch, d.account),
+        get_gl_amounts(filters, show_entries),
+        key=lambda d: (
+            d.yatra == NO_YATRA,
+            d.yatra,
+            d.batch == NO_BATCH,
+            d.batch,
+            d.account,
+            d.posting_date or "",
+            d.voucher_no or "",
+        ),
     )
     for d in amounts:
         income = flt(d.credit - d.debit) if d.root_type == "Income" else 0.0
@@ -154,9 +223,10 @@ def get_data(filters, currency):
             batch_name = f"{d.yatra}::{d.batch}"
             path.append(node(batch_name, d.yatra, d.batch, 1))
             if show_account:
+                account_name = f"{batch_name}::{d.account}"
                 path.append(
                     node(
-                        f"{batch_name}::{d.account}",
+                        account_name,
                         batch_name,
                         d.account,
                         2,
@@ -167,6 +237,23 @@ def get_data(filters, currency):
                         drill_down=int(d.yatra != NO_YATRA and d.batch != NO_BATCH),
                     )
                 )
+                if show_entries:
+                    path.append(
+                        node(
+                            d.name,
+                            account_name,
+                            d.voucher_no,
+                            3,
+                            root_type=d.root_type,
+                            posting_date=d.posting_date,
+                            voucher_type=d.voucher_type,
+                            voucher_no=d.voucher_no,
+                            party_type=d.party_type,
+                            party=d.party,
+                            against=d.against,
+                            remarks=d.remarks,
+                        )
+                    )
         for row in path + [total]:
             row.income += income
             row.expenditure += expenditure
@@ -174,6 +261,10 @@ def get_data(filters, currency):
     total.update(name="Total", parent=None, label=_("Total"), indent=0, currency=currency)
     for row in rows + [total]:
         row.income, row.expenditure = flt(row.income, 2), flt(row.expenditure, 2)
+        if row.voucher_no:
+            # an entry shows only its own amount, in its account's column
+            row["expenditure" if row.root_type == "Income" else "income"] = None
+            continue
         row.surplus = flt(row.income - row.expenditure, 2)
         row.margin = flt(row.surplus / row.income * 100, 2) if row.income else None
     return (rows + [total] if rows else []), total
