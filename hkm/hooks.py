@@ -154,7 +154,17 @@ has_permission = {
 
 override_whitelisted_methods = {
     "erpnext.accounts.doctype.accounting_dimension.accounting_dimension.get_dimensions":
-        "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.get_accounting_dimension"
+        "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.get_accounting_dimension",
+    # Explicit "what is wrong / how to fix" messages when save, submit, cancel or a workflow action fails
+    "frappe.desk.form.save.savedocs": "hkm.error_guidance.api.savedocs",
+    "frappe.desk.form.save.cancel": "hkm.error_guidance.api.cancel",
+    "frappe.client.insert": "hkm.error_guidance.api.client_insert",
+    "frappe.client.save": "hkm.error_guidance.api.client_save",
+    "frappe.client.submit": "hkm.error_guidance.api.client_submit",
+    "frappe.client.cancel": "hkm.error_guidance.api.client_cancel",
+    "frappe.client.set_value": "hkm.error_guidance.api.client_set_value",
+    "frappe.model.workflow.apply_workflow": "hkm.error_guidance.api.apply_workflow",
+    "frappe.model.mapper.make_mapped_doc": "hkm.error_guidance.api.make_mapped_doc",
 }
 
 # ============================================================================
