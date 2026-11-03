@@ -12,7 +12,6 @@ hkm.patches.oct_25.extract_dimension_value_from_condition
 hkm.patches.oct_25.cleanup_fields_applicable
 hkm.patches.oct_25.populate_dimension_doctype_in_approval_matrix_detail
 hkm.patches.nov_25.add_stock_issuer_custom_fields #1
-hkm.patches.jan_25.add_custom_field_sales_invoice_gh_booking
 hkm.patches.jan_26.add_custom_tds
 hkm.patches.add_sales_invoice_print_format_to_pos_profile
 hkm.patches.jan_26.add_custom_html_filed_pos_closing_entry #7

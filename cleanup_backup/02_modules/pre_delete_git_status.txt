@@ -1,0 +1,17 @@
+ M hkm/erpnext___custom/doctype/item_creation_request/item_creation_request.json
+ M hkm/erpnext___custom/doctype/item_creation_request/item_creation_request.py
+ M hkm/erpnext___custom/doctype/supplier_creation_request/supplier_creation_request.json
+ M hkm/erpnext___custom/print_format/hkm___sales_invoice_format/hkm___sales_invoice_format.json
+ M hkm/hkm_approval_matrix/main.py
+ M hkm/public/js/purchase_order.js
+?? cleanup_backup/
+?? hkm/_debug_scratch.py
+?? hkm/erpnext___custom/print_format/hkm___quotation_format/
+
+ .../item_creation_request/item_creation_request.json |  6 +++---
+ .../item_creation_request/item_creation_request.py   |  3 ++-
+ .../supplier_creation_request.json                   | 20 ++++++++------------
+ .../hkm___sales_invoice_format.json                  | 10 +++++-----
+ hkm/hkm_approval_matrix/main.py                      | 20 +++++++++++---------
+ hkm/public/js/purchase_order.js                      | 12 +++++++++---
+ 6 files changed, 38 insertions(+), 33 deletions(-)

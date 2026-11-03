@@ -1,8 +1,0 @@
-// Copyright (c) 2021, NRHD and contributors
-// For license information, please see license.txt
-
-frappe.ui.form.on('Ashram Store Item', {
-	// refresh: function(frm) {
-
-	// }
-});

@@ -88,9 +88,6 @@ website_redirects = [
     {"source": "/app/point-of-sale", "target": "/app/hkm-point-of-sale"},
 ]
 
-# Web generators
-website_generators = ["DD User Address"]
-
 # ============================================================================
 # JINJA ENVIRONMENT
 # ============================================================================
@@ -112,11 +109,6 @@ before_uninstall = "hkm.erpnext___custom.setup.before_uninstall"
 
 # List view permission query conditions
 permission_query_conditions = {
-    "FOLK Student": "hkm.folk_base.folk_listview_filter.student_query",
-    "Ashraya Candidate": "hkm.ashraya_base.ashraya_listview_filter.query",
-    "DD Wallet Tx": "hkm.divine_dishes.list_view_filter.query",
-    "DD Subscription": "hkm.divine_dishes.list_view_filter.query",
-    "DD Order": "hkm.divine_dishes.list_view_filter.query",
     "HKM Voucher": "hkm.erpnext___custom.doctype.hkm_voucher.hkm_voucher_filter.list_filter",
     "RTL Project": "hkm.erpnext___custom.doctype.rtl_project.rtl_project_filter.list",
     "HKMP Entry": "hkm.hkm_pay.doctype.hkmp_entry.hkmp_entry_filter.list_filter",
@@ -291,8 +283,6 @@ scheduler_events = {
         "* * * * *": [
             "hkm.hkm_pay.doctype.hkmp_entry.hkmp_entry.update_transaction_status",
         ],
-        # Daily at 8:15 PM: Divine Dishes evening tasks
-        "15 20 * * *": ["hkm.divine_dishes.tasks.every_day_evening"],
         # Every hour at :45: Auto-update bank transactions
         "30 * * * *": [
             "hkm.hkm_integration.doctype.au_bank_account.au_bank_account.auto_update_bank_txs"
