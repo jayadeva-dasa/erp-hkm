@@ -30,7 +30,7 @@ class ItemCreationRequest(Document):
 
         asset_category: DF.Link | None
         asset_item: DF.Check
-        hsn_code: DF.Link | None
+        gst_hsn_code: DF.Link | None
         is_sales_item: DF.Check
         item_group: DF.Link
         item_name: DF.Data
@@ -94,6 +94,7 @@ def quickly_create_item(request):
         "item_code": new_item_code,
         "item_creation_request": icr_doc.name,
         "is_stock_item": 0,
+        "gst_hsn_code": icr_doc.gst_hsn_code,
     }
 
     if icr_doc.asset_item:

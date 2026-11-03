@@ -14,7 +14,7 @@
   "asset_item",
   "asset_category",
   "is_sales_item",
-  "hsn_code",
+  "gst_hsn_code",
   "column_break_4",
   "unit_of_measure",
   "remarks",
@@ -117,7 +117,7 @@
   },
   {
    "depends_on": "eval:doc.is_sales_item",
-   "fieldname": "hsn_code",
+   "fieldname": "gst_hsn_code",
    "fieldtype": "Link",
    "label": "HSN Code",
    "options": "GST HSN Code"
@@ -125,7 +125,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-07-09 10:13:38.093506",
+ "modified": "2026-08-05 18:43:34.862395",
  "modified_by": "polampallisaivardhan2007@gmail.com",
  "module": "ERPNext - Custom",
  "name": "Item Creation Request",
