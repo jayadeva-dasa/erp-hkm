@@ -1,0 +1,50 @@
+Agent
+CRM Manager
+Class Evaluator
+DCC CS
+DCC Marketing
+DED Allowance Manager
+DED TC
+Drive Admin
+Drive User
+ECS Manager
+Education Manager
+Festival Pass Admin
+Foreign Donor Manager
+Gameplan Admin
+Gameplan Guest
+Gameplan Member
+HKCC Expense Observer
+HKCC Observer
+HKM MIS Manager
+HKM MIS User
+Helpdesk Contact
+Insights Admin
+Insights User
+Interviewer
+Leave Approver
+Loan Manager
+Nexus Folk Admin
+PF Admin
+PF Checker
+PF Custodian
+PF Executive
+Prasadam Admin
+Prasadam Coupon Checker
+Prasadam Request User
+RPT Receiver
+Raven User
+Stock Notice Receiver
+Stock Notice Receiver - Jaipur
+Stock Notice Receiver - Kota
+Stock Notice Receiver - Udaipur
+Stock Viewer
+TF Admin
+Task Giver
+Ticket Raiser
+WF Admin
+WF Driver
+WhatsApp Manager
+Wiki Approver
+Yatra Looker
+Yatra Manager

@@ -1,0 +1,34 @@
+Account Ledger Seer
+Ashram Store Manager
+Ashraya Devotee
+Ashraya Manager
+Asset Manager
+Asset Reco
+Bhakta Training Coordinator
+DCC Cashier
+DCC Executive
+DCC Manager
+DCC Preacher
+DD Manager
+DED Admin
+DED User
+ERP Coordinator
+Expense Approver
+FOLK Admin
+FOLK Guide
+Guest House Manager
+HKM Cashier
+HKM Expense Voucher Approver
+HKMP User
+HR Leave Request
+IT Manager
+Internal Adjustment User
+Item & Supplier Creator
+Nexus Admin
+Nexus Preacher
+Nexus Sadhak
+POS Manager
+POS Sales Report
+RTL Admin
+Temple Security User
+Work Request Head Manager
