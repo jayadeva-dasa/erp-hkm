@@ -6,7 +6,6 @@ CUSTOM_ROLES = [
     {"role_name": "Prasadam Coupon Checker", "desk_access": 1},
     {"role_name": "Account Ledger Seer", "desk_access": 1},
     {"role_name": "DCC Manager", "desk_access": 1},
-    {"role_name": "Task Giver", "desk_access": 1},
     {"role_name": "Item Manager", "desk_access": 1},
     {"role_name": "Sales Executive", "desk_access": 1},
     {"role_name": "Stock Checker", "desk_access": 1},

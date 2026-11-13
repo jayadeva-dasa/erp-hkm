@@ -18,7 +18,7 @@ import {
   Divider,
   Stack,
 } from '@chakra-ui/react';
-import { FiTrendingUp, FiSearch, FiPieChart, FiPackage, FiUsers, FiBox, FiHome, FiBarChart2, FiDollarSign, FiGitBranch } from 'react-icons/fi';
+import { FiTrendingUp, FiSearch, FiPieChart, FiPackage, FiUsers, FiBox, FiBarChart2, FiDollarSign, FiGitBranch } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const MotionCard = motion(Card);
@@ -138,14 +138,6 @@ const HomePage = () => {
       route: '/s3-file-search',
       color: 'cyan',
       badge: 'Storage',
-    },
-    {
-      title: 'Guest House Management',
-      description: 'View room availability, booking status, and manage guest house operations. Check room availability by date and floor.',
-      icon: FiHome,
-      route: '/guest-house',
-      color: 'indigo',
-      badge: 'Operations',
     },
     {
       title: 'Category Analytics',

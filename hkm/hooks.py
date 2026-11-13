@@ -112,7 +112,7 @@ permission_query_conditions = {
     "HKM Voucher": "hkm.erpnext___custom.doctype.hkm_voucher.hkm_voucher_filter.list_filter",
     "RTL Project": "hkm.erpnext___custom.doctype.rtl_project.rtl_project_filter.list",
     "HKMP Entry": "hkm.hkm_pay.doctype.hkmp_entry.hkmp_entry_filter.list_filter",
-    "Cost_Head": "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.list_filter",
+    "Cost_Head": "hkm.erpnext___custom.doctype.cost_head.cost_head_filter.list",
     "Purchase Order":   "hkm.permissions.pqc_purchase_order",
     "Purchase Invoice": "hkm.permissions.pqc_purchase_invoice",
     "Sales Order":      "hkm.permissions.pqc_sales_order",

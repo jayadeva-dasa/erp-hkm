@@ -3,4 +3,3 @@ Firebase
 HKM Integration
 HKM Pay
 SmartPing
-HKM

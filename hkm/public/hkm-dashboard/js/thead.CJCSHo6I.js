@@ -1,0 +1,1 @@
+import{i as e,j as r,l as o}from"./index.bundle.CPBEOmFE.js";import{u as c}from"./tr.DdLL37ME.js";const m=e(({isNumeric:s,...t},a)=>{const n=c();return r.jsx(o.th,{...t,ref:a,__css:n.th,"data-is-numeric":s})}),u=e((s,t)=>{const a=c();return r.jsx(o.thead,{...s,ref:t,__css:a.thead})});export{u as T,m as a};

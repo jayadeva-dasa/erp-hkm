@@ -21,9 +21,6 @@ const ScrapAssetPage = lazy(() => import('./modules/asset_management/pages/Scrap
 const SellAssetPage = lazy(() => import('./modules/asset_management/pages/SellAssetPage'));
 const ReportLostAssetPage = lazy(() => import('./modules/asset_management/pages/ReportLostAssetPage'));
 const S3FileSearchPage = lazy(() => import('./modules/s3_file_search/pages/S3FileSearchPage'));
-const GuestHouseManagementPage = lazy(() => import('./modules/guest_house/pages/GuestHouseManagementPage'));
-const NewBookingPage = lazy(() => import('./modules/guest_house/pages/NewBookingPage'));
-const BookingsPage = lazy(() => import('./modules/guest_house/pages/BookingsPage'));
 const CategoryAnalyticsPage = lazy(() => import('./modules/category_analytics/pages/Dashboard'));
 const BalanceSheetReportPage = lazy(() => import('./modules/category_analytics/pages/BalanceSheetReport'));
 const PLReportPage = lazy(() => import('./modules/category_analytics/pages/PLReport'));
@@ -54,9 +51,6 @@ function App() {
             <Route path="/asset-dashboard/sell" element={<SellAssetPage />} />
             <Route path="/asset-dashboard/lost" element={<ReportLostAssetPage />} />
             <Route path="/s3-file-search" element={<S3FileSearchPage />} />
-            <Route path="/guest-house" element={<GuestHouseManagementPage />} />
-            <Route path="/guest-house/new-booking" element={<NewBookingPage />} />
-            <Route path="/guest-house/bookings" element={<BookingsPage />} />
             <Route path="/category-analytics" element={<CategoryAnalyticsPage />} />
             <Route path="/category-analytics/balance-sheet" element={<BalanceSheetReportPage />} />
             <Route path="/category-analytics/pl-report" element={<PLReportPage />} />

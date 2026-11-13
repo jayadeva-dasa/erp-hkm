@@ -16,3 +16,5 @@ hkm/operations/bank
 node_modules
 hkm/operations/send_message
 hkm/operations/smartPing/send_message.py
+# Local server-only cleanup backups (not tracked)
+cleanup_backup/

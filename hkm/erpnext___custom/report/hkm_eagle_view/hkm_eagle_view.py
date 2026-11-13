@@ -232,29 +232,6 @@ def allowed_heads():
 
 
 
-def log_sql_query():
-
-
-    dimension = "FOLK Residency"
-    dimension_value = ["FOLK Keshav Niwas-Jaipur"]
-    from_date = "2025-04-01"
-    to_date = "2026-03-31"
-    dimension_view_filters = {
-            "from_date": from_date,
-            "to_date": to_date,
-            "report_view": "Dimension View",
-            "time_period": "Cumulative",
-            "report_type": "Net Profit",
-            "dimension": dimension,
-            "dimension_value": dimension_value,
-            "include_adjustment": 1,
-            "include_stock_asset": 1,
-            "include_disabled_dimension": 0,
-            "exclude_period_closing_entries": 0,
-        }
-
-    dimension_view_data = HKM_MASTER_REPORT(dimension_view_filters).get_data()
-
 @frappe.whitelist()
 def get_test_data():
     """

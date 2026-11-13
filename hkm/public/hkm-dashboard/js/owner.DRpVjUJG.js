@@ -1,1 +1,0 @@
-import{aN as t}from"./index.bundle.D0kWxRFF.js";function o(e){return n(e)?.defaultView??window}function n(e){return t(e)?e.ownerDocument:document}function r(e){return e.view??window}function u(e){return n(e).activeElement}export{u as a,r as b,o as g};
